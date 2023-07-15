@@ -9,13 +9,15 @@ import { TransationContext } from '../../Context/TransationContext';
 import { TransationsFilteredProps } from '../../Types/TransationProps';
 
 export const TransationFilter = ({ stateTransations }: TransationsFilteredProps) => {
-	const { state } = useContext(TransationContext);
+	const {
+		state: { cards },
+	} = useContext(TransationContext);
 	const [filterSelected, setFilterSelected] = useState<keyof TransationType>('value');
 	const [filterGeneric, setFilterGeneric] = useState<string>('');
 	const { transationsFiltered, setTransationsFiltered } = stateTransations;
 
 	const handlerFilterSelected = (
-		event: SelectChangeEvent<'value' | 'category' | 'description' | 'destination' | 'type'>,
+		event: SelectChangeEvent<'value' | 'category' | 'description' | 'destination' | 'type' | 'id'>,
 	) => {
 		const { target } = event;
 		setFilterSelected(target.value as keyof TransationType);
@@ -26,7 +28,7 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 		// // No mínimo 1 letra para realizar o filtro
 		if (target.value.length >= 1) {
 			const targetInputLower = target.value.toLowerCase();
-			const filtered = state.filter((transation) =>
+			const filtered = cards.filter((transation) =>
 				transation[filterSelected].toString().toLocaleLowerCase().includes(targetInputLower),
 			);
 

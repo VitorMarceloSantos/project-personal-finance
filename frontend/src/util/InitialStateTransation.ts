@@ -1,9 +1,10 @@
 import { TransationType } from '../Types/TransationsType';
 
 export const initialTransation: TransationType = {
+	id: 0,
 	value: 0,
-	category: '',
+	category: 'Categoria',
 	description: '',
-	destination: '',
+	destination: 'Destinação',
 	type: '',
 };

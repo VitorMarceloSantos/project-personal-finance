@@ -1,15 +1,16 @@
-import { useContext, useState } from 'react';
-import { TransationContext } from '../../Context/TransationContext';
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 import { TransationForm } from './TransationForm';
+import { NewTransationProps } from '../../Types/CreateNewTransation';
+import { TransationActionType } from '../../Types/TransationActionType';
 
-export const CreateNewTransation = () => {
-	// const { state, dispatch } = useContext(TransationContext);
-	const [formDisplay, setFormDisplay] = useState<boolean>(false);
+export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }: NewTransationProps) => {
+	const { formDisplay, setFormDisplay } = stateFormDisplay;
+	const { verifyActionTransation, setverifyActionTransation } = stateTransationAction;
 
 	const handlerSetDisplayForm = () => {
 		setFormDisplay((prev) => !prev);
+		setverifyActionTransation(TransationActionType.ADD);
 	};
 	return (
 		<div>
@@ -29,12 +30,9 @@ export const CreateNewTransation = () => {
 					},
 				]}
 			>
-				Nova Trasação
+				Nova Transação
 			</Button>
-      {formDisplay && (
-         <TransationForm />
-      )}
+			{formDisplay && <TransationForm verifyActionTransation={verifyActionTransation} setFormDisplay={setFormDisplay}/>}
 		</div>
-   
 	);
 };

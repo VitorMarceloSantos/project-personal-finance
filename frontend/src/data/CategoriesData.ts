@@ -1,10 +1,10 @@
 export const CategoriesData = [
+	'Metas',
 	'Lazer',
-	'Saúde',
-	'Eduacação',
-	'Alimentação',
+	'Saude',
+	'Eduacacao',
+	'Alimentacao',
 	'Casa',
 	'Transporte',
 	'Outras',
-	'Investimento',
 ];
