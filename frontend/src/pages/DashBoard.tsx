@@ -8,6 +8,7 @@ export const DashBoard = () => {
 			<h1>DashBoard</h1>
 			{!!localStorage.getItem('localTransations') ? <AlertDialogSlide /> : <h1>Chave inexistente</h1>}
 			<button type='button' onClick={() => navigate('/transacoes')}>Transacoes</button>
+			<button type='button' onClick={() => navigate('/metas')}>Metas</button>
 		</>
 	);
 };
