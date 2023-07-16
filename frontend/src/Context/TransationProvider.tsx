@@ -1,8 +1,8 @@
-import { useReducer, useState } from 'react';
-import { ChildrenType } from '../Types/ChildrenType';
+import { useEffect, useReducer, useState } from 'react';
+import { ChildrenType } from '../Types/Transations/ChildrenType';
 import { TransationContext } from './TransationContext';
-import { TransationType } from '../Types/TransationsType';
-import { ReducerActionType } from '../Types/ReducerTransationType';
+import { TransationType } from '../Types/Transations/TransationsType';
+import { ReducerActionType } from '../Types/Transations/ReducerTransationType';
 import { TransationsData } from '../data/TransationsData';
 import { initialTransation } from '../util/InitialStateTransation';
 
@@ -13,11 +13,11 @@ const reducer = (state: TransationType[], action: ReducerActionType): Transation
 			const newState = [...state, payload];
 			return newState;
 		case 'update':
-		// const { currentValues, valuesDepreciated } = payload;
-		// const updateState = [...state];
-		// const indexUpdate = state.findIndex(({ description }) => description === payload?.description);
-		// updateState[indexUpdate] = currentValues;
-		// return updateState;
+			const udpdateId = payload.id;
+			const updateState = [...state];
+			const indexUpdate = state.findIndex(({ id }) => id === udpdateId);
+			updateState[indexUpdate] = payload;
+			return updateState;
 		case 'delete':
 			const deleteId = payload.id;
 			const deletedState = [...state];
@@ -33,11 +33,17 @@ export const TransationProvider = ({ children }: ChildrenType) => {
 	const [state, dispatch] = useReducer(reducer, TransationsData); // o estado inicial é um array vazio
 	const [stateForm, setStateForm] = useState<TransationType>(initialTransation);
 
+	useEffect(() => {
+		localStorage.setItem('localTransations', JSON.stringify(state));
+	}, [state]);
+
 	const handlerSetFormValues = (updateValues: TransationType) => {
 		setStateForm(updateValues);
 	};
 	return (
-		<TransationContext.Provider value={{ state: { cards: state, formValues: stateForm },dispatch, handlerSetFormValues }}>
+		<TransationContext.Provider
+			value={{ state: { cards: state, formValues: stateForm }, dispatch, handlerSetFormValues }}
+		>
 			{children}
 		</TransationContext.Provider>
 	);

@@ -1,8 +1,8 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 import { TransationForm } from './TransationForm';
-import { NewTransationProps } from '../../Types/CreateNewTransation';
-import { TransationActionType } from '../../Types/TransationActionType';
+import { NewTransationProps } from '../../Types/Transations/CreateNewTransation';
+import { TransationActionType } from '../../Types/Transations/TransationActionType';
 
 export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }: NewTransationProps) => {
 	const { formDisplay, setFormDisplay } = stateFormDisplay;
@@ -32,7 +32,9 @@ export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }:
 			>
 				Nova Transação
 			</Button>
-			{formDisplay && <TransationForm verifyActionTransation={verifyActionTransation} setFormDisplay={setFormDisplay}/>}
+			{formDisplay && (
+				<TransationForm verifyActionTransation={verifyActionTransation} setFormDisplay={setFormDisplay} />
+			)}
 		</div>
 	);
 };

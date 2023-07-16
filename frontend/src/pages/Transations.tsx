@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { TransationProvider } from '../Context/TransationProvider';
-import { TransationType } from '../Types/TransationsType';
+import { TransationType } from '../Types/Transations/TransationsType';
 import { TransationFilter } from '../components/Transations/TransationFilter';
 import { CreateNewTransation } from '../components/Transations/CreateNewTransation';
 import { TrasationListCards } from '../components/Transations/TrasationListCards';
-import { TransationActionType } from '../Types/TransationActionType';
+import { TransationActionType } from '../Types/Transations/TransationActionType';
 
 export const Transations = () => {
 	const [transationsFiltered, setTransationsFiltered] = useState<TransationType[]>([]);

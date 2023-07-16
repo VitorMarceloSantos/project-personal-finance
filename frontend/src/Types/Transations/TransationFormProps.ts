@@ -3,5 +3,5 @@ import { TransationActionType } from './TransationActionType';
 
 export type TransationFormProps = {
 	verifyActionTransation: TransationActionType;
-  setFormDisplay: Dispatch<SetStateAction<boolean>>;
+	setFormDisplay: Dispatch<SetStateAction<boolean>>;
 };

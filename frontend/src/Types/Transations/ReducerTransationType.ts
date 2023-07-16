@@ -13,6 +13,5 @@ export type TransationValueType = {
 		formValues: TransationType;
 	};
 	dispatch: Dispatch<ReducerActionType>;
-  handlerSetFormValues: (updateValues: TransationType) => void;
-  
+	handlerSetFormValues: (updateValues: TransationType) => void;
 };

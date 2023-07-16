@@ -1,7 +1,7 @@
-import { TransationActionType } from '../../Types/TransationActionType';
+import { TransationActionType } from '../../Types/Transations/TransationActionType';
 import { useContext } from 'react';
 import { TransationContext } from '../../Context/TransationContext';
-import { TransationProps } from '../../Types/TransationProps';
+import { TransationProps } from '../../Types/Transations/TransationProps';
 
 export const TransationCard = ({ transation, setFormDisplay, setverifyActionTransation }: TransationProps) => {
 	const { dispatch, handlerSetFormValues } = useContext(TransationContext);
@@ -14,7 +14,8 @@ export const TransationCard = ({ transation, setFormDisplay, setverifyActionTran
 	return (
 		<div className='transation-card'>
 			<p>#{transation.id}</p>
-			<p>{transation.value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+			{/* Verficando trasition.value não é undefined */}
+			<p>{transation.value && transation.value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
 			<p>{transation.category}</p>
 			<p>{transation.destination}</p>
 			<p>{transation.description}</p>

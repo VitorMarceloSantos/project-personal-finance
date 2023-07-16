@@ -1,17 +1,18 @@
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { TransationType } from '../../Types/TransationsType';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { TransationType } from '../../Types/Transations/TransationsType';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { createFormSchema } from '../../validations/FormTransationSchema';
 import { initialTransation } from '../../util/InitialStateTransation';
 import { useCallback, useContext, useState } from 'react';
 import { Button, InputBase, MenuItem, Paper, Select, SelectChangeEvent } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { CategoryType } from '../../Types/CategoryType';
+import { CategoryType } from '../../Types/Transations/CategoryType';
 import { CategoriesData } from '../../data/CategoriesData';
 import { ObjectivesData } from '../../data/ObjectivesData';
 import { TransationContext } from '../../Context/TransationContext';
-import { TransationActionType } from '../../Types/TransationActionType';
-import { TransationFormProps } from '../../Types/TransationFormProps';
+import { TransationActionType } from '../../Types/Transations/TransationActionType';
+import { TransationFormProps } from '../../Types/Transations/TransationFormProps';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
 	const {
@@ -19,16 +20,14 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 		dispatch,
 	} = useContext(TransationContext);
 	const insertValuesForm = verifyActionTransation === 'update' ? formValues : initialTransation;
-	console.log(`update: ${insertValuesForm.destination}`);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		control,
 	} = useForm<TransationType>({
 		resolver: joiResolver(createFormSchema, { allowUnknown: true }), // https://github.com/hapijs/joi/blob/v15.0.3/API.md#validatevalue-schema-options-callback
 		defaultValues: { ...insertValuesForm },
-	}); // value foi definida como undefined para que o conteúdo do placeholder possa aparecer, caso contrário o conteúdo do campo seria 0
+	});
 	const [filterCategorySelected, setFilterCategorySelected] = useState<string>(insertValuesForm.category);
 	const [filterDestinationSelected, setFilterDestinationSelected] = useState<string>(insertValuesForm.destination);
 
@@ -45,23 +44,26 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 	const onSubmit: SubmitHandler<TransationType> = (data) => {
 		data.category === 'Metas' ? (data.type = 'Receita') : (data.type = 'Despesa');
 
-		// Adicionando a key id
-		const localValue = localStorage.getItem('keyId');
-		if (localValue === null) {
-			localStorage.setItem('keyId', '1');
-			data.id = 1;
+		if (verifyActionTransation === 'update') {
+			dispatch({
+				type: TransationActionType.UPDATE,
+				payload: data,
+			});
 		} else {
-			let keyId = JSON.parse(localValue);
-			keyId += 1;
-			data.id = keyId;
-			localStorage.setItem('keyId', JSON.stringify(keyId));
+			// Adicionando id em trasações que não possuem
+			const localValue = localStorage.getItem('localTransations');
+			if (localValue !== null) {
+				const parseLocalValue = JSON.parse(localValue) as TransationType[];
+				if (parseLocalValue.length === 0) {
+					data.id = 1;
+				} else {
+					let keyId = parseLocalValue[parseLocalValue.length - 1].id;
+					keyId += 1;
+					data.id = keyId;
+				}
+			}
+			dispatch({ type: TransationActionType.ADD, payload: data });
 		}
-		verifyActionTransation === 'update'
-			? dispatch({
-					type: TransationActionType.UPDATE,
-					payload: data,
-			  })
-			: dispatch({ type: TransationActionType.ADD, payload: data });
 		setFormDisplay(false); // Fechando o formulário(ao fechar o formulário os valores(input values) são apagados)
 	};
 
@@ -71,7 +73,8 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 	}, []);
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		// Utilizado a tag div, pois o paper já é um form
+		<form onSubmit={handleSubmit(onSubmit)} className='form'>
 			<Paper
 				component='form'
 				sx={{
@@ -84,34 +87,28 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					color: 'yellow',
 				}}
 			>
-				<Controller
-					name='value'
-					control={control}
-					render={({ field }) => (
-						<InputBase
-							{...field}
-							inputRef={refInputValue}
-							sx={{
-								m: 1,
-								flex: 1,
-								color: 'black',
-								fontWeight: 'bold',
-								fontFamily: 'Times New Roman',
-								border: '1px solid yellow',
-								borderRadius: '5px',
-								textAlign: 'justify',
-								width: '50vw',
-								maxWidth: '550px',
-							}}
-							placeholder='Valor'
-							type='number'
-						/>
-					)}
+				<InputBase
+					{...register('value')}
+					inputRef={refInputValue}
+					sx={{
+						m: 1,
+						flex: 1,
+						color: 'black',
+						fontWeight: 'bold',
+						fontFamily: 'Times New Roman',
+						border: '1px solid yellow',
+						borderRadius: '5px',
+						textAlign: 'justify',
+						width: '50vw',
+						maxWidth: '550px',
+					}}
+					placeholder='Valor'
+					type='number'
 				/>
+
 				{errors.value && <p>{errors.value?.message}</p>}
 
 				<Select
-					//componente não controlado
 					{...register('category')}
 					onChange={(e) => handlerFilterCategorySelected(e)}
 					value={filterCategorySelected}
@@ -141,7 +138,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 				</Select>
 				{errors.category && <p>{errors.category?.message}</p>}
 				<Select
-					//componente não controlado
 					{...register('destination')}
 					className='input-options'
 					value={filterDestinationSelected}
@@ -175,33 +171,47 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					)}
 				</Select>
 				{errors.destination && <p>{errors.destination?.message}</p>}
-				<Controller
-					name='description'
-					control={control}
-					render={({ field }) => (
-						<InputBase
-							{...field}
-							sx={{
-								m: 1,
-								flex: 1,
-								color: 'black',
-								fontWeight: 'bold',
-								fontFamily: 'Times New Roman',
-								border: '1px solid yellow',
-								borderRadius: '5px',
-								textAlign: 'justify',
-								width: '50vw',
-								maxWidth: '550px',
-							}}
-							placeholder='Descrição'
-							type='text'
-						/>
-					)}
+
+				<InputBase
+					{...register('description')}
+					sx={{
+						m: 1,
+						flex: 1,
+						color: 'black',
+						fontWeight: 'bold',
+						fontFamily: 'Times New Roman',
+						border: '1px solid yellow',
+						borderRadius: '5px',
+						textAlign: 'justify',
+						width: '50vw',
+						maxWidth: '550px',
+					}}
+					placeholder='Descrição'
+					type='text'
 				/>
+
 				{errors.description && <p>{errors.description?.message}</p>}
 			</Paper>
 
 			<div className='button-check-form'>
+				<Button
+					type='button'
+					variant='outlined'
+					startIcon={<CancelIcon />}
+					onClick={() => setFormDisplay(false)}
+					sx={[
+						{ marginTop: '.5rem', borderColor: 'yellow', color: 'yellow', fontWeight: 'bold' },
+						{
+							'&:hover': {
+								color: 'black',
+								backgroundColor: 'yellow',
+								borderColor: 'black',
+							},
+						},
+					]}
+				>
+					Cancelar
+				</Button>
 				<Button
 					type='submit'
 					variant='outlined'
@@ -217,7 +227,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						},
 					]}
 				>
-					Enviar
+					Confirmar
 				</Button>
 			</div>
 		</form>

@@ -4,9 +4,9 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useContext, useState } from 'react';
-import { TransationType } from '../../Types/TransationsType';
+import { TransationType } from '../../Types/Transations/TransationsType';
 import { TransationContext } from '../../Context/TransationContext';
-import { TransationsFilteredProps } from '../../Types/TransationProps';
+import { TransationsFilteredProps } from '../../Types/Transations/TransationProps';
 
 export const TransationFilter = ({ stateTransations }: TransationsFilteredProps) => {
 	const {
@@ -29,9 +29,9 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 		if (target.value.length >= 1) {
 			const targetInputLower = target.value.toLowerCase();
 			const filtered = cards.filter((transation) =>
-				transation[filterSelected].toString().toLocaleLowerCase().includes(targetInputLower),
+				(!!transation[filterSelected]).toString().toLocaleLowerCase().includes(targetInputLower),
 			);
-
+			// !! diferente de null
 			if (filtered.length !== 0) {
 				setTransationsFiltered(filtered);
 			} else if (transationsFiltered.length !== 0) setTransationsFiltered([]);
