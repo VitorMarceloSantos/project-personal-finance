@@ -8,3 +8,5 @@ export const CategoriesData = [
 	'Transporte',
 	'Outras',
 ];
+
+

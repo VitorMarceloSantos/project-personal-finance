@@ -6,11 +6,6 @@ const messageError = {
 	'string.empty': ' Campo obrigatório',
 };
 
-const messageErrorSelect = {
-	'any.required': 'Campo obrigatório',
-	'string.empty': ' Campo obrigatório',
-};
-
 // https://onestepcode.com/joi-js-custom-error-messages/
 const value = Joi.number().greater(0).required().messages({
 	'any.required': 'Campo obrigatório',
@@ -18,13 +13,11 @@ const value = Joi.number().greater(0).required().messages({
 	'number.greater': 'O valor deve ser maior que 0',
 	'number.empty': 'Campo obrigatório',
 });
-const category = Joi.string().required().messages(messageErrorSelect);
+const name = Joi.string().min(3).max(50).required().messages(messageError);
 const description = Joi.string().min(3).max(50).required().messages(messageError);
-const destination = Joi.string().required().messages(messageErrorSelect);
 
-export const createFormSchemaTransation = Joi.object({
+export const createFormSchemaObjective = Joi.object({
 	value,
-	category,
+	name,
 	description,
-	destination,
 }).required();

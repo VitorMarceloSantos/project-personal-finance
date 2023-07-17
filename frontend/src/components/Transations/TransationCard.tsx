@@ -1,4 +1,4 @@
-import { TransationActionType } from '../../Types/Transations/TransationActionType';
+import { ActionsType } from '../../Types/ActionsType';
 import { useContext } from 'react';
 import { TransationContext } from '../../Context/TransationContext';
 import { TransationProps } from '../../Types/Transations/TransationProps';
@@ -8,7 +8,7 @@ export const TransationCard = ({ transation, setFormDisplay, setverifyActionTran
 
 	const handlerFormValues = () => {
 		handlerSetFormValues(transation); // adicionando valores a serem atualizados
-		setverifyActionTransation(TransationActionType.UPDATE);
+		setverifyActionTransation(ActionsType.UPDATE);
 		setFormDisplay(true);
 	};
 	return (
@@ -21,7 +21,7 @@ export const TransationCard = ({ transation, setFormDisplay, setverifyActionTran
 			<p>{transation.description}</p>
 			<p>{transation.type}</p>
 			<button onClick={() => handlerFormValues()}>Editar</button>
-			<button onClick={() => dispatch({ type: TransationActionType.DELETE, payload: transation })}>Apagar</button>
+			<button onClick={() => dispatch({ type: ActionsType.DELETE, payload: transation })}>Apagar</button>
 		</div>
 	);
 };

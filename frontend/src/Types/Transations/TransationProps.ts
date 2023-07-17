@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
 import { TransationType } from './TransationsType';
-import { TransationActionType } from './TransationActionType';
+import { ActionsType } from '../ActionsType';
 
 export type TransationProps = {
 	transation: TransationType;
 	setFormDisplay: Dispatch<SetStateAction<boolean>>;
-	setverifyActionTransation: Dispatch<SetStateAction<TransationActionType>>;
+	setverifyActionTransation: Dispatch<SetStateAction<ActionsType>>;
 };
 
 export type TransationsFilteredProps = {
@@ -18,5 +18,5 @@ export type TransationsFilteredProps = {
 export type TransationsFilteredStateProps = {
 	transationsFiltered: TransationType[];
 	setFormDisplay: Dispatch<SetStateAction<boolean>>;
-	setverifyActionTransation: Dispatch<SetStateAction<TransationActionType>>;
+	setverifyActionTransation: Dispatch<SetStateAction<ActionsType>>;
 };

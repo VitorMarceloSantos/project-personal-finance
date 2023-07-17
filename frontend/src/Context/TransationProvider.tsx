@@ -1,10 +1,11 @@
 import { useEffect, useReducer, useState } from 'react';
-import { ChildrenType } from '../Types/Transations/ChildrenType';
+import { ChildrenType } from '../Types/ChildrenType';
 import { TransationContext } from './TransationContext';
 import { TransationType } from '../Types/Transations/TransationsType';
 import { ReducerActionType } from '../Types/Transations/ReducerTransationType';
 import { TransationsData } from '../data/TransationsData';
 import { initialTransation } from '../util/InitialStateTransation';
+
 
 const reducer = (state: TransationType[], action: ReducerActionType): TransationType[] => {
 	const { type, payload } = action;
@@ -30,7 +31,7 @@ const reducer = (state: TransationType[], action: ReducerActionType): Transation
 };
 
 export const TransationProvider = ({ children }: ChildrenType) => {
-	const [state, dispatch] = useReducer(reducer, TransationsData); // o estado inicial é um array vazio
+	const [state, dispatch] = useReducer(reducer, TransationsData);
 	const [stateForm, setStateForm] = useState<TransationType>(initialTransation);
 
 	useEffect(() => {

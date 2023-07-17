@@ -1,9 +1,9 @@
 import { Dispatch } from 'react';
-import { TransationActionType } from './TransationActionType';
+import { ActionsType } from '../ActionsType';
 import { TransationType } from './TransationsType';
 
 export type ReducerActionType = {
-	type: TransationActionType;
+	type: ActionsType;
 	payload: TransationType;
 };
 

@@ -1,4 +1,4 @@
-export enum TransationActionType {
+export enum ActionsType {
 	ADD = 'add',
 	DELETE = 'delete',
 	UPDATE = 'update',

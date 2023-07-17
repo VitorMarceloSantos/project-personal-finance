@@ -1,16 +1,16 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
-import { TransationForm } from './TransationForm';
-import { NewTransationProps } from '../../Types/Transations/CreateNewTransation';
 import { ActionsType } from '../../Types/ActionsType';
+import { NewObjectivesProps } from '../../Types/Objectives/CreateNewObjective';
+import { ObjectiveForm } from './ObjectiveForm';
 
-export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }: NewTransationProps) => {
+export const CreateNewObjective = ({ stateFormDisplay, stateObjectiveAction }: NewObjectivesProps) => {
 	const { formDisplay, setFormDisplay } = stateFormDisplay;
-	const { verifyActionTransation, setverifyActionTransation } = stateTransationAction;
+	const { setverifyActionObjective, verifyActionObjective } = stateObjectiveAction;
 
 	const handlerSetDisplayForm = () => {
 		setFormDisplay((prev) => !prev);
-		setverifyActionTransation(ActionsType.ADD);
+		setverifyActionObjective(ActionsType.ADD);
 	};
 	return (
 		<div>
@@ -30,11 +30,9 @@ export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }:
 					},
 				]}
 			>
-				Nova Transação
+				Nova Meta
 			</Button>
-			{formDisplay && (
-				<TransationForm verifyActionTransation={verifyActionTransation} setFormDisplay={setFormDisplay} />
-			)}
+			{formDisplay && <ObjectiveForm verifyActionObjective={verifyActionObjective} setFormDisplay={setFormDisplay} />}
 		</div>
 	);
 };

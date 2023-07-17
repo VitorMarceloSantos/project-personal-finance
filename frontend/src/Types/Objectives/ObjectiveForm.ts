@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { ActionsType } from '../ActionsType';
 
-export type TransationFormProps = {
-	verifyActionTransation: ActionsType;
+export type ObjectiveFormProps = {
+	verifyActionObjective: ActionsType;
 	setFormDisplay: Dispatch<SetStateAction<boolean>>;
 };

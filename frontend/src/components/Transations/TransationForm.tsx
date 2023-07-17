@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { TransationType } from '../../Types/Transations/TransationsType';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { createFormSchema } from '../../validations/FormTransationSchema';
+import { createFormSchemaTransation } from '../../validations/FormTransationSchema';
 import { initialTransation } from '../../util/InitialStateTransation';
 import { useCallback, useContext, useState } from 'react';
 import { Button, InputBase, MenuItem, Paper, Select, SelectChangeEvent } from '@mui/material';
@@ -11,7 +11,7 @@ import { CategoryType } from '../../Types/Transations/CategoryType';
 import { CategoriesData } from '../../data/CategoriesData';
 import { ObjectivesData } from '../../data/ObjectivesData';
 import { TransationContext } from '../../Context/TransationContext';
-import { TransationActionType } from '../../Types/Transations/TransationActionType';
+import { ActionsType } from '../../Types/ActionsType';
 import { TransationFormProps } from '../../Types/Transations/TransationFormProps';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
@@ -25,7 +25,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 		handleSubmit,
 		formState: { errors },
 	} = useForm<TransationType>({
-		resolver: joiResolver(createFormSchema, { allowUnknown: true }), // https://github.com/hapijs/joi/blob/v15.0.3/API.md#validatevalue-schema-options-callback
+		resolver: joiResolver(createFormSchemaTransation, { allowUnknown: true }), // https://github.com/hapijs/joi/blob/v15.0.3/API.md#validatevalue-schema-options-callback
 		defaultValues: { ...insertValuesForm },
 	});
 	const [filterCategorySelected, setFilterCategorySelected] = useState<string>(insertValuesForm.category);
@@ -46,7 +46,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 
 		if (verifyActionTransation === 'update') {
 			dispatch({
-				type: TransationActionType.UPDATE,
+				type: ActionsType.UPDATE,
 				payload: data,
 			});
 		} else {
@@ -62,7 +62,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					data.id = keyId;
 				}
 			}
-			dispatch({ type: TransationActionType.ADD, payload: data });
+			dispatch({ type: ActionsType.ADD, payload: data });
 		}
 		setFormDisplay(false); // Fechando o formulário(ao fechar o formulário os valores(input values) são apagados)
 	};

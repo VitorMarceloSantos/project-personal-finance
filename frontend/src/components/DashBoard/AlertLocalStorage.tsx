@@ -9,6 +9,8 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { TransationsData } from '../../data/TransationsData';
 import { TransationType } from '../../Types/Transations/TransationsType';
+import { ObjectivesData } from '../../data/ObjectivesData';
+import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -19,21 +21,27 @@ const Transition = React.forwardRef(function Transition(
 	return <Slide direction='up' ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide() {
+export default function AlertLocalStorage() {
 	const [open, setOpen] = React.useState(true); // true, será aberto a janela ao iniciar
 
 	const handleClose = () => {
-		const localValue = localStorage.getItem('localTransations');
-		const parseLocalValue = !!localValue ? (JSON.parse(localValue) as TransationType[]) : [];
-		if (parseLocalValue.length !== 0) {
-			TransationsData.push(...parseLocalValue);
+		function verifyLocalStorage<T>(name: string, data: T[]): void {
+			const localValue = localStorage.getItem(name);
+			const parseLocalValue = !!localValue ? (JSON.parse(localValue) as T[]) : [];
+			if (parseLocalValue.length !== 0) {
+				data.splice(0, data.length) // zerando o array(não correr o risco de lixo na memória)
+				data.push(...parseLocalValue);
+			}
 		}
+		verifyLocalStorage<TransationType>('localTransations', TransationsData);
+		verifyLocalStorage<ObjectiveType>('localObjectives', ObjectivesData);
 
 		setOpen(false);
 	};
 
 	const removeLocalStorage = () => {
 		localStorage.removeItem('localTransations');
+		localStorage.removeItem('localObjectives');
 		setOpen(false);
 	};
 	// Não cliclando em nenhuma das opções e fechando a janela, será o mesmo que Aceitar.
