@@ -1,4 +1,4 @@
-export const CategoriesData = [
+export let CategoriesData = [
 	'Metas',
 	'Lazer',
 	'Saude',

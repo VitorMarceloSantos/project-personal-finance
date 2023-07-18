@@ -3,9 +3,9 @@ import { ChildrenType } from '../Types/ChildrenType';
 import { TransationContext } from './TransationContext';
 import { TransationType } from '../Types/Transations/TransationsType';
 import { ReducerActionType } from '../Types/Transations/ReducerTransationType';
-import { TransationsData } from '../data/TransationsData';
+import { TransationsData } from './../data/TransationsData';
 import { initialTransation } from '../util/InitialStateTransation';
-
+import { UpdateValuesData } from '../util/UpdateValuesData';
 
 const reducer = (state: TransationType[], action: ReducerActionType): TransationType[] => {
 	const { type, payload } = action;
@@ -33,10 +33,17 @@ const reducer = (state: TransationType[], action: ReducerActionType): Transation
 export const TransationProvider = ({ children }: ChildrenType) => {
 	const [state, dispatch] = useReducer(reducer, TransationsData);
 	const [stateForm, setStateForm] = useState<TransationType>(initialTransation);
-
+	
 	useEffect(() => {
 		localStorage.setItem('localTransations', JSON.stringify(state));
 	}, [state]);
+
+	// Quando o componente for desmotado, atualiza a variável TransationsData
+	useEffect(() => {
+		return () => {
+			UpdateValuesData<TransationType>(TransationsData, state)
+		};
+	}, []);
 
 	const handlerSetFormValues = (updateValues: TransationType) => {
 		setStateForm(updateValues);

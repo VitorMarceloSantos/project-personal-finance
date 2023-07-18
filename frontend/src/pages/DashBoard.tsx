@@ -1,7 +1,5 @@
 import AlertLocalStorage from '../components/DashBoard/AlertLocalStorage';
 import { useNavigate } from 'react-router-dom';
-import { TransationsData } from '../data/TransationsData';
-import { ObjectivesData } from '../data/ObjectivesData';
 
 export const DashBoard = () => {
 	const navigate = useNavigate();
@@ -9,7 +7,6 @@ export const DashBoard = () => {
 	return (
 		<>
 			<h1>DashBoard</h1>
-			{console.log(TransationsData, ObjectivesData)}
 			{!!localStorage.getItem('localTransations') || !!localStorage.getItem('localObjectives') ? (
 				<AlertLocalStorage />
 			) : (

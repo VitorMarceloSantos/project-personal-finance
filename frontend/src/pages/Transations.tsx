@@ -32,8 +32,8 @@ export const Transations = () => {
 					</ul>
 				</div>
 				<button type='button' onClick={() => navigate('/')}>
-				Dashboard
-			</button>
+					Dashboard
+				</button>
 			</section>
 		</TransationProvider>
 	);

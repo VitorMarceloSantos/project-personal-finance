@@ -25,18 +25,6 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 		resolver: joiResolver(createFormSchemaObjective, { allowUnknown: true }), // https://github.com/hapijs/joi/blob/v15.0.3/API.md#validatevalue-schema-options-callback
 		defaultValues: { ...insertValuesForm },
 	});
-	// const [filterCategorySelected, setFilterCategorySelected] = useState<string>(insertValuesForm.category);
-	// const [filterDestinationSelected, setFilterDestinationSelected] = useState<string>(insertValuesForm.destination);
-
-	// const handlerFilterCategorySelected = (e: SelectChangeEvent<string>) => {
-	// 	const { target } = e;
-	// 	setFilterCategorySelected(target.value as keyof CategoryType);
-	// };
-
-	// const handlerFilterDestinationSelected = (e: SelectChangeEvent<string>) => {
-	// 	const { target } = e;
-	// 	setFilterDestinationSelected(target.value);
-	// };
 
 	const onSubmit: SubmitHandler<ObjectiveType> = (data) => {
 		if (verifyActionObjective === 'update') {

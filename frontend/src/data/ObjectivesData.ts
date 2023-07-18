@@ -4,4 +4,4 @@ import { ObjectiveType } from '../Types/Objectives/ObjectivesType';
 // 	{ id: 2, name: 'Viagem', description: 'Realizar Viagem Disney', value: 15000 },
 // ];
 
-export const ObjectivesData: ObjectiveType[] = [];
+export let ObjectivesData: ObjectiveType[] = [];

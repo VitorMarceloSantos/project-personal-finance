@@ -29,7 +29,7 @@ export default function AlertLocalStorage() {
 			const localValue = localStorage.getItem(name);
 			const parseLocalValue = !!localValue ? (JSON.parse(localValue) as T[]) : [];
 			if (parseLocalValue.length !== 0) {
-				data.splice(0, data.length) // zerando o array(não correr o risco de lixo na memória)
+				data.splice(0, data.length); // zerando o array(não correr o risco de lixo na memória)
 				data.push(...parseLocalValue);
 			}
 		}
@@ -61,8 +61,8 @@ export default function AlertLocalStorage() {
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose}>Aceito</Button>
-					<Button onClick={removeLocalStorage}>Rejeito</Button>
+					<Button onClick={() => handleClose()}>Aceito</Button>
+					<Button onClick={() => removeLocalStorage()}>Rejeito</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

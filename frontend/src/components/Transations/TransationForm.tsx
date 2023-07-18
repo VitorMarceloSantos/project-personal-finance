@@ -3,7 +3,7 @@ import { TransationType } from '../../Types/Transations/TransationsType';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { createFormSchemaTransation } from '../../validations/FormTransationSchema';
 import { initialTransation } from '../../util/InitialStateTransation';
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { Button, InputBase, MenuItem, Paper, Select, SelectChangeEvent } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -13,6 +13,7 @@ import { ObjectivesData } from '../../data/ObjectivesData';
 import { TransationContext } from '../../Context/TransationContext';
 import { ActionsType } from '../../Types/ActionsType';
 import { TransationFormProps } from '../../Types/Transations/TransationFormProps';
+import AlertFormObjectivesDefault from './AlertFormObjectivesDefault';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
 	const {
@@ -137,6 +138,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					))}
 				</Select>
 				{errors.category && <p>{errors.category?.message}</p>}
+				{filterCategorySelected === 'Metas' && ObjectivesData.length === 0 && <AlertFormObjectivesDefault setFormDisplay={setFormDisplay}/>}
 				<Select
 					{...register('destination')}
 					className='input-options'

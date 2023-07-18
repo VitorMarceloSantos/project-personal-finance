@@ -2,28 +2,29 @@ import { ObjectiveType } from '../Types/Objectives/ObjectivesType';
 import { ChildrenType } from '../Types/ChildrenType';
 import { ReducerActionType } from '../Types/Objectives/ReducerObjectivesType';
 import { useEffect, useReducer, useState } from 'react';
-import { ObjectivesData } from '../data/ObjectivesData';
+import { ObjectivesData } from './../data/ObjectivesData';
 import { initialObjectives } from '../util/InitialStateObjectives';
 import { ObjectiveContext } from './ObjectiveContext';
+import { UpdateValuesData } from '../util/UpdateValuesData';
 
 const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveType[] => {
 	const { type, payload } = action;
 	switch (type) {
 		case 'add':
-		const newState = [...state, payload];
-		return newState;
+			const newState = [...state, payload];
+			return newState;
 		case 'update':
-		const udpdateId = payload.id;
-		const updateState = [...state];
-		const indexUpdate = state.findIndex(({ id }) => id === udpdateId);
-		updateState[indexUpdate] = payload;
-		return updateState;
+			const udpdateId = payload.id;
+			const updateState = [...state];
+			const indexUpdate = state.findIndex(({ id }) => id === udpdateId);
+			updateState[indexUpdate] = payload;
+			return updateState;
 		case 'delete':
-		const deleteId = payload.id;
-		const deletedState = [...state];
-		const idDelete = state.findIndex(({ id }) => id === deleteId);
-		deletedState.splice(idDelete, 1);
-		return deletedState;
+			const deleteId = payload.id;
+			const deletedState = [...state];
+			const idDelete = state.findIndex(({ id }) => id === deleteId);
+			deletedState.splice(idDelete, 1);
+			return deletedState;
 		default:
 			return state;
 	}
@@ -36,6 +37,13 @@ export const ObjectiveProvider = ({ children }: ChildrenType) => {
 	useEffect(() => {
 		localStorage.setItem('localObjectives', JSON.stringify(state));
 	}, [state]);
+
+		// Quando o componente for desmotado, atualiza a variável ObjdectivesData
+		useEffect(() => {
+			return () => {
+				UpdateValuesData<ObjectiveType>(ObjectivesData, state)
+			};
+		}, []);
 
 	const handlerSetFormValues = (updateValues: ObjectiveType) => {
 		setStateForm(updateValues);

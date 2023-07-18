@@ -1,4 +1,4 @@
-import { TransationType } from "../Types/Transations/TransationsType";
+import { TransationType } from '../Types/Transations/TransationsType';
 // export const TransationsData = [
 // 	{
 // 		id: 1,
@@ -26,4 +26,4 @@ import { TransationType } from "../Types/Transations/TransationsType";
 // 	},
 // ];
 
-export const TransationsData: TransationType[] = [];
+export let TransationsData: TransationType[] = [];
