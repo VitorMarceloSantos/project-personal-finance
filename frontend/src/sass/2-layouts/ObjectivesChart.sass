@@ -1,0 +1,15 @@
+// https://www.linkedin.com/pulse/manipulando-vari%C3%A1veis-css-com-javascript-vitor-mateus/?originalSubdomain=pt
+:root
+  --progress-objective-realized: 0
+
+.objective-card-chart
+  display: flex
+  height: 50px
+  padding: 5px
+  background-color: #ccc
+
+  &::before
+    content: ""
+    width: calc(var(--progress-objective-realized) * 1%)
+    background-color: hsl( calc(var(--progress-objective-realized) * 1.2) , 80%, 50%)
+    transition: all 0.2s ease

@@ -3,4 +3,5 @@ export type ObjectiveType = {
 	name: string;
 	description: string;
 	value: number | undefined;
+	realized: number
 };

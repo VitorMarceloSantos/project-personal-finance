@@ -7,7 +7,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ActionsType } from '../../Types/ActionsType';
 import { ObjectiveFormProps } from '../../Types/Objectives/ObjectiveForm';
 import { ObjectiveContext } from '../../Context/ObjectiveContext';
-import { initialObjectives } from '../../util/InitialStateObjectives';
+import { initialObjectives } from '../../utils/InitialStateObjectives';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 import { createFormSchemaObjective } from '../../validations/FormObjectiveSchema';
 
@@ -72,7 +72,7 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 			>
 				<InputBase
 					{...register('name')}
-          inputRef={refInputValue}
+					inputRef={refInputValue}
 					sx={{
 						m: 1,
 						flex: 1,

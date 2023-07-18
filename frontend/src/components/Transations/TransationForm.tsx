@@ -2,8 +2,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { TransationType } from '../../Types/Transations/TransationsType';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { createFormSchemaTransation } from '../../validations/FormTransationSchema';
-import { initialTransation } from '../../util/InitialStateTransation';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { initialTransation } from '../../utils/InitialStateTransation';
+import { useCallback, useContext, useState } from 'react';
 import { Button, InputBase, MenuItem, Paper, Select, SelectChangeEvent } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -14,6 +14,8 @@ import { TransationContext } from '../../Context/TransationContext';
 import { ActionsType } from '../../Types/ActionsType';
 import { TransationFormProps } from '../../Types/Transations/TransationFormProps';
 import AlertFormObjectivesDefault from './AlertFormObjectivesDefault';
+import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
+import { UpdateValuesData } from '../../utils/UpdateValuesData';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
 	const {
@@ -29,8 +31,31 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 		resolver: joiResolver(createFormSchemaTransation, { allowUnknown: true }), // https://github.com/hapijs/joi/blob/v15.0.3/API.md#validatevalue-schema-options-callback
 		defaultValues: { ...insertValuesForm },
 	});
+	const [valueForm, setValueForm] = useState<number | undefined>(undefined);
 	const [filterCategorySelected, setFilterCategorySelected] = useState<string>(insertValuesForm.category);
 	const [filterDestinationSelected, setFilterDestinationSelected] = useState<string>(insertValuesForm.destination);
+	const [verifyTrueOrFalseValue, setverifyTrueOrFalseValue] = useState<boolean>(false);
+
+	const verifyRealizedObjective = (destination: string, value: number) => {
+		const indexObjective = ObjectivesData.findIndex(({ name }) => name === destination);
+		const objectiveSelect: ObjectiveType | undefined = ObjectivesData[indexObjective];
+
+		if (!!objectiveSelect.value) {
+			const sumValues = objectiveSelect.realized + value;
+			if (sumValues <= objectiveSelect.value) {
+				const objectivesDataUpdate = [...ObjectivesData];
+				objectivesDataUpdate[indexObjective].realized = sumValues;
+				UpdateValuesData<ObjectiveType>(ObjectivesData, objectivesDataUpdate, 'localObjectives');
+				return false;
+			} else if (value <= objectiveSelect.value) {
+				const objectivesDataUpdate = [...ObjectivesData];
+				objectivesDataUpdate[indexObjective].realized = value;
+				UpdateValuesData<ObjectiveType>(ObjectivesData, objectivesDataUpdate, 'localObjectives');
+				return false;
+			}
+			return true;
+		}
+	};
 
 	const handlerFilterCategorySelected = (e: SelectChangeEvent<string>) => {
 		const { target } = e;
@@ -40,11 +65,21 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 	const handlerFilterDestinationSelected = (e: SelectChangeEvent<string>) => {
 		const { target } = e;
 		setFilterDestinationSelected(target.value);
+		if (!!valueForm) setverifyTrueOrFalseValue(verifyRealizedObjective(target.value, valueForm) as boolean);
 	};
 
-	const onSubmit: SubmitHandler<TransationType> = (data) => {
-		data.category === 'Metas' ? (data.type = 'Receita') : (data.type = 'Despesa');
+	const handlerSetValueForm = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { target } = e;
+		setValueForm(Number(target.value));
+	};
 
+	// FAZER TRY/CATCH
+	const onSubmit: SubmitHandler<TransationType> = (data) => {
+		if (data.category === 'Metas') {
+			data.type = 'Receita';
+		} else {
+			data.type = 'Despesa';
+		}
 		if (verifyActionTransation === 'update') {
 			dispatch({
 				type: ActionsType.UPDATE,
@@ -90,6 +125,8 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 			>
 				<InputBase
 					{...register('value')}
+					value={valueForm}
+					onChange={(e) => handlerSetValueForm(e)}
 					inputRef={refInputValue}
 					sx={{
 						m: 1,
@@ -106,7 +143,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					placeholder='Valor'
 					type='number'
 				/>
-
 				{errors.value && <p>{errors.value?.message}</p>}
 
 				<Select
@@ -138,7 +174,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					))}
 				</Select>
 				{errors.category && <p>{errors.category?.message}</p>}
-				{filterCategorySelected === 'Metas' && ObjectivesData.length === 0 && <AlertFormObjectivesDefault setFormDisplay={setFormDisplay}/>}
+				{filterCategorySelected === 'Metas' && ObjectivesData.length === 0 && (
+					<AlertFormObjectivesDefault setFormDisplay={setFormDisplay} />
+				)}
 				<Select
 					{...register('destination')}
 					className='input-options'
@@ -172,8 +210,12 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						<MenuItem value='Gastos'>Gastos</MenuItem>
 					)}
 				</Select>
-				{errors.destination && <p>{errors.destination?.message}</p>}
 
+				{/* ALTERAR ALERT(passar parametros valores excedentes) PARA PARAMETROS CORRETOS */}
+
+				{errors.destination && <p>{errors.destination?.message}</p>}
+				{<p>{`Resultado: ${verifyTrueOrFalseValue}`}</p>}
+				{verifyTrueOrFalseValue && <AlertFormObjectivesDefault setFormDisplay={setFormDisplay} />}
 				<InputBase
 					{...register('description')}
 					sx={{
