@@ -3,6 +3,7 @@ import { Button } from '@mui/material';
 import { ActionsType } from '../../Types/ActionsType';
 import { NewObjectivesProps } from '../../Types/Objectives/CreateNewObjective';
 import { ObjectiveForm } from './ObjectiveForm';
+import { ObjectivesData } from '../../data/ObjectivesData';
 
 export const CreateNewObjective = ({ stateFormDisplay, stateObjectiveAction }: NewObjectivesProps) => {
 	const { formDisplay, setFormDisplay } = stateFormDisplay;
@@ -15,6 +16,7 @@ export const CreateNewObjective = ({ stateFormDisplay, stateObjectiveAction }: N
 	return (
 		<div>
 			<Button
+				disabled={ObjectivesData.length < 5 ? false : true}
 				type='button'
 				onClick={handlerSetDisplayForm}
 				variant='outlined'

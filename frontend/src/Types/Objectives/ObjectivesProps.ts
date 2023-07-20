@@ -6,6 +6,7 @@ export type ObjectiveProps = {
 	objective: ObjectiveType;
 	setFormDisplay: Dispatch<SetStateAction<boolean>>;
 	setverifyActionObjective: Dispatch<SetStateAction<ActionsType>>;
+	index: number;
 };
 
 export type ObjectivesFilteredProps = {

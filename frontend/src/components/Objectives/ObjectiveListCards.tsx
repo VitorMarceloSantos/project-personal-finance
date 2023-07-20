@@ -21,6 +21,7 @@ export const ObjectiveListCards = ({
 						objective={objective}
 						setFormDisplay={setFormDisplay}
 						setverifyActionObjective={setverifyActionObjective}
+						index={index}
 					/>
 				</li>
 			)),

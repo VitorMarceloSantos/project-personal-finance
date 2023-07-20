@@ -1,15 +1,46 @@
 // https://www.linkedin.com/pulse/manipulando-vari%C3%A1veis-css-com-javascript-vitor-mateus/?originalSubdomain=pt
+@use 'sass:list'
 :root
-  --progress-objective-realized: 0
+  --progress-objective-realized-one: 0
+  --progress-objective-realized-two: 0
+  --progress-objective-realized-three: 0
+  --progress-objective-realized-four: 0
+  --progress-objective-realized-five: 0
 
-.objective-card-chart
-  display: flex
-  height: 50px
-  padding: 5px
-  background-color: #ccc
+$list-variables-root: one, two, three, four, five
 
-  &::before
-    content: ""
-    width: calc(var(--progress-objective-realized) * 1%)
-    background-color: hsl( calc(var(--progress-objective-realized) * 1.2) , 80%, 50%)
-    transition: all 0.2s ease
+@each $variable in $list-variables-root
+  .objective-card-chart
+    display: flex
+    height: 50px
+    padding: 5px
+    background-color: #ccc
+
+    &::before
+      content: ""
+      transition: all 0.2s ease
+   
+  .chart-#{$variable}::before
+    @if $variable == one
+      width: calc(var(--progress-objective-realized-one) * 1%)
+      background-color: hsl( calc( var(--progress-objective-realized-one) * 1.2) , 80%, 50%)
+
+  .chart-#{$variable}::before
+    @if $variable == two
+      width: calc(var(--progress-objective-realized-two) * 1%)
+      background-color: hsl( calc( var(--progress-objective-realized-two) * 1.2) , 80%, 50%)
+
+  .chart-#{$variable}::before
+    @if $variable == three
+      width: calc(var(--progress-objective-realized-three) * 1%)
+      background-color: hsl( calc( var(--progress-objective-realized-three) * 1.2) , 80%, 50%)
+
+  .chart-#{$variable}::before
+    @if $variable == four
+      width: calc(var(--progress-objective-realized-four) * 1%)
+      background-color: hsl( calc( var(--progress-objective-realized-four) * 1.2) , 80%, 50%)
+
+  .chart-#{$variable}::before
+    @if $variable == five
+      width: calc(var(--progress-objective-realized-five) * 1%)
+      background-color: hsl( calc( var(--progress-objective-realized-five) * 1.2) , 80%, 50%)

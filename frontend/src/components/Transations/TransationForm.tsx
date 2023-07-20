@@ -16,6 +16,7 @@ import { TransationFormProps } from '../../Types/Transations/TransationFormProps
 import AlertFormObjectivesDefault from './AlertFormObjectivesDefault';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 import { UpdateValuesData } from '../../utils/UpdateValuesData';
+import AlertFormVerifyValueObjective from './AlertFormVerifyValueObjective';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
 	const {
@@ -45,11 +46,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 			if (sumValues <= objectiveSelect.value) {
 				const objectivesDataUpdate = [...ObjectivesData];
 				objectivesDataUpdate[indexObjective].realized = sumValues;
-				UpdateValuesData<ObjectiveType>(ObjectivesData, objectivesDataUpdate, 'localObjectives');
-				return false;
-			} else if (value <= objectiveSelect.value) {
-				const objectivesDataUpdate = [...ObjectivesData];
-				objectivesDataUpdate[indexObjective].realized = value;
 				UpdateValuesData<ObjectiveType>(ObjectivesData, objectivesDataUpdate, 'localObjectives');
 				return false;
 			}
@@ -215,7 +211,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 
 				{errors.destination && <p>{errors.destination?.message}</p>}
 				{<p>{`Resultado: ${verifyTrueOrFalseValue}`}</p>}
-				{verifyTrueOrFalseValue && <AlertFormObjectivesDefault setFormDisplay={setFormDisplay} />}
+				{verifyTrueOrFalseValue && <AlertFormVerifyValueObjective setFormDisplay={setFormDisplay} />}
 				<InputBase
 					{...register('description')}
 					sx={{

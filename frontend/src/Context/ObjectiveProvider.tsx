@@ -11,7 +11,7 @@ const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveTy
 	const { type, payload } = action;
 	switch (type) {
 		case 'add':
-			payload.realized = 0
+			payload.realized = 0;
 			const newState = [...state, payload];
 			UpdateValuesData<ObjectiveType>(ObjectivesData, newState, 'localObjectives');
 			return newState;
@@ -28,9 +28,29 @@ const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveTy
 			const idDelete = state.findIndex(({ id }) => id === deleteId);
 			deletedState.splice(idDelete, 1);
 			UpdateValuesData<ObjectiveType>(ObjectivesData, deletedState, 'localObjectives');
+			updateClassNameChart();
 			return deletedState;
 		default:
 			return state;
+	}
+};
+
+// // classNames:root css ->
+// const rootChartsObjectives = ['chart-one', 'chart-two', 'chart-three', 'chart-four', 'chart-five'];
+
+const updateClassNameChart = () => {
+	const listVariablesRoot = ['one', 'two', 'three', 'four', 'five']; //:root css
+
+	if (ObjectivesData.length !== 0) {
+		console.log('entrou aqui');
+		for (let index = 0; index < ObjectivesData.length; index += 1) {
+			document.documentElement.style.setProperty(
+				`--progress-objective-realized-${listVariablesRoot[index]}`,
+				ObjectivesData[index].realized.toString(),
+			);
+		}
+	} else {
+		document.documentElement.style.setProperty(`--progress-objective-realized-one`, '0');
 	}
 };
 
@@ -38,17 +58,6 @@ export const ObjectiveProvider = ({ children }: ChildrenType) => {
 	const verifyValueObjectivesData: ObjectiveType[] = ObjectivesData.length !== 0 ? [...ObjectivesData] : [];
 	const [state, dispatch] = useReducer(reducer, verifyValueObjectivesData);
 	const [stateForm, setStateForm] = useState<ObjectiveType>(initialObjectives);
-
-	// useEffect(() => {
-	// 	localStorage.setItem('localObjectives', JSON.stringify(state));
-	// }, [state]);
-
-	// 	// Quando o componente for desmotado, atualiza a variável ObjdectivesData
-	// 	useEffect(() => {
-	// 		return () => {
-	// 			UpdateValuesData<ObjectiveType>(ObjectivesData, state)
-	// 		};
-	// 	}, []);
 
 	const handlerSetFormValues = (updateValues: ObjectiveType) => {
 		setStateForm(updateValues);
