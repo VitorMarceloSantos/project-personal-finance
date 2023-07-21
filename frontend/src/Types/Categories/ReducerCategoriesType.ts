@@ -10,7 +10,7 @@ export type ReducerActionType = {
 export type CategoriesValueType = {
 	state: {
 		cards: CategorieType[];
-		formValues: CategorieType[];
+		formValues: CategorieType;
 	};
 	dispatch: Dispatch<ReducerActionType>;
 	handlerSetFormValues: (updateValues: CategorieType) => void;

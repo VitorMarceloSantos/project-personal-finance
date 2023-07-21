@@ -26,6 +26,8 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 		defaultValues: { ...insertValuesForm },
 	});
 
+	// NÃO CADASTRAR OBJETIVOS COM O MESMO NOME
+
 	const onSubmit: SubmitHandler<ObjectiveType> = (data) => {
 		if (verifyActionObjective === 'update') {
 			dispatch({

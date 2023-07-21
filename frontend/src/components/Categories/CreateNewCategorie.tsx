@@ -1,8 +1,8 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 import { NewCategorieProps } from '../../Types/Categories/CreateNewCategorie';
-import { CategoriesData } from '../../data/CategoriesData';
 import { ActionsType } from '../../Types/ActionsType';
+import { CategorieForm } from './CategorieForm';
 
 export const CreateNewCategorie = ({ stateFormDisplay, stateCategoriesAction }: NewCategorieProps) => {
 	const { formDisplay, setFormDisplay } = stateFormDisplay;
@@ -15,7 +15,6 @@ export const CreateNewCategorie = ({ stateFormDisplay, stateCategoriesAction }: 
 	return (
 		<div>
 			<Button
-				disabled={CategoriesData.length < 5 ? false : true}
 				type='button'
 				onClick={handlerSetDisplayForm}
 				variant='outlined'
@@ -31,9 +30,9 @@ export const CreateNewCategorie = ({ stateFormDisplay, stateCategoriesAction }: 
 					},
 				]}
 			>
-				Nova Meta
+				Nova Categoria
 			</Button>
-			{/* {formDisplay && <CategorieForm verifyActionObjective={verifyActionCategorie} setFormDisplay={setFormDisplay} />} */}
+			{formDisplay && <CategorieForm verifyActionCategories={verifyActionCategories} setFormDisplay={setFormDisplay} />}
 		</div>
 	);
 };
