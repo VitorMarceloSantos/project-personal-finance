@@ -18,6 +18,9 @@ export const DashBoard = () => {
 			<button type='button' onClick={() => navigate('/metas')}>
 				Metas
 			</button>
+			<button type='button' onClick={() => navigate('/categorias')}>
+				Categorias
+			</button>
 		</>
 	);
 };

@@ -31,8 +31,8 @@ export const Objectives = () => {
 					</ul>
 				</div>
 				<button type='button' onClick={() => navigate('/')}>
-				Dashboard
-			</button>
+					Dashboard
+				</button>
 			</section>
 		</ObjectiveProvider>
 	);

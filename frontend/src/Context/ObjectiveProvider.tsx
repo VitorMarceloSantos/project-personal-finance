@@ -28,19 +28,15 @@ const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveTy
 			const idDelete = state.findIndex(({ id }) => id === deleteId);
 			deletedState.splice(idDelete, 1);
 			UpdateValuesData<ObjectiveType>(ObjectivesData, deletedState, 'localObjectives');
-			updateClassNameChart();
+			updateValuesChartRoot();
 			return deletedState;
 		default:
 			return state;
 	}
 };
 
-// // classNames:root css ->
-// const rootChartsObjectives = ['chart-one', 'chart-two', 'chart-three', 'chart-four', 'chart-five'];
-
-const updateClassNameChart = () => {
+const updateValuesChartRoot = () => {
 	const listVariablesRoot = ['one', 'two', 'three', 'four', 'five']; //:root css
-
 	if (ObjectivesData.length !== 0) {
 		console.log('entrou aqui');
 		for (let index = 0; index < ObjectivesData.length; index += 1) {

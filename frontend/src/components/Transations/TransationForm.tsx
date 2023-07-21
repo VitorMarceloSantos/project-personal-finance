@@ -8,7 +8,6 @@ import { Button, InputBase, MenuItem, Paper, Select, SelectChangeEvent } from '@
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { CategoryType } from '../../Types/Transations/CategoryType';
-import { CategoriesData } from '../../data/CategoriesData';
 import { ObjectivesData } from '../../data/ObjectivesData';
 import { TransationContext } from '../../Context/TransationContext';
 import { ActionsType } from '../../Types/ActionsType';
@@ -17,6 +16,7 @@ import AlertFormObjectivesDefault from './AlertFormObjectivesDefault';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 import { UpdateValuesData } from '../../utils/UpdateValuesData';
 import AlertFormVerifyValueObjective from './AlertFormVerifyValueObjective';
+import { initialCategories } from '../../utils/InitialStateCategories';
 
 export const TransationForm = ({ verifyActionTransation, setFormDisplay }: TransationFormProps) => {
 	const {
@@ -163,9 +163,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					<MenuItem value='Categoria' disabled>
 						Categoria
 					</MenuItem>
-					{CategoriesData.map((category, index) => (
-						<MenuItem value={category} key={index}>
-							{category}
+					{initialCategories.map((category, index) => (
+						<MenuItem value={category.name} key={index}>
+							{category.name}
 						</MenuItem>
 					))}
 				</Select>

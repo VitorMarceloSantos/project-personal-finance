@@ -20,7 +20,7 @@ export const ObjectiveCard = ({ objective, setverifyActionObjective, setFormDisp
 				`--progress-objective-realized-${listVariablesRoot[index]}`,
 				convertingToPercentage.toString(),
 			);
-	}, []);
+	});
 
 	return (
 		<div className='objective-card'>
@@ -31,7 +31,7 @@ export const ObjectiveCard = ({ objective, setverifyActionObjective, setFormDisp
 			<p>{objective.value && objective.value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
 			<p>Realizado:{objective.realized.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
 			{/* https://www.treinaweb.com.br/blog/barra-de-progresso-que-muda-de-tamanho-e-cor-com-apenas-uma-variavel-do-css */}
-			<p>Percentual: {convertingToPercentage} %</p>
+			<p>Percentual: {!!convertingToPercentage && convertingToPercentage.toFixed(1)} %</p>
 			<div className={`objective-card-chart chart-${listVariablesRoot[index]}`}></div>
 			<button onClick={() => handlerFormValues()}>Editar</button>
 			<button onClick={() => dispatch({ type: ActionsType.DELETE, payload: objective })}>Apagar</button>

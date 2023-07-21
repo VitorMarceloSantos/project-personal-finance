@@ -16,7 +16,7 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 	const [filterGeneric, setFilterGeneric] = useState<string>('');
 	const { objectivesFiltered, setObjectivesFiltered } = stateObjectives;
 
-	const handlerFilterSelected = (event: SelectChangeEvent<'value' | 'name' | 'description' | 'id'| 'realized'>) => {
+	const handlerFilterSelected = (event: SelectChangeEvent<'value' | 'name' | 'description' | 'id' | 'realized'>) => {
 		const { target } = event;
 		setFilterSelected(target.value as keyof ObjectiveType);
 	};
