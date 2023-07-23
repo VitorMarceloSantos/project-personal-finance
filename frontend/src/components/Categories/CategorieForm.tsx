@@ -21,8 +21,6 @@ export const CategorieForm = ({ verifyActionCategories, setFormDisplay }: Catego
 	const insertValuesForm = verifyActionCategories === 'update' ? formValues : initialCategoriesZero;
 	const [verifyNameExist, setVerifyNameExist] = useState<boolean>(false);
 
-	// Criar useState para verificar se o digitado é igual a metas(fazer a verificação dentro dos buttons de editar e excluir do card)
-
 	const {
 		register,
 		handleSubmit,
@@ -50,17 +48,16 @@ export const CategorieForm = ({ verifyActionCategories, setFormDisplay }: Catego
 				payload: data,
 			});
 		} else {
-			// Adicionando id em trasações que não possuem
+			// Adicionando id em categoria que não possuem
 			const localValue = localStorage.getItem('localCategories');
 			if (localValue !== null) {
+				// Categories sempre vai existir no mínimo length ===1, Metas(não pode apagar/editar)
 				const parseLocalValue = JSON.parse(localValue) as CategorieType[];
-				if (parseLocalValue.length === 0) {
-					data.id = 1;
-				} else {
-					let keyId = parseLocalValue[parseLocalValue.length - 1].id;
-					keyId += 1;
-					data.id = keyId;
-				}
+				let keyId = parseLocalValue[parseLocalValue.length - 1].id;
+				keyId += 1;
+				data.id = keyId;
+			} else {
+				data.id = 7; // initialCategories possui length 6
 			}
 			dispatch({ type: ActionsType.ADD, payload: data });
 		}

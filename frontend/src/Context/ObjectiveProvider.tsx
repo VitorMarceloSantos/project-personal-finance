@@ -6,6 +6,7 @@ import { ObjectivesData } from './../data/ObjectivesData';
 import { initialObjectives } from '../utils/InitialStateObjectives';
 import { ObjectiveContext } from './ObjectiveContext';
 import { UpdateValuesData } from '../utils/UpdateValuesData';
+import { UpdateValuesChartRoot } from '../utils/UpdateValuesChartRoot';
 
 const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveType[] => {
 	const { type, payload } = action;
@@ -28,25 +29,10 @@ const reducer = (state: ObjectiveType[], action: ReducerActionType): ObjectiveTy
 			const idDelete = state.findIndex(({ id }) => id === deleteId);
 			deletedState.splice(idDelete, 1);
 			UpdateValuesData<ObjectiveType>(ObjectivesData, deletedState, 'localObjectives');
-			updateValuesChartRoot();
+			UpdateValuesChartRoot();
 			return deletedState;
 		default:
 			return state;
-	}
-};
-
-const updateValuesChartRoot = () => {
-	const listVariablesRoot = ['one', 'two', 'three', 'four', 'five']; //:root css
-	if (ObjectivesData.length !== 0) {
-		console.log('entrou aqui');
-		for (let index = 0; index < ObjectivesData.length; index += 1) {
-			document.documentElement.style.setProperty(
-				`--progress-objective-realized-${listVariablesRoot[index]}`,
-				ObjectivesData[index].realized.toString(),
-			);
-		}
-	} else {
-		document.documentElement.style.setProperty(`--progress-objective-realized-one`, '0');
 	}
 };
 

@@ -87,13 +87,14 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 			if (localValue !== null) {
 				const parseLocalValue = JSON.parse(localValue) as TransationType[];
 				if (parseLocalValue.length === 0) {
-					data.id = 1;
+					data.id = 0;
 				} else {
 					let keyId = parseLocalValue[parseLocalValue.length - 1].id;
 					keyId += 1;
 					data.id = keyId;
 				}
 			}
+			// data.id = 0 -> value inicial
 			dispatch({ type: ActionsType.ADD, payload: data });
 		}
 		setFormDisplay(false); // Fechando o formulário(ao fechar o formulário os valores(input values) são apagados)
@@ -177,7 +178,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					{...register('destination')}
 					className='input-options'
 					value={filterDestinationSelected}
-					onChange={(e) => handlerFilterDestinationSelected(e)}
+					onChange={(e) => {
+						filterCategorySelected === 'Metas' && handlerFilterDestinationSelected(e);
+					}}
 					// Retirar bordas do input
 					variant='standard'
 					disableUnderline={true}

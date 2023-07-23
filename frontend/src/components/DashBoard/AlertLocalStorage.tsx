@@ -11,6 +11,8 @@ import { TransationsData } from '../../data/TransationsData';
 import { TransationType } from '../../Types/Transations/TransationsType';
 import { ObjectivesData } from '../../data/ObjectivesData';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
+import { CategorieType } from '../../Types/Categories/CategorieType';
+import { CategoriesData } from '../../data/CategoriesData';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -35,6 +37,7 @@ export default function AlertLocalStorage() {
 		}
 		verifyLocalStorage<TransationType>('localTransations', TransationsData);
 		verifyLocalStorage<ObjectiveType>('localObjectives', ObjectivesData);
+		verifyLocalStorage<CategorieType>('localCategories', CategoriesData);
 
 		setOpen(false);
 	};
@@ -42,6 +45,7 @@ export default function AlertLocalStorage() {
 	const removeLocalStorage = () => {
 		localStorage.removeItem('localTransations');
 		localStorage.removeItem('localObjectives');
+		localStorage.removeItem('localCategories');
 		setOpen(false);
 	};
 	// Não cliclando em nenhuma das opções e fechando a janela, será o mesmo que Aceitar.

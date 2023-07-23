@@ -2,6 +2,7 @@ import { ActionsType } from '../../Types/ActionsType';
 import { useContext } from 'react';
 import { TransationContext } from '../../Context/TransationContext';
 import { TransationProps } from '../../Types/Transations/TransationProps';
+import { updateValuesRealized } from '../../utils/UpdateValuesRealized';
 
 export const TransationCard = ({ transation, setFormDisplay, setverifyActionTransation }: TransationProps) => {
 	const { dispatch, handlerSetFormValues } = useContext(TransationContext);
@@ -21,7 +22,14 @@ export const TransationCard = ({ transation, setFormDisplay, setverifyActionTran
 			<p>{transation.description}</p>
 			<p>{transation.type}</p>
 			<button onClick={() => handlerFormValues()}>Editar</button>
-			<button onClick={() => dispatch({ type: ActionsType.DELETE, payload: transation })}>Apagar</button>
+			<button
+				onClick={() => {
+					transation.type === 'Receita' && updateValuesRealized(transation),
+						dispatch({ type: ActionsType.DELETE, payload: transation });
+				}}
+			>
+				Apagar
+			</button>
 		</div>
 	);
 };

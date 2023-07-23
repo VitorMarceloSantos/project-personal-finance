@@ -7,7 +7,9 @@ export const DashBoard = () => {
 	return (
 		<>
 			<h1>DashBoard</h1>
-			{!!localStorage.getItem('localTransations') || !!localStorage.getItem('localObjectives') ? (
+			{!!localStorage.getItem('localTransations') ||
+			!!localStorage.getItem('localObjectives') ||
+			!!localStorage.getItem('localCategories') ? (
 				<AlertLocalStorage />
 			) : (
 				<h1>Conteúdo Carregado</h1>

@@ -1,5 +1,8 @@
 export type CategorieType = {
 	id: number;
-	icon: React.ReactNode;
+	icon: {
+		name: string;
+		component: React.ReactNode;
+	};
 	name: string;
 };

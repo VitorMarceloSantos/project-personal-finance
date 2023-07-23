@@ -40,13 +40,14 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 			if (localValue !== null) {
 				const parseLocalValue = JSON.parse(localValue) as ObjectiveType[];
 				if (parseLocalValue.length === 0) {
-					data.id = 1;
+					data.id = 0;
 				} else {
 					let keyId = parseLocalValue[parseLocalValue.length - 1].id;
 					keyId += 1;
 					data.id = keyId;
 				}
 			}
+			// data.id = 0 -> value inicial
 			dispatch({ type: ActionsType.ADD, payload: data });
 		}
 		setFormDisplay(false); // Fechando o formulário(ao fechar o formulário os valores(input values) são apagados)

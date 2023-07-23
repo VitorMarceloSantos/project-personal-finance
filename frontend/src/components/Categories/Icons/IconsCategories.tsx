@@ -22,3 +22,14 @@ export const HomeExpenseIcon = <HomeIcon />;
 export const TransportIcon = <CommuteIcon />;
 
 export const OthersIcon = <PaidIcon />;
+
+export const listIcons = [
+	{ name: 'ObjectiveIcon', component: ObjectiveIcon },
+	{ name: 'FunIcon', component: FunIcon },
+	{ name: 'HealthIcon', component: HealthIcon },
+	{ name: 'EducationIcon', component: EducationIcon },
+	{ name: 'FoodIcon', component: FoodIcon },
+	{ name: 'HomeExpenseIcon', component: HomeExpenseIcon },
+	{ name: 'TransportIcon', component: TransportIcon },
+	{ name: 'OthersIcon', component: OthersIcon },
+];

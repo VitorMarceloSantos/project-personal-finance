@@ -12,7 +12,8 @@ const reducer = (state: CategorieType[], action: ReducerActionType): CategorieTy
 	const { type, payload } = action;
 	switch (type) {
 		case 'add':
-			payload.icon = OthersIcon; // Adicionando ícone default
+			const newIcon = { name: 'OthersIcon', component: OthersIcon };
+			payload.icon = newIcon; // Adicionando ícone default
 			const newState = [...state, payload];
 			UpdateValuesData<CategorieType>(CategoriesData, newState, 'localCategories');
 			return newState;
@@ -23,14 +24,13 @@ const reducer = (state: CategorieType[], action: ReducerActionType): CategorieTy
 			updateState[indexUpdate].name = payload.name;
 			UpdateValuesData<CategorieType>(CategoriesData, updateState, 'localCategories');
 			return updateState;
-		// case 'delete':
-		// 	const deleteId = payload.id;
-		// 	const deletedState = [...state];
-		// 	const idDelete = state.findIndex(({ id }) => id === deleteId);
-		// 	deletedState.splice(idDelete, 1);
-		// 	UpdateValuesData<ObjectiveType>(ObjectivesData, deletedState, 'localObjectives');
-		// 	updateValuesChartRoot();
-		// 	return deletedState;
+		case 'delete':
+			const deleteId = payload.id;
+			const deletedState = [...state];
+			const idDelete = state.findIndex(({ id }) => id === deleteId);
+			deletedState.splice(idDelete, 1);
+			UpdateValuesData<CategorieType>(CategoriesData, deletedState, 'localCategories');
+			return deletedState;
 		default:
 			return state;
 	}
