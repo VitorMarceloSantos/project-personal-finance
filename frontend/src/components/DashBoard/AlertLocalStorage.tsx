@@ -13,6 +13,7 @@ import { ObjectivesData } from '../../data/ObjectivesData';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 import { CategorieType } from '../../Types/Categories/CategorieType';
 import { CategoriesData } from '../../data/CategoriesData';
+import { SetVerifyLocalStorageType } from '../../Types/DashBoard/SetVerifyLocalStorage';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -38,7 +39,6 @@ export default function AlertLocalStorage() {
 		verifyLocalStorage<TransationType>('localTransations', TransationsData);
 		verifyLocalStorage<ObjectiveType>('localObjectives', ObjectivesData);
 		verifyLocalStorage<CategorieType>('localCategories', CategoriesData);
-
 		setOpen(false);
 	};
 

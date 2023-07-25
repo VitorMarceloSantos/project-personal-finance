@@ -1,28 +1,26 @@
+import { useState } from 'react';
 import AlertLocalStorage from '../components/DashBoard/AlertLocalStorage';
-import { useNavigate } from 'react-router-dom';
+import { LastCategories } from '../components/DashBoard/LastCategories';
+import { LastObjectives } from '../components/DashBoard/LastObjectives';
+import { LastTransations } from '../components/DashBoard/LastTransations';
+import { VerifyTrueOrFalseLocalStorage } from '../utils/VerifyLocalStorage';
 
 export const DashBoard = () => {
-	const navigate = useNavigate();
-
+	
+	const [returnLocalStorage, setReturnLocalStorage] = useState<boolean>(false)
+	const [verifyLocalStorage] = useState<boolean>(VerifyTrueOrFalseLocalStorage());
+	
 	return (
 		<>
 			<h1>DashBoard</h1>
-			{!!localStorage.getItem('localTransations') ||
-			!!localStorage.getItem('localObjectives') ||
-			!!localStorage.getItem('localCategories') ? (
-				<AlertLocalStorage />
-			) : (
-				<h1>Conteúdo Carregado</h1>
+			{verifyLocalStorage && <AlertLocalStorage />}
+			{returnLocalStorage && (
+				<div className='dashboard-container'>
+					<LastTransations />
+					<LastObjectives />
+					<LastCategories />
+				</div>
 			)}
-			<button type='button' onClick={() => navigate('/transacoes')}>
-				Transacoes
-			</button>
-			<button type='button' onClick={() => navigate('/metas')}>
-				Metas
-			</button>
-			<button type='button' onClick={() => navigate('/categorias')}>
-				Categorias
-			</button>
 		</>
 	);
 };
