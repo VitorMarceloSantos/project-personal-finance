@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import AlertLocalStorage from '../components/DashBoard/AlertLocalStorage';
 import { LastCategories } from '../components/DashBoard/LastCategories';
 import { LastObjectives } from '../components/DashBoard/LastObjectives';
 import { LastTransations } from '../components/DashBoard/LastTransations';
-import { VerifyTrueOrFalseLocalStorage } from '../utils/VerifyLocalStorage';
+import { Loading } from '../components/DashBoard/Loading';
+import { LoginContext } from '../Context/LoginContext';
 
 export const DashBoard = () => {
-	
-	const [returnLocalStorage, setReturnLocalStorage] = useState<boolean>(false)
-	const [verifyLocalStorage] = useState<boolean>(VerifyTrueOrFalseLocalStorage());
-	
+	const {state: {isConnected}} = useContext(LoginContext)
 	return (
 		<>
 			<h1>DashBoard</h1>
-			{verifyLocalStorage && <AlertLocalStorage />}
-			{returnLocalStorage && (
+
+			{!isConnected && <Loading />}
+			{isConnected && (
 				<div className='dashboard-container'>
 					<LastTransations />
 					<LastObjectives />

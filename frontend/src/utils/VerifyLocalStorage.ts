@@ -1,5 +1,4 @@
 export const VerifyTrueOrFalseLocalStorage = () => {
-
    if (
      !!localStorage.getItem('localTransations') ||
      !!localStorage.getItem('localObjectives') ||
