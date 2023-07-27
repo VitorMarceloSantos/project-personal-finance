@@ -5,6 +5,7 @@ import { LastTransations } from '../components/DashBoard/LastTransations';
 import { Loading } from '../components/DashBoard/Loading';
 import { LoginContext } from '../Context/LoginContext';
 import { ChartDistribution } from '../components/DashBoard/ChartDistribution';
+import { ChartIncomeAndExpense } from '../components/DashBoard/ChartIncomeAndExpense';
 
 export const DashBoard = () => {
 	const {
@@ -20,6 +21,7 @@ export const DashBoard = () => {
 					<LastObjectives />
 					<LastCategories />
 					<ChartDistribution />
+					<ChartIncomeAndExpense />
 				</div>
 			)}
 		</>

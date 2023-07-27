@@ -8,6 +8,6 @@ export type ReducerActionType = {
 };
 
 export type DashBoardValueType = {
-	state: DashBoardType
+	state: DashBoardType;
 	dispatch: Dispatch<ReducerActionType>;
 };

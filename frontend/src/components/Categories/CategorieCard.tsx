@@ -7,7 +7,6 @@ import { ConvertNameInComponent } from '../../utils/ConvertNameInComponent';
 
 export const CategorieCard = ({ categorie, setVerifyActionCategories, setFormDisplay }: CategoriesProps) => {
 	const { dispatch, handlerSetFormValues } = useContext(CategoriesContext);
-
 	const handlerFormValues = () => {
 		handlerSetFormValues(categorie); // adicionando valores a serem atualizados
 		setVerifyActionCategories(ActionsType.UPDATE);

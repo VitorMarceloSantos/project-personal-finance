@@ -8,6 +8,6 @@ export type ReducerActionType = {
 };
 
 export type LoginValueType = {
-	state: LoginType
+	state: LoginType;
 	dispatch: Dispatch<ReducerActionType>;
 };

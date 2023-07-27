@@ -31,7 +31,6 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 			const filtered = cards.filter((transation) =>
 				(!!transation[filterSelected]).toString().toLocaleLowerCase().includes(targetInputLower),
 			);
-			// !! diferente de null
 			if (filtered.length !== 0) {
 				setTransationsFiltered(filtered);
 			} else if (transationsFiltered.length !== 0) setTransationsFiltered([]);
@@ -60,7 +59,6 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 					value={filterSelected}
 					onChange={(e) => handlerFilterSelected(e)}
 					name='type-filter'
-					// Retirar bordas do input
 					variant='standard'
 					disableUnderline={true}
 					sx={[
@@ -73,11 +71,6 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 							fontWeight: 'bold',
 							fontFamily: 'Times New Roman',
 						},
-						// {
-						// 	'&:hover': {
-						// 		color: 'red',
-						// 	},
-						// },
 					]}
 				>
 					<MenuItem value='value'>Valor</MenuItem>

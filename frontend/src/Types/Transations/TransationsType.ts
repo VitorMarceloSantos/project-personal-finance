@@ -1,5 +1,5 @@
 export type TransationType = {
-	id: number,
+	id: number;
 	value: number | undefined;
 	destination: string;
 	category: string;

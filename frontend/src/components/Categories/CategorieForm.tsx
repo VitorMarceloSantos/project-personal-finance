@@ -20,7 +20,6 @@ export const CategorieForm = ({ verifyActionCategories, setFormDisplay }: Catego
 	} = useContext(CategoriesContext);
 	const insertValuesForm = verifyActionCategories === 'update' ? formValues : initialCategoriesZero;
 	const [verifyNameExist, setVerifyNameExist] = useState<boolean>(false);
-
 	const {
 		register,
 		handleSubmit,
@@ -61,7 +60,6 @@ export const CategorieForm = ({ verifyActionCategories, setFormDisplay }: Catego
 			}
 			dispatch({ type: ActionsType.ADD, payload: data });
 		}
-
 		setFormDisplay(false); // Fechando o formulário(ao fechar o formulário os valores(input values) são apagados)
 	};
 

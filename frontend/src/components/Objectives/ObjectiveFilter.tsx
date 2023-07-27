@@ -57,7 +57,6 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 					value={filterSelected}
 					onChange={(e) => handlerFilterSelected(e)}
 					name='type-filter'
-					// Retirar bordas do input
 					variant='standard'
 					disableUnderline={true}
 					sx={[
@@ -70,11 +69,6 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 							fontWeight: 'bold',
 							fontFamily: 'Times New Roman',
 						},
-						// {
-						// 	'&:hover': {
-						// 		color: 'red',
-						// 	},
-						// },
 					]}
 				>
 					<MenuItem value='value'>Valor</MenuItem>

@@ -146,7 +146,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					type='number'
 				/>
 				{errors.value && <p>{errors.value?.message}</p>}
-
 				<Select
 					{...register('category')}
 					onChange={(e) => handlerFilterCategorySelected(e)}
@@ -184,7 +183,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					className='input-options'
 					value={filterDestinationSelected}
 					onChange={(e) => {
-						filterCategorySelected === 'Metas' ? handlerFilterDestinationSelected(e) : handlerFilterDestinationOthers(e);
+						filterCategorySelected === 'Metas'
+							? handlerFilterDestinationSelected(e)
+							: handlerFilterDestinationOthers(e);
 					}}
 					// Retirar bordas do input
 					variant='standard'
@@ -214,9 +215,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						<MenuItem value='Gastos'>Gastos</MenuItem>
 					)}
 				</Select>
-
-				{/* ALTERAR ALERT(passar parametros valores excedentes) PARA PARAMETROS CORRETOS */}
-
 				{errors.destination && <p>{errors.destination?.message}</p>}
 				{<p>{`Resultado: ${verifyTrueOrFalseValue}`}</p>}
 				{verifyTrueOrFalseValue && <AlertFormVerifyValueObjective setFormDisplay={setFormDisplay} />}
@@ -237,7 +235,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					placeholder='Descrição'
 					type='text'
 				/>
-
 				{errors.description && <p>{errors.description?.message}</p>}
 			</Paper>
 

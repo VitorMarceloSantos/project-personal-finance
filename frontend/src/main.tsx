@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -6,8 +6,6 @@ import { DashBoard } from './pages/DashBoard.tsx';
 import { Categories } from './pages/Categories.tsx';
 import { Transations } from './pages/Transations.tsx';
 import { Objectives } from './pages/Objectives.tsx';
-import { Login } from './pages/Login.tsx';
-
 
 const router = createBrowserRouter([
 	{
@@ -17,11 +15,6 @@ const router = createBrowserRouter([
 				path: '/',
 				element: <DashBoard />,
 			},
-			{
-				path: '/login',
-				element: <Login />,
-			},
-			
 			{
 				path: '/transacoes',
 				element: <Transations />,

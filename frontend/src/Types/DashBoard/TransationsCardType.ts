@@ -1,7 +1,5 @@
-import { TransationType } from "../Transations/TransationsType";
-
+import { TransationType } from '../Transations/TransationsType';
 
 export type TransationsCardType = {
 	transation: TransationType;
-	index: number;
 };

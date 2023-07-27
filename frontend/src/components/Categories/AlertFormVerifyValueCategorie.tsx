@@ -22,12 +22,6 @@ const Transition = React.forwardRef(function Transition(
 export default function AlertFormVerifyValueCategorie({ setFormDisplay }: AlertFormCategoriesType) {
 	const [open, setOpen] = React.useState(true); // true, será aberto a janela ao iniciar
 	const navigate = useNavigate();
-
-	// const handleClose = () => {
-	// 	setOpen(false);
-	// 	setFormDisplay(false);
-	// };
-
 	const handleClose = () => {
 		setOpen(false);
 		setFormDisplay(false);
@@ -51,7 +45,6 @@ export default function AlertFormVerifyValueCategorie({ setFormDisplay }: AlertF
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => handleClose()}>Fechar</Button>
-					{/* <Button onClick={() => handleClose()}>Voltar</Button> */}
 				</DialogActions>
 			</Dialog>
 		</div>

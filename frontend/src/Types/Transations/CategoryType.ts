@@ -9,4 +9,3 @@ export type CategoryType = {
 	Transporte: string;
 	Outras: string;
 };
-

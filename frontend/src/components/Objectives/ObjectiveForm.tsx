@@ -26,8 +26,6 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 		defaultValues: { ...insertValuesForm },
 	});
 
-	// NÃO CADASTRAR OBJETIVOS COM O MESMO NOME
-
 	const onSubmit: SubmitHandler<ObjectiveType> = (data) => {
 		if (verifyActionObjective === 'update') {
 			dispatch({
@@ -59,7 +57,6 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 	}, []);
 
 	return (
-		// Utilizado a tag div, pois o paper já é um form
 		<form onSubmit={handleSubmit(onSubmit)} className='form'>
 			<Paper
 				component='form'

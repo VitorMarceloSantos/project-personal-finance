@@ -26,7 +26,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function AlertLocalStorage() {
-	const {dispatch} = React.useContext(LoginContext)
+	const { dispatch } = React.useContext(LoginContext);
 	const [open, setOpen] = React.useState(true); // true, será aberto a janela ao iniciar
 
 	const handleClose = () => {
@@ -41,7 +41,7 @@ export default function AlertLocalStorage() {
 		verifyLocalStorage<TransationType>('localTransations', TransationsData);
 		verifyLocalStorage<ObjectiveType>('localObjectives', ObjectivesData);
 		verifyLocalStorage<CategorieType>('localCategories', CategoriesData);
-		dispatch({ type: ActionsType.UPDATE, payload: {isConnected: true} })
+		dispatch({ type: ActionsType.UPDATE, payload: { isConnected: true } });
 		setOpen(false);
 	};
 
@@ -49,7 +49,7 @@ export default function AlertLocalStorage() {
 		localStorage.removeItem('localTransations');
 		localStorage.removeItem('localObjectives');
 		localStorage.removeItem('localCategories');
-		dispatch({ type: ActionsType.UPDATE, payload: {isConnected: true} })
+		dispatch({ type: ActionsType.UPDATE, payload: { isConnected: true } });
 		setOpen(false);
 	};
 	// Não cliclando em nenhuma das opções e fechando a janela, será o mesmo que Aceitar.

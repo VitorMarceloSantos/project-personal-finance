@@ -1,4 +1,4 @@
 export type ObjectivesTransationsType = {
-  destination: string,
-  value: number | undefined
-}
+	destination: string;
+	value: number | undefined;
+};

@@ -13,7 +13,7 @@ export const CreateNewCategorie = ({ stateFormDisplay, stateCategoriesAction }: 
 		setVerifyActionCategories(ActionsType.ADD);
 	};
 	return (
-		<div>
+		<>
 			<Button
 				type='button'
 				onClick={handlerSetDisplayForm}
@@ -33,6 +33,6 @@ export const CreateNewCategorie = ({ stateFormDisplay, stateCategoriesAction }: 
 				Nova Categoria
 			</Button>
 			{formDisplay && <CategorieForm verifyActionCategories={verifyActionCategories} setFormDisplay={setFormDisplay} />}
-		</div>
+		</>
 	);
 };

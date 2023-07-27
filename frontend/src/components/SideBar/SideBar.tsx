@@ -27,11 +27,9 @@ import { useNavigate } from 'react-router-dom';
 export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const navigate = useNavigate();
 	const theme = useTheme();
-
 	const { register, handleSubmit } = useForm<UploadImage>({});
-
 	const [file, setFile] = useState('');
-	const newImage: File | string = !!file ? file : '../src/assets/print.png';
+	const newImage: File | string = !!file ? file : '../src/assets/userImg.jpg';
 
 	const handleFileChange = (fileImg: any) => {
 		const reader = new FileReader();
@@ -95,8 +93,6 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 										border: '1px solid yellow',
 										borderRadius: '5px',
 										textAlign: 'justify',
-										// width: '50vw',
-										// maxWidth: '550px',
 									}}
 									placeholder='Imagem'
 									type='file'
