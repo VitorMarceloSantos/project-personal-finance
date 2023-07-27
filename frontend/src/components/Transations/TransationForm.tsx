@@ -64,6 +64,11 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 		if (!!valueForm) setverifyTrueOrFalseValue(verifyRealizedObjective(target.value, valueForm) as boolean);
 	};
 
+	const handlerFilterDestinationOthers = (e: SelectChangeEvent<string>) => {
+		const { target } = e;
+		setFilterDestinationSelected(target.value);
+	};
+
 	const handlerSetValueForm = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { target } = e;
 		setValueForm(Number(target.value));
@@ -179,7 +184,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 					className='input-options'
 					value={filterDestinationSelected}
 					onChange={(e) => {
-						filterCategorySelected === 'Metas' && handlerFilterDestinationSelected(e);
+						filterCategorySelected === 'Metas' ? handlerFilterDestinationSelected(e) : handlerFilterDestinationOthers(e);
 					}}
 					// Retirar bordas do input
 					variant='standard'
