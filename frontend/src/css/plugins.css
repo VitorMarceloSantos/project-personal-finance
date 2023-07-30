@@ -1,0 +1,21 @@
+.sidebar-form-picture {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sidebar-label-inpunt-file {
+  background-color: transparent;
+  box-shadow: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+.sidebar-label-inpunt-file:hover {
+  color: black;
+  text-decoration: underline;
+  transition: 0.5s;
+}/*# sourceMappingURL=plugins.css.map */

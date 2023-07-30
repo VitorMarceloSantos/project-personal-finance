@@ -6,6 +6,7 @@ import { DashBoard } from './pages/DashBoard.tsx';
 import { Categories } from './pages/Categories.tsx';
 import { Transations } from './pages/Transations.tsx';
 import { Objectives } from './pages/Objectives.tsx';
+import { ThemeProvider } from './Context/ThemeProvider.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +34,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		{/* O context foi adicionado nesse lugar para ser utilizado por todos */}
+		<ThemeProvider> 
+			<RouterProvider router={router} />
+		</ThemeProvider>
 	</React.StrictMode>,
 );

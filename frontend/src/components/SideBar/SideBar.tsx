@@ -10,13 +10,12 @@ import {
 	ListItemButton,
 	ListItemIcon,
 	ListItemText,
-	PaletteMode,
 	Paper,
 	ThemeProvider,
 	createTheme,
 } from '@mui/material';
 import { ChildrenType } from '../../Types/ChildrenType';
-import { useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { UploadImage } from '../../Types/UploadImage';
@@ -27,13 +26,14 @@ import CategoryIcon from '@mui/icons-material/Category';
 import { useNavigate } from 'react-router-dom';
 import { ThemeSideBar } from './ThemeSideBar';
 import { MaterialUISwitch } from './SwitchButton';
+import { ThemeContext } from '../../Context/ThemeContext';
 // https://www.youtube.com/watch?v=o3B9KTlod4w&ab_channel=coder4life
 export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<UploadImage>({});
 	const [file, setFile] = useState('');
 	const newImage: File | string = !!file ? file : '../src/assets/userImg.jpg';
-	const [mode, setMode] = useState<PaletteMode>('light'); // Selecionar Modo Dark
+	const { state, handlerSetTheme } = useContext(ThemeContext); // Selecionar Modo Dark
 
 	const handleFileChange = (fileImg: any) => {
 		const reader = new FileReader();
@@ -49,11 +49,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 		}
 	};
 
-	const handleChangeModeDark = () => {
-		setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
-	};
-
-	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(mode)), [mode]);
+	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
 
 	return (
 		<>
@@ -78,7 +74,18 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								backgroundColor: themeLigthOrDark.palette.primary.main,
 							}}
 						>
-							<MaterialUISwitch sx={{ m: 1 }} onChange={handleChangeModeDark} />
+							<Box
+								sx={{
+									width: '100%',
+									display: 'flex',
+									justifyContent: 'flex-end',
+									height: '1rem',
+									position: 'relative',
+									top: '-1.3rem',
+								}}
+							>
+								<MaterialUISwitch sx={{ m: 1 }} onChange={handlerSetTheme} />
+							</Box>
 							<Avatar src={newImage} sx={{ width: 80, height: 80 }} />
 							<form onSubmit={handleSubmit(onSubmit)} className='sidebar-form-picture'>
 								<Paper
@@ -105,7 +112,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 							</form>
 						</Box>
 						<Divider sx={{ backgroundColor: 'white' }} />
-						<Box sx={{ flex: 1, backgroundColor: themeLigthOrDark.palette.secondary.main }}>
+						<Box sx={{ flex: 1, backgroundColor: themeLigthOrDark.palette.primary.light }}>
 							<List>
 								<ListItem disablePadding>
 									<ListItemButton onClick={() => navigate('/')}>
@@ -146,7 +153,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 						</Box>
 					</Box>
 				</Drawer>
-				<Box sx={{ height: '100vh', marginLeft: themeLigthOrDark.spacing(28) }}>{children}</Box>
+				<Box sx={{ height: '100vh', marginLeft: themeLigthOrDark.spacing(28) , backgroundColor: themeLigthOrDark.palette.secondary.main}}>{children}</Box>
 			</ThemeProvider>
 		</>
 	);

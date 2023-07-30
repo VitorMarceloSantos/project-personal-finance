@@ -1,6 +1,4 @@
-import { PaletteMode, createTheme } from '@mui/material';
-// import { useState } from 'react';
-// const [isDark, setIsDark] = useState<boolean>(false)
+import { PaletteMode } from '@mui/material';
 
 export const ThemeSideBar = (mode: PaletteMode) => ({
 	palette: {
@@ -10,24 +8,30 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					// palette values for light mode
 					primary: {
 						main: '#cc2b9f',
+						ligth: '#ef54c5',
 					},
 					secondary: {
-						main: '#ef54c5',
+						main: '#fff',
 					},
 					// divider: amber[200],
-					// text: {
-					//   primary: grey[900],
-					//   secondary: grey[800],
-					// },
+					text: {
+					  primary: '#000',
+					  secondary: '#212121,'
+					},
 			  }
 			: {
 					// palette values for dark mode
 					// palette values for light mode
 					primary: {
-						main: 'rgba(0, 0, 0, 0.87)',
+						main: '#1F2941',
+						ligth: 'rgba(0, 0, 0, 0.6)',
 					},
 					secondary: {
-						main: 'rgba(0, 0, 0, 0.6)',
+						main: '#141B2D',
+					},
+					text: {
+						primary: '#F0F5FF',
+						secondary: '#4B526D',
 					},
 			  }),
 	},
