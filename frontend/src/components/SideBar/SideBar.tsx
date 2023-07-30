@@ -153,7 +153,15 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 						</Box>
 					</Box>
 				</Drawer>
-				<Box sx={{ height: '100vh', marginLeft: themeLigthOrDark.spacing(28) , backgroundColor: themeLigthOrDark.palette.secondary.main}}>{children}</Box>
+				<Box
+					sx={{
+						height: '100vh',
+						marginLeft: themeLigthOrDark.spacing(28),
+						backgroundColor: themeLigthOrDark.palette.secondary.main,
+					}}
+				>
+					{children}
+				</Box>
 			</ThemeProvider>
 		</>
 	);

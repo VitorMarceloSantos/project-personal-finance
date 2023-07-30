@@ -82,10 +82,14 @@ table {
 }
 
 .objective-card-chart {
+  border-radius: 20px;
   display: flex;
-  height: 50px;
-  padding: 5px;
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
   background-color: #ccc;
+  width: 100%;
 }
 .objective-card-chart::before {
   content: "";
@@ -93,15 +97,36 @@ table {
 }
 
 .chart-one::before {
+  border-radius: 20px;
   width: calc(var(--progress-objective-realized-one) * 1%);
   background-color: hsl(calc(var(--progress-objective-realized-one) * 1.2), 80%, 50%);
 }
 
+.chart-one::before {
+  border-radius: 20px;
+}
+
+.chart-one::before {
+  border-radius: 20px;
+}
+
+.chart-one::before {
+  border-radius: 20px;
+}
+
+.chart-one::before {
+  border-radius: 20px;
+}
+
 .objective-card-chart {
+  border-radius: 20px;
   display: flex;
-  height: 50px;
-  padding: 5px;
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
   background-color: #ccc;
+  width: 100%;
 }
 .objective-card-chart::before {
   content: "";
@@ -109,15 +134,36 @@ table {
 }
 
 .chart-two::before {
+  border-radius: 20px;
+}
+
+.chart-two::before {
+  border-radius: 20px;
   width: calc(var(--progress-objective-realized-two) * 1%);
   background-color: hsl(calc(var(--progress-objective-realized-two) * 1.2), 80%, 50%);
 }
 
+.chart-two::before {
+  border-radius: 20px;
+}
+
+.chart-two::before {
+  border-radius: 20px;
+}
+
+.chart-two::before {
+  border-radius: 20px;
+}
+
 .objective-card-chart {
+  border-radius: 20px;
   display: flex;
-  height: 50px;
-  padding: 5px;
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
   background-color: #ccc;
+  width: 100%;
 }
 .objective-card-chart::before {
   content: "";
@@ -125,15 +171,36 @@ table {
 }
 
 .chart-three::before {
+  border-radius: 20px;
+}
+
+.chart-three::before {
+  border-radius: 20px;
+}
+
+.chart-three::before {
+  border-radius: 20px;
   width: calc(var(--progress-objective-realized-three) * 1%);
   background-color: hsl(calc(var(--progress-objective-realized-three) * 1.2), 80%, 50%);
 }
 
+.chart-three::before {
+  border-radius: 20px;
+}
+
+.chart-three::before {
+  border-radius: 20px;
+}
+
 .objective-card-chart {
+  border-radius: 20px;
   display: flex;
-  height: 50px;
-  padding: 5px;
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
   background-color: #ccc;
+  width: 100%;
 }
 .objective-card-chart::before {
   content: "";
@@ -141,15 +208,36 @@ table {
 }
 
 .chart-four::before {
+  border-radius: 20px;
+}
+
+.chart-four::before {
+  border-radius: 20px;
+}
+
+.chart-four::before {
+  border-radius: 20px;
+}
+
+.chart-four::before {
+  border-radius: 20px;
   width: calc(var(--progress-objective-realized-four) * 1%);
   background-color: hsl(calc(var(--progress-objective-realized-four) * 1.2), 80%, 50%);
 }
 
+.chart-four::before {
+  border-radius: 20px;
+}
+
 .objective-card-chart {
+  border-radius: 20px;
   display: flex;
-  height: 50px;
-  padding: 5px;
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
   background-color: #ccc;
+  width: 100%;
 }
 .objective-card-chart::before {
   content: "";
@@ -157,10 +245,148 @@ table {
 }
 
 .chart-five::before {
+  border-radius: 20px;
+}
+
+.chart-five::before {
+  border-radius: 20px;
+}
+
+.chart-five::before {
+  border-radius: 20px;
+}
+
+.chart-five::before {
+  border-radius: 20px;
+}
+
+.chart-five::before {
+  border-radius: 20px;
   width: calc(var(--progress-objective-realized-five) * 1%);
   background-color: hsl(calc(var(--progress-objective-realized-five) * 1.2), 80%, 50%);
 }
 
-.dark.theme-title {
+.dashboard-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.link-details {
+  color: #4B5367;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 1px #000;
+}
+.link-details:hover {
+  color: #F0F5FF;
+}
+
+.dark-theme {
+  color: #F0F5FF;
+  padding: 1rem;
+}
+.dark-theme-title {
+  color: #4B5367;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.light-theme {
+  color: #000;
+  padding: 1rem;
+}
+.light-theme-title {
   color: #212121;
-}/*# sourceMappingURL=app.css.map */
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.last-transations-card {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid transparent;
+}
+.last-transations-card:hover {
+  border-bottom: 1px solid #4B5367;
+  cursor: pointer;
+  color: #bdbdbd;
+}
+.last-transations-card p {
+  margin-left: 1rem;
+  width: 3.5rem;
+  padding: 0.5rem;
+}
+.last-transations-card .last-transations-card-description {
+  width: 13.5rem;
+}
+
+.dark-last-transations {
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #1F2941;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  margin: 2rem;
+}
+.dark-last-transations-title {
+  color: #4B5367;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px #000;
+}
+.dark-last-transations-list {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.last-objectives-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  width: 40vw;
+}
+.last-objectives-card-text {
+  text-align: start;
+  width: 100%;
+}
+.last-objectives-card-text p {
+  margin-bottom: 0.3rem;
+}
+.last-objectives-card-percentage {
+  color: #26c6da;
+  font-size: 1.1rem;
+}
+
+.dark-last-objective {
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #1F2941;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.dark-last-objective-title {
+  color: #4B5367;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px #000;
+}
+
+/*# sourceMappingURL=app.css.map */

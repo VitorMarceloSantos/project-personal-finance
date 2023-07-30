@@ -1,15 +1,17 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { TransationsData } from '../../data/TransationsData';
 import { Link } from 'react-router-dom';
 import { LastTransationsCard } from './LastTransationsCard';
+import { ThemeContext } from '../../Context/ThemeContext';
 
 export const LastTransations = () => {
 	// Vai ser exibido as ultimas transações
 	const TransationsDataReverse = [...TransationsData].reverse();
+	const { state } = useContext(ThemeContext);
 	return (
-		<section>
-			<h1>Ultimas Transações</h1>
-			<ul>
+		<section className={`${state}-last-transations`}>
+			<h1 className={`${state}-last-transations-title`}>Ultimas Transações</h1>
+			<ul className={`${state}-last-transations-list`}>
 				{useMemo(
 					() =>
 						TransationsData.length !== 0 ? (
@@ -24,7 +26,7 @@ export const LastTransations = () => {
 					[TransationsData],
 				)}
 			</ul>
-			<Link to={'/transacoes'}>Mais ....</Link>
+			<Link to={'/transacoes'} className='link-details'>Detalhes</Link>
 		</section>
 	);
 };

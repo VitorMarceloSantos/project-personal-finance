@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 const messageError = {
 	'string.min': 'Minímo de 3 caracteres',
-	'string.max': 'Máximo de 50 caracteres',
+	'string.max': 'Máximo de 30 caracteres',
 	'string.empty': ' Campo obrigatório',
 };
 
@@ -19,7 +19,7 @@ const value = Joi.number().greater(0).required().messages({
 	'number.empty': 'Campo obrigatório',
 });
 const category = Joi.string().required().messages(messageErrorSelect);
-const description = Joi.string().min(3).max(50).required().messages(messageError);
+const description = Joi.string().min(3).max(30).required().messages(messageError);
 const destination = Joi.string().required().messages(messageErrorSelect);
 
 export const createFormSchemaTransation = Joi.object({

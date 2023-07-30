@@ -4,15 +4,15 @@ import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 
 export const LastTransationsCard = ({ transation }: TransationsCardType) => {
 	return (
-		<>
+		<article className='last-transations-card'>
 			{transation.type === 'Receita' ? (
 				<TrendingUpIcon sx={{ color: 'green' }} />
 			) : (
 				<TrendingDownIcon sx={{ color: 'red' }} />
 			)}
 			<p>{transation.value && transation.value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
-			<p>{transation.description}</p>
+			<p className='last-transations-card-description'>{transation.description}</p>
 			<p>{transation.category}</p>
-		</>
+		</article>
 	);
 };

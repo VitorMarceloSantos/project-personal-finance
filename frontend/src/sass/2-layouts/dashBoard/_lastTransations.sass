@@ -1,0 +1,43 @@
+@use '../../1-base/_colors'
+
+.last-transations-card
+  align-items: center
+  display: flex
+  justify-content: center
+  text-align: center
+  border: 1px solid transparent
+  &:hover
+    border-bottom: 1px solid colors.$text-color-secondary-dark
+    cursor: pointer
+    color: #bdbdbd
+
+  p
+    margin-left: 1rem
+    width: 3.5rem
+    padding: .5rem
+
+  .last-transations-card-description
+    width: 13.5rem
+
+.dark-last-transations
+  align-items: center
+  border-radius: 1rem
+  background-color: colors.$primary-dark
+  display: flex
+  flex-direction: column
+  justify-content: center
+  padding: 1.5rem
+  margin: 2rem
+
+  &-title
+    color: colors.$text-color-secondary-dark
+    font-weight: bold
+    font-size: 1.2rem
+    margin-bottom: 1rem
+    text-shadow: 1px 1px 1px #000
+
+  &-list
+    align-content: center
+    display: flex
+    flex-direction: column
+    justify-content: center

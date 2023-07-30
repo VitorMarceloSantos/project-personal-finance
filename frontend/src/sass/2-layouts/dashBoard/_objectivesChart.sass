@@ -26,36 +26,45 @@ $list-variables-root: one, two, three, four, five
 
 @each $variable in $list-variables-root
   .objective-card-chart
+    border-radius: 20px
     display: flex
-    height: 50px
-    padding: 5px
+    height: 1.5rem
+    padding: .1rem
+    margin-bottom: 1rem
+    margin-top: .3rem
     background-color: #ccc
+    width: 100%
 
     &::before
       content: ""
       transition: all 0.2s ease
-   
+
   .chart-#{$variable}::before
+    border-radius: 20px
     @if $variable == one
       width: calc(var(--progress-objective-realized-one) * 1%)
       background-color: hsl( calc( var(--progress-objective-realized-one) * 1.2) , 80%, 50%)
 
   .chart-#{$variable}::before
+    border-radius: 20px
     @if $variable == two
       width: calc(var(--progress-objective-realized-two) * 1%)
       background-color: hsl( calc( var(--progress-objective-realized-two) * 1.2) , 80%, 50%)
 
   .chart-#{$variable}::before
+    border-radius: 20px
     @if $variable == three
       width: calc(var(--progress-objective-realized-three) * 1%)
       background-color: hsl( calc( var(--progress-objective-realized-three) * 1.2) , 80%, 50%)
 
   .chart-#{$variable}::before
+    border-radius: 20px
     @if $variable == four
       width: calc(var(--progress-objective-realized-four) * 1%)
       background-color: hsl( calc( var(--progress-objective-realized-four) * 1.2) , 80%, 50%)
 
   .chart-#{$variable}::before
+    border-radius: 20px
     @if $variable == five
       width: calc(var(--progress-objective-realized-five) * 1%)
       background-color: hsl( calc( var(--progress-objective-realized-five) * 1.2) , 80%, 50%)

@@ -1,0 +1,37 @@
+@use '../../1-base/_colors'
+
+// Estilização Geral 
+.dashboard-container
+  align-items: center
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.link-details
+  color: colors.$text-color-secondary-dark
+  font-weight: bold
+  font-size: .9rem
+  margin-top: 1rem
+  text-shadow: 1px 1px 1px #000
+  &:hover
+    color: colors.$text-color-primary-dark
+
+// Estilização Theme Dark
+.dark-theme
+  color: colors.$text-color-primary-dark
+  padding: 1rem
+  &-title
+    color: colors.$text-color-secondary-dark
+    font-size: 2rem
+    font-weight: bold
+    text-shadow: 1px 1px 1px #000
+
+// Estilização Theme Ligth
+.light-theme
+  color: colors.$text-color-primary
+  padding: 1rem
+  &-title
+    color: colors.$text-color-secondary
+    font-size: 2rem
+    font-weight: bold
+    text-shadow: 1px 1px 1px #000

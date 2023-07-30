@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import { ObjectivesData } from '../../data/ObjectivesData';
 import { LastObjectivesCard } from './LastObjectivesCard';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
+import { ThemeContext } from '../../Context/ThemeContext';
+
 
 export const LastObjectives = () => {
+	const { state } = useContext(ThemeContext);
 	return (
-		<section>
-			<h1>Ultimas Metas</h1>
-			<ul>
+		<section className={`${state}-last-objective`}>
+			<h1 className={`${state}-last-objective-title`}>Ultimas Metas</h1>
+			<ul className={`${state}-last-objective-list`}>
 				{useMemo(
 					() =>
 						ObjectivesData.length !== 0 ? (
@@ -22,7 +25,7 @@ export const LastObjectives = () => {
 					[ObjectivesData],
 				)}
 			</ul>
-			<Link to={'/metas'}>Mais ....</Link>
+			<Link to={'/metas'} className='link-details'>Detalhes</Link>
 		</section>
 	);
 };

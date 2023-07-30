@@ -62,10 +62,12 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 				root: {
 					color: '#FFFFFF',
 					fontWeight: 'bold',
+					textShadow: '1px 1px 1px #000',
 					'&&:hover': {
 						backgroundColor: 'white',
 						color: 'black',
 						transition: '.5s',
+						textShadow: 'none',
 						// Utilizando uma classe dentro do hover para mudar a cor do icone
 						'.sidebar-icon': {
 							color: 'black',

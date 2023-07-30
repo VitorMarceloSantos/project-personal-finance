@@ -1,0 +1,39 @@
+@use '../../1-base/_colors'
+
+.last-objectives-card
+  align-items: center
+  display: flex
+  flex-direction: column
+  font-weight: bold
+  justify-content: center
+  text-align: center
+  width: 40vw
+
+  &-text
+    text-align: start
+    width: 100%
+
+    p
+      margin-bottom: .3rem
+
+  &-percentage
+    color: #26c6da
+    font-size: 1.1rem
+
+  
+  
+.dark-last-objective
+  align-items: center
+  border-radius: 1rem
+  background-color: colors.$primary-dark
+  display: flex
+  flex-direction: column
+  justify-content: center
+  padding: 1.5rem
+
+  &-title
+    color: colors.$text-color-secondary-dark
+    font-weight: bold
+    font-size: 1.2rem
+    margin-bottom: 1rem
+    text-shadow: 1px 1px 1px #000
