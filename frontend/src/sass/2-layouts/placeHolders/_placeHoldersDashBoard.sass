@@ -1,0 +1,16 @@
+@use '../../1-base/_colors'
+%display-generic
+  align-items: center
+  display: flex
+  justify-content: center
+
+%style-details
+  .link-details
+    color: colors.$text-color-primary
+    text-shadow: 1px 1px 1px rgba(0,0,0,.3)
+    &:hover
+      color: colors.$primary-color
+
+  .last-transations-card
+    &:hover
+      color: colors.$primary-color

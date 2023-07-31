@@ -1,12 +1,15 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { CategoriesData } from '../../data/CategoriesData';
 import { ConvertNameInComponent } from '../../utils/ConvertNameInComponent';
 import { ChildrenIcons } from '../Categories/ChildrenIncon';
 import { CategorieType } from '../../Types/Categories/CategorieType';
 import { initialCategories } from '../../utils/InitialStateCategories';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { ColorsIcons } from '../../utils/ColorsIcons';
 
 export const LastCategories = () => {
+	const { state } = useContext(ThemeContext);
 	let valueInitialCategories: CategorieType[] = [];
 	// Dessa forma não é necessário utilizar o useEffect, pois o conteudo será renderizado com as categorias corretas.
 	// Utilizando o useEffect primeiramente seria renderizado uma categoria(ou um loading), para depois realizar a comparação com o CategoriesData.
@@ -19,16 +22,18 @@ export const LastCategories = () => {
 	}
 
 	return (
-		<section>
-			<h1>Ultimas Categorias</h1>
-			<ul>
+		<section className={`${state}-last-categories`}>
+			<h1 className={`${state}-last-categories-title`}>Ultimas Categorias</h1>
+			<ul className={`${state}-last-categories-list`}>
 				{useMemo(
 					() =>
 						valueInitialCategories.length !== 0 ? (
 							valueInitialCategories.map((categorie, index) => (
-								<li key={index}>
+								<li key={index} className='last-categories-card'>
+									<div style={{color: `${ColorsIcons[index]}`}}>
 									<ChildrenIcons>{ConvertNameInComponent(categorie)}</ChildrenIcons>
-									<p>{categorie.name}</p>
+									</div>
+									<p className='last-categories-card-text'>{categorie.name}</p>
 								</li>
 							))
 						) : (
@@ -37,7 +42,7 @@ export const LastCategories = () => {
 					[valueInitialCategories],
 				)}
 			</ul>
-			<Link to={'/categorias'}>Mais ....</Link>
+			<Link to={'/categorias'} className='link-details'>Detalhes.</Link>
 		</section>
 	);
 };

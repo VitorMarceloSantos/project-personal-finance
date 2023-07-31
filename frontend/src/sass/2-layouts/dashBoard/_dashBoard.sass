@@ -4,15 +4,17 @@
 .dashboard-container
   align-items: center
   display: flex
-  flex-direction: column
-  justify-content: center
+  // flex-direction: column
+  flex-wrap: wrap
+  justify-content: space-evenly
+  height: 85vh
 
 .link-details
   color: colors.$text-color-secondary-dark
   font-weight: bold
   font-size: .9rem
   margin-top: 1rem
-  text-shadow: 1px 1px 1px #000
+  text-shadow: 1px 1px 1px rgba(0,0,0,)
   &:hover
     color: colors.$text-color-primary-dark
 
@@ -34,4 +36,4 @@
     color: colors.$text-color-secondary
     font-size: 2rem
     font-weight: bold
-    text-shadow: 1px 1px 1px #000
+    text-shadow: 1px 1px 1px  rgba(0,0,0,.5)

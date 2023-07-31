@@ -1,39 +1,32 @@
 @use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersDashBoard'
+@import '../mixins/_mixinsDashBoard'
 
 .last-objectives-card
-  align-items: center
-  display: flex
+  @extend %display-generic
   flex-direction: column
   font-weight: bold
-  justify-content: center
   text-align: center
-  width: 40vw
-
+  width: 30rem
+  margim: 1rem
   &-text
     text-align: start
     width: 100%
-
     p
       margin-bottom: .3rem
-
   &-percentage
     color: #26c6da
     font-size: 1.1rem
 
-  
-  
 .dark-last-objective
-  align-items: center
-  border-radius: 1rem
-  background-color: colors.$primary-dark
-  display: flex
-  flex-direction: column
-  justify-content: center
-  padding: 1.5rem
-
+  @extend %display-generic
+  @include objectives-generic($color: colors.$primary-dark)
   &-title
-    color: colors.$text-color-secondary-dark
-    font-weight: bold
-    font-size: 1.2rem
-    margin-bottom: 1rem
-    text-shadow: 1px 1px 1px #000
+    @include objectives-generic-title($color: colors.$text-color-secondary-dark, $textShadow: rgba(0,0,0,1))
+
+.light-last-objective
+  @extend %display-generic
+  @include objectives-generic($color: colors.$background-color-table)
+  &-title
+    @include objectives-generic-title($color: colors.$text-color-primary, $textShadow: rgba(0,0,0,.2))
+  @extend %style-details

@@ -1,0 +1,31 @@
+@use '../../1-base/_colors'
+
+@mixin transations-generic($color)
+  border-radius: 1rem
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5)
+  flex-direction: column
+  padding: 1.5rem
+  margin: 1rem
+  width: 30rem
+  background-color: $color
+
+@mixin transations-generic-title($color, $textShadow)
+  font-weight: bold
+  font-size: 1.2rem
+  margin-bottom: 1rem
+  color: $color
+  text-shadow: 1px 1px 1px $textShadow
+
+@mixin objectives-generic($color)
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5)
+  border-radius: 1rem
+  background-color: $color
+  flex-direction: column
+  padding: 1.5rem
+
+@mixin objectives-generic-title($color, $textShadow)
+  color: $color
+  font-weight: bold
+  font-size: 1.2rem
+  margin-bottom: 1rem
+  text-shadow: 1px 1px 1px $textShadow

@@ -1,10 +1,14 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../../Context/ThemeContext';
 import { TransationsData } from '../../data/TransationsData';
 import Chart from 'react-google-charts';
 
 export const ChartDistribution = () => {
+	const { state } = useContext(ThemeContext);
 	const options = {
 		title: '',
 		is3D: true,
+		backgroundColor: 'transparent',		
 	};
 	type ListTransationsType = {
 		name: string;
@@ -32,8 +36,11 @@ export const ChartDistribution = () => {
 	listTransations.forEach((transation) => dataCharts.push([transation.name, transation.value]));
 
 	return (
-		<>
-			<Chart chartType='PieChart' data={dataCharts} options={options} width={'100%'} height={'400px'} />
-		</>
+		<section className={`${state}-chart-distribution`}>
+			<p className='chart-distribution-title'>Transações</p>
+			<Chart chartType='PieChart' data={dataCharts} options={options} width={'100%'} />
+		</section>
 	);
 };
+
+
