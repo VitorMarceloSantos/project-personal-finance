@@ -20,7 +20,7 @@ export const ChartIncomeAndExpense = () => {
 	];
 	const options = {
 		title: '',
-		chartArea: { width: '50%' },
+		chartArea: { width: '60%' },
 		isStacked: true,
 		backgroundColor: 'transparent',
 		colors: ['green', 'red']

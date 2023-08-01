@@ -7,6 +7,7 @@ import { LoginContext } from '../Context/LoginContext';
 import { ChartDistribution } from '../components/DashBoard/ChartDistribution';
 import { ChartIncomeAndExpense } from '../components/DashBoard/ChartIncomeAndExpense';
 import { ThemeContext } from '../Context/ThemeContext';
+import { ChartObjectivesRealized } from '../components/DashBoard/ChartObjectivesRealized';
 
 export const DashBoard = () => {
 	const {
@@ -25,6 +26,7 @@ export const DashBoard = () => {
 					<LastCategories />
 					<ChartDistribution />
 					<ChartIncomeAndExpense />
+					<ChartObjectivesRealized />
 				</div>
 			)}
 		</section>

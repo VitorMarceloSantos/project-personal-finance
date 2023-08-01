@@ -155,7 +155,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 				</Drawer>
 				<Box
 					sx={{
-						height: '100vh',
+						// height: '100vh',
 						marginLeft: themeLigthOrDark.spacing(28),
 						backgroundColor: themeLigthOrDark.palette.secondary.main,
 					}}

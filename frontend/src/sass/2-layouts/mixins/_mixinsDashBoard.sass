@@ -1,4 +1,5 @@
 @use '../../1-base/_colors'
+@import '../../1-base/mixins/_typesDisplay'
 
 @mixin transations-generic($color)
   border-radius: 1rem
@@ -6,8 +7,9 @@
   flex-direction: column
   padding: 1.5rem
   margin: 1rem
-  width: 30rem
+  width: 25vw
   background-color: $color
+
 
 @mixin transations-generic-title($color, $textShadow)
   font-weight: bold
@@ -52,8 +54,8 @@
   flex-direction: column
   margin: 1rem
   padding: 1.5rem
-  width: 30rem
-  // margin-left: -4.3rem
+  width: 25vw
+  // margin-left: -8.3vw
 
 @mixin chart-distribuition-generic-title($color, $textShadow)
   color: $color
@@ -68,13 +70,31 @@
   flex-direction: column
   margin: 1rem
   padding: 1.5rem
-  width: 30rem
+  width: 28vw
+  @include display-1680
+    width: 25vw
 
 @mixin chart-income-expense-generic-title($color, $textShadow)
   color: $color
   font-weight: bold
   font-size: 1.2rem
   margin-bottom: 1rem
+  text-shadow: 1px 1px 1px $textShadow
+
+@mixin chart-objectives-realized-generic($color)
+  box-shadow: 2px 2px 2px rgba(0,0,0,.5)
+  border-radius: 1rem
+  background-color: $color
+  flex-direction: column
+  padding: 1.5rem
+  margin: 1rem
+  width: 15vw
+  // margin-left: -8.3vw
+
+@mixin chart-objectives-realized-generic-title($color, $textShadow)
+  color: $color
+  font-weight: bold
+  font-size: 1.2rem
   text-shadow: 1px 1px 1px $textShadow
 
 

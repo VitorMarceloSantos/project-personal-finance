@@ -11,17 +11,16 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 						ligth: '#ef54c5',
 					},
 					secondary: {
-						main: '#fff',
+						main: '#fafafa',
 					},
 					// divider: amber[200],
-					text: {
-					  primary: '#000',
-					  secondary: '#212121,'
-					},
+					// text: {
+					//   primary: '#000',
+					//   secondary: '#212121,'
+					// },
 			  }
 			: {
 					// palette values for dark mode
-					// palette values for light mode
 					primary: {
 						main: '#1F2941',
 						ligth: 'rgba(0, 0, 0, 0.6)',
@@ -29,10 +28,10 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					secondary: {
 						main: '#141B2D',
 					},
-					text: {
-						primary: '#F0F5FF',
-						secondary: '#4B526D',
-					},
+					// text: {
+					// 	primary: '#F0F5FF',
+					// 	secondary: '#4B526D',
+					// },
 			  }),
 	},
 	components: {
@@ -75,9 +74,11 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					},
 					'&&:focus': {
 						color: 'black',
-						backgroundColor: '#fce4ec',
+						backgroundColor: mode === 'light' ? '#fce4ec' : '#b0bec5',
+						textShadow: 'none',
 						'.sidebar-icon': {
 							color: 'black',
+							textShadow: 'none',
 						},
 					},
 				},

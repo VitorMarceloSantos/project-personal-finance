@@ -1,0 +1,22 @@
+@use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersDashBoard'
+@import '../mixins/_mixinsDashBoard'
+
+.dark-chart-objectives-realized
+  @extend %display-generic
+  @include chart-objectives-realized-generic($color: colors.$primary-dark)
+
+  .chart-objectives-realized-title
+    @include chart-objectives-realized-generic-title($color: colors.$text-color-secondary-dark, $textShadow: rgba(0,0,0,1))
+
+  // Alterando a Cor da letra da Legenda do GoogleChart
+  #reactgooglegraph-1
+    text
+      fill: colors.$text-color-primary-dark
+
+.light-chart-objectives-realized
+  @extend %display-generic
+  @include chart-objectives-realized-generic($color: colors.$background-color-table)
+
+  .chart-objectives-realized-title
+    @include chart-objectives-realized-generic-title($color: colors.$text-color-primary, $textShadow: rgba(0,0,0,.2))

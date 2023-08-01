@@ -1,22 +1,24 @@
 @use '../../1-base/_colors'
 @use '../placeHolders/_placeHoldersDashBoard'
 @import '../mixins/_mixinsDashBoard'
+@import '../../1-base/mixins/_typesDisplay'
 
 .last-objectives-card
   @extend %display-generic
   flex-direction: column
   font-weight: bold
   text-align: center
-  width: 30rem
+  width: 28vw
   margim: 1rem
+  @include display-1680
+    width: 25vw
   &-text
     text-align: start
     width: 100%
     p
-      margin-bottom: .3rem
+      margin-bottom: .2rem
   &-percentage
     color: #26c6da
-    font-size: 1.1rem
 
 .dark-last-objective
   @extend %display-generic

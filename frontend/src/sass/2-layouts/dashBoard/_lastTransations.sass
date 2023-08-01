@@ -1,31 +1,42 @@
 @use '../../1-base/_colors'
 @use '../placeHolders/_placeHoldersDashBoard'
 @import '../mixins/_mixinsDashBoard'
+@import '../../1-base/mixins/_typesDisplay'
 
 .last-transations-card
   @extend %display-generic
   text-align: center
   border: 1px solid transparent
+  width: 100%
   &:hover
     border-bottom: 1px solid colors.$text-color-secondary-dark
     cursor: pointer
     color: #bdbdbd
   p
     margin-left: 1rem
-    width: 3.5rem
+    width: 20%
     padding: .5rem
+    @include display-1680
+      width: 15%
+    
   .last-transations-card-description
-    width: 13.5rem
+    width: 40%
+    @include display-1680
+      width: 38%
 
 .dark-last-transations
   @extend %display-generic
   @include transations-generic($color: colors.$primary-dark)
   &-title
     @include transations-generic-title($color: colors.$text-color-secondary-dark, $textShadow: rgba(0,0,0,1))
+  &-list
+    width: 100%
 
 .light-last-transations
   @extend %display-generic
   @include transations-generic($color: colors.$background-color-table)
   &-title
     @include transations-generic-title($color: colors.$text-color-primary, $textShadow: rgba(0,0,0,.2))
+  &-list
+    width: 100%
   @extend %style-details
