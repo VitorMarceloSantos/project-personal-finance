@@ -22,7 +22,7 @@ export const ChartIncomeAndExpense = () => {
 		title: '',
 		chartArea: { width: '50%' },
 		isStacked: true,
-		backgroundColor: '#4b5367',
+		backgroundColor: 'transparent',
 		colors: ['green', 'red']
 	};
 	return (

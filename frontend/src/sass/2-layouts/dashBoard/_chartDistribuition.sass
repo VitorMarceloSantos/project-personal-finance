@@ -1,24 +1,22 @@
 @use '../../1-base/_colors'
-.chart-distribution-title
-  color: colors.$text-color-secondary-dark
-  font-weight: bold
-  font-size: 1.2rem
-  margin-bottom: 1rem
-  text-shadow: 1px 1px 1px #000
+@use '../placeHolders/_placeHoldersDashBoard'
+@import '../mixins/_mixinsDashBoard'
 
 .dark-chart-distribution
-  align-items: center
-  border-radius: 1rem
-  background-color: colors.$primary-dark
-  display: flex
-  flex-direction: column
-  justify-content: center
-  margin-top: 2rem
-  padding: 1.5rem
-  width: 30rem
-  margin-left: -4.3rem
+  @extend %display-generic
+  @include chart-distribuition-generic($color: colors.$primary-dark)
+
+  .chart-distribution-title
+    @include chart-distribuition-generic-title($color: colors.$text-color-secondary-dark, $textShadow: rgba(0,0,0,1))
 
   // Alterando a Cor da letra da Legenda do GoogleChart
   #reactgooglegraph-1
     text
       fill: colors.$text-color-primary-dark
+
+.light-chart-distribution
+  @extend %display-generic
+  @include chart-distribuition-generic($color: colors.$background-color-table)
+
+  .chart-distribution-title
+    @include chart-distribuition-generic-title($color: colors.$text-color-primary, $textShadow: rgba(0,0,0,.2))

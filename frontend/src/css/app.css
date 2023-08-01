@@ -307,20 +307,20 @@ table {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-.last-objectives-card, .dark-last-objective, .light-last-objective, .last-transations-card, .dark-last-transations, .light-last-transations {
+.dark-chart-income-and-expense, .dark-chart-income-and-expense-container, .dark-chart-income-and-expense-income, .dark-chart-income-and-expense-income-div, .dark-chart-income-and-expense-expense, .dark-chart-income-and-expense-expense-div, .light-chart-income-and-expense, .light-chart-income-and-expense-container, .light-chart-income-and-expense-income, .light-chart-income-and-expense-income-div, .light-chart-income-and-expense-expense, .light-chart-income-and-expense-expense-div, .dark-chart-distribution, .light-chart-distribution, .last-categories-card, .dark-last-categories, .light-last-categories, .last-objectives-card, .dark-last-objective, .light-last-objective, .last-transations-card, .dark-last-transations, .light-last-transations {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-.light-last-objective .link-details, .light-last-transations .link-details {
+.light-last-categories .link-details, .light-last-objective .link-details, .light-last-transations .link-details {
   color: #000;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
-.light-last-objective .link-details:hover, .light-last-transations .link-details:hover {
+.light-last-categories .link-details:hover, .light-last-objective .link-details:hover, .light-last-transations .link-details:hover {
   color: #CC2B9F;
 }
-.light-last-objective .last-transations-card:hover, .light-last-transations .last-transations-card:hover {
+.light-last-categories .last-transations-card:hover, .light-last-objective .last-transations-card:hover, .light-last-transations .last-transations-card:hover {
   color: #CC2B9F;
 }
 
@@ -401,6 +401,7 @@ table {
   background-color: #1F2941;
   flex-direction: column;
   padding: 1.5rem;
+  margin: 1rem;
 }
 .dark-last-objective-title {
   color: #4B5367;
@@ -416,6 +417,7 @@ table {
   background-color: #fce4ec;
   flex-direction: column;
   padding: 1.5rem;
+  margin: 1rem;
 }
 .light-last-objective-title {
   color: #000;
@@ -426,10 +428,6 @@ table {
 }
 
 .last-categories-card {
-  align-items: center;
-  display: flex;
-  font-weight: bold;
-  justify-content: center;
   text-align: center;
   margin: 1rem;
   width: 20rem;
@@ -439,115 +437,167 @@ table {
 }
 
 .dark-last-categories {
-  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   background-color: #1F2941;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 2rem;
+  margin: 1rem;
   padding: 1.5rem;
 }
 .dark-last-categories-title {
   color: #4B5367;
   font-weight: bold;
   font-size: 1.2rem;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 
-.chart-distribution-title {
-  color: #4B5367;
+.light-last-categories {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 1rem;
+  background-color: #fce4ec;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1.5rem;
+}
+.light-last-categories-title {
+  color: #000;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .dark-chart-distribution {
-  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   background-color: #1F2941;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 2rem;
+  margin: 1rem;
   padding: 1.5rem;
   width: 30rem;
-  margin-left: -4.3rem;
+}
+.dark-chart-distribution .chart-distribution-title {
+  color: #4B5367;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 .dark-chart-distribution #reactgooglegraph-1 text {
   fill: #F0F5FF;
 }
 
-.dark-chart-income-and-expense {
-  align-items: center;
+.light-chart-distribution {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
-  background-color: #1F2941;
-  display: flex;
+  background-color: #fce4ec;
   flex-direction: column;
-  justify-content: center;
-  margin-top: 2rem;
+  margin: 1rem;
   padding: 1.5rem;
-  width: 40vw;
+  width: 30rem;
+}
+.light-chart-distribution .chart-distribution-title {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.dark-chart-income-and-expense {
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: #1F2941;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1.5rem;
+  width: 30rem;
 }
 .dark-chart-income-and-expense-title {
   color: #4B5367;
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 .dark-chart-income-and-expense-container {
-  align-items: center;
-  display: flex;
   justify-content: space-evenly;
   margin-bottom: 1rem;
   width: 80%;
 }
 .dark-chart-income-and-expense-income {
-  align-items: center;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .dark-chart-income-and-expense-income-text {
   color: #4B5367;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 1px #000;
-}
-.dark-chart-income-and-expense-income-div {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 .dark-chart-income-and-expense-income-div p {
   margin-left: 0.5rem;
 }
 .dark-chart-income-and-expense-expense {
-  align-items: center;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 .dark-chart-income-and-expense-expense-text {
   color: #4B5367;
   font-weight: bold;
   font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 1px #000;
-}
-.dark-chart-income-and-expense-expense-div {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
 .dark-chart-income-and-expense-expense-div p {
   margin-left: 0.5rem;
 }
 .dark-chart-income-and-expense #reactgooglegraph-2 text {
   fill: #F0F5FF;
+}
+
+.light-chart-income-and-expense {
+  border-radius: 1rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  background-color: #fce4ec;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1.5rem;
+  width: 30rem;
+}
+.light-chart-income-and-expense-title {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.light-chart-income-and-expense-container {
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+.light-chart-income-and-expense-income {
+  flex-direction: column;
+}
+.light-chart-income-and-expense-income-text {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.light-chart-income-and-expense-income-div p {
+  margin-left: 0.5rem;
+}
+.light-chart-income-and-expense-expense {
+  flex-direction: column;
+}
+.light-chart-income-and-expense-expense-text {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.light-chart-income-and-expense-expense-div p {
+  margin-left: 0.5rem;
 }
 
 /*# sourceMappingURL=app.css.map */

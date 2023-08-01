@@ -1,29 +1,24 @@
 @use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersDashBoard'
+@import '../mixins/_mixinsDashBoard'
 
 .last-categories-card
-  align-items: center
-  display: flex
-  font-weight: bold
-  justify-content: center
+  @extend %display-generic
   text-align: center
   margin: 1rem
   width: 20rem
-
   &-text
     margin-left: 1rem
 
 .dark-last-categories
-  align-items: center
-  border-radius: 1rem
-  background-color: colors.$primary-dark
-  display: flex
-  flex-direction: column
-  justify-content: center
-  margin-top: 2rem
-  padding: 1.5rem
-
+  @extend %display-generic
+  @include categories-generic($color: colors.$primary-dark)
   &-title
-    color: colors.$text-color-secondary-dark
-    font-weight: bold
-    font-size: 1.2rem
-    text-shadow: 1px 1px 1px #000
+    @include categories-generic-title($color: colors.$text-color-secondary-dark, $textShadow: rgba(0,0,0,1))
+
+.light-last-categories
+  @extend %display-generic
+  @include categories-generic($color: colors.$background-color-table)
+  &-title
+    @include categories-generic-title($color: colors.$text-color-primary, $textShadow: rgba(0,0,0,.2))
+  @extend %style-details
