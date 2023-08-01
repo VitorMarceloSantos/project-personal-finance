@@ -8,6 +8,7 @@
   text-align: center
   border: 1px solid transparent
   width: 100%
+  justify-content: space-evenly
   &:hover
     border-bottom: 1px solid colors.$text-color-secondary-dark
     cursor: pointer
@@ -18,10 +19,15 @@
     padding: .5rem
     @include display-1680
       width: 15%
+    @include display-1440
+      width: 12%
+      margin-left: .5rem
     
   .last-transations-card-description
     width: 40%
     @include display-1680
+      width: 38%
+    @include display-1440
       width: 38%
 
 .dark-last-transations

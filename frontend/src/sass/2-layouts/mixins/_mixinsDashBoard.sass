@@ -9,8 +9,11 @@
   margin: 1rem
   width: 25vw
   background-color: $color
-
-
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
+    width: 30vw
+  
 @mixin transations-generic-title($color, $textShadow)
   font-weight: bold
   font-size: 1.2rem
@@ -25,6 +28,9 @@
   flex-direction: column
   padding: 1.5rem
   margin: 1rem
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
 
 @mixin objectives-generic-title($color, $textShadow)
   color: $color
@@ -40,6 +46,9 @@
   flex-direction: column
   margin: 1rem
   padding: 1.5rem
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
 
 @mixin categories-generic-title($color, $textShadow)
   color: $color
@@ -55,7 +64,10 @@
   margin: 1rem
   padding: 1.5rem
   width: 25vw
-  // margin-left: -8.3vw
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
+    width: 30vw
 
 @mixin chart-distribuition-generic-title($color, $textShadow)
   color: $color
@@ -73,6 +85,9 @@
   width: 28vw
   @include display-1680
     width: 25vw
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
 
 @mixin chart-income-expense-generic-title($color, $textShadow)
   color: $color
@@ -89,7 +104,9 @@
   padding: 1.5rem
   margin: 1rem
   width: 15vw
-  // margin-left: -8.3vw
+  @include display-1440
+    padding: 1rem
+    margin: .5rem
 
 @mixin chart-objectives-realized-generic-title($color, $textShadow)
   color: $color

@@ -20,10 +20,12 @@ export const ChartIncomeAndExpense = () => {
 	];
 	const options = {
 		title: '',
-		chartArea: { width: '60%' },
+		chartArea: { width: '50%' },
 		isStacked: true,
 		backgroundColor: 'transparent',
-		colors: ['green', 'red']
+		colors: ['green', 'red'], 
+		display: 'flex',
+		justifyContent: 'center',
 	};
 	return (
 		<section className={`${state}-chart-income-and-expense`}>

@@ -333,6 +333,7 @@ table {
   text-align: center;
   border: 1px solid transparent;
   width: 100%;
+  justify-content: space-evenly;
 }
 .last-transations-card:hover {
   border-bottom: 1px solid #4B5367;
@@ -349,10 +350,21 @@ table {
     width: 15%;
   }
 }
+@media (max-width: 1440px) {
+  .last-transations-card p {
+    width: 12%;
+    margin-left: 0.5rem;
+  }
+}
 .last-transations-card .last-transations-card-description {
   width: 40%;
 }
 @media (max-width: 1680px) {
+  .last-transations-card .last-transations-card-description {
+    width: 38%;
+  }
+}
+@media (max-width: 1440px) {
   .last-transations-card .last-transations-card-description {
     width: 38%;
   }
@@ -366,6 +378,13 @@ table {
   margin: 1rem;
   width: 25vw;
   background-color: #1F2941;
+}
+@media (max-width: 1440px) {
+  .dark-last-transations {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 30vw;
+  }
 }
 .dark-last-transations-title {
   font-weight: bold;
@@ -386,6 +405,13 @@ table {
   margin: 1rem;
   width: 25vw;
   background-color: #fce4ec;
+}
+@media (max-width: 1440px) {
+  .light-last-transations {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 30vw;
+  }
 }
 .light-last-transations-title {
   font-weight: bold;
@@ -429,6 +455,12 @@ table {
   padding: 1.5rem;
   margin: 1rem;
 }
+@media (max-width: 1440px) {
+  .dark-last-objective {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
 .dark-last-objective-title {
   color: #4B5367;
   font-weight: bold;
@@ -444,6 +476,12 @@ table {
   flex-direction: column;
   padding: 1.5rem;
   margin: 1rem;
+}
+@media (max-width: 1440px) {
+  .light-last-objective {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
 }
 .light-last-objective-title {
   color: #000;
@@ -470,6 +508,12 @@ table {
   margin: 1rem;
   padding: 1.5rem;
 }
+@media (max-width: 1440px) {
+  .dark-last-categories {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
 .dark-last-categories-title {
   color: #4B5367;
   font-weight: bold;
@@ -484,6 +528,12 @@ table {
   flex-direction: column;
   margin: 1rem;
   padding: 1.5rem;
+}
+@media (max-width: 1440px) {
+  .light-last-categories {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
 }
 .light-last-categories-title {
   color: #000;
@@ -500,6 +550,13 @@ table {
   margin: 1rem;
   padding: 1.5rem;
   width: 25vw;
+}
+@media (max-width: 1440px) {
+  .dark-chart-distribution {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 30vw;
+  }
 }
 .dark-chart-distribution .chart-distribution-title {
   color: #4B5367;
@@ -520,6 +577,13 @@ table {
   padding: 1.5rem;
   width: 25vw;
 }
+@media (max-width: 1440px) {
+  .light-chart-distribution {
+    padding: 1rem;
+    margin: 0.5rem;
+    width: 30vw;
+  }
+}
 .light-chart-distribution .chart-distribution-title {
   color: #000;
   font-weight: bold;
@@ -539,6 +603,12 @@ table {
 @media (max-width: 1680px) {
   .dark-chart-income-and-expense {
     width: 25vw;
+  }
+}
+@media (max-width: 1440px) {
+  .dark-chart-income-and-expense {
+    padding: 1rem;
+    margin: 0.5rem;
   }
 }
 .dark-chart-income-and-expense-title {
@@ -597,6 +667,12 @@ table {
     width: 25vw;
   }
 }
+@media (max-width: 1440px) {
+  .light-chart-income-and-expense {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
 .light-chart-income-and-expense-title {
   color: #000;
   font-weight: bold;
@@ -645,6 +721,12 @@ table {
   margin: 1rem;
   width: 15vw;
 }
+@media (max-width: 1440px) {
+  .dark-chart-objectives-realized {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+}
 .dark-chart-objectives-realized .chart-objectives-realized-title {
   color: #4B5367;
   font-weight: bold;
@@ -663,6 +745,12 @@ table {
   padding: 1.5rem;
   margin: 1rem;
   width: 15vw;
+}
+@media (max-width: 1440px) {
+  .light-chart-objectives-realized {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
 }
 .light-chart-objectives-realized .chart-objectives-realized-title {
   color: #000;
