@@ -2,20 +2,17 @@ import { Outlet } from 'react-router';
 import '../src/css/app.css';
 import { SideBar } from './components/SideBar/SideBar';
 import { LoginProvider } from './Context/LoginProvider';
-// import { useContext } from 'react';
-// import { ThemeContext } from './Context/ThemeContext';
+import { DrawerProvider } from './Context/DrawerProvider';
 
 function App() {
-	// const { state } = useContext(ThemeContext);
 	return (
 		<>
 			<LoginProvider>
-				<SideBar>
-					{/* <div className={state}> */}
-						{/* <p>{console.log(`State: ${state}`)}</p> */}
+				<DrawerProvider>
+					<SideBar>
 						<Outlet />
-					{/* </div> */}
-				</SideBar>
+					</SideBar>
+				</DrawerProvider>
 			</LoginProvider>
 		</>
 	);

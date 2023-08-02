@@ -13,6 +13,7 @@ import {
 	Paper,
 	ThemeProvider,
 	createTheme,
+	useMediaQuery,
 } from '@mui/material';
 import { ChildrenType } from '../../Types/ChildrenType';
 import { useContext, useMemo, useState } from 'react';
@@ -27,6 +28,8 @@ import { useNavigate } from 'react-router-dom';
 import { ThemeSideBar } from './ThemeSideBar';
 import { MaterialUISwitch } from './SwitchButton';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { DrawerContext } from '../../Context/DrawerContext';
+import MenuIcon from '@mui/icons-material/Menu';
 // https://www.youtube.com/watch?v=o3B9KTlod4w&ab_channel=coder4life
 export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const navigate = useNavigate();
@@ -49,13 +52,23 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 		}
 	};
 
-	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
+	const handleOnClickNavBar = (link: string) => {
+		// Fechar a sideBar quando clicar no link da sideBar
+		if (isDrawerOpen) {
+			handlerSetDrawer();
+		}
+		navigate(link);
+	};
 
+	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
+	const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
+	const { isDrawerOpen, handlerSetDrawer } = useContext(DrawerContext);
 	return (
 		<>
 			<ThemeProvider theme={themeLigthOrDark}>
 				{/* theme.spacing(28) -> 28 é um padrão de medida do materialUI(aproximadamente 4px cada 1spacing) */}
-				<Drawer variant='permanent'>
+				<Drawer open={isDrawerOpen} variant={widthDisplay ? 'temporary' : 'permanent'} onClose={handlerSetDrawer}>
+					{/* open: utilizado apenas pela variant -> temporary   -  onClose: vai ser usado para quando houver qualquer clique fora do menu dispara uma função*/}
 					<Box
 						sx={{
 							width: themeLigthOrDark.spacing(28),
@@ -115,7 +128,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 						<Box sx={{ flex: 1, backgroundColor: themeLigthOrDark.palette.primary.light }}>
 							<List>
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate('/')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/')}>
 										<ListItemIcon className='sidebar-icon'>
 											<DashboardIcon />
 										</ListItemIcon>
@@ -124,7 +137,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate('/transacoes')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/transacoes')}>
 										<ListItemIcon className='sidebar-icon'>
 											<CompareArrowsIcon />
 										</ListItemIcon>
@@ -133,7 +146,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate('/metas')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/metas')}>
 										<ListItemIcon className='sidebar-icon'>
 											<AddTaskIcon />
 										</ListItemIcon>
@@ -142,7 +155,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => navigate('/categorias')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/categorias')}>
 										<ListItemIcon className='sidebar-icon'>
 											<CategoryIcon />
 										</ListItemIcon>
@@ -156,10 +169,15 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 				<Box
 					sx={{
 						// height: '100vh',
-						marginLeft: themeLigthOrDark.spacing(28),
+						marginLeft: widthDisplay ? 0 : themeLigthOrDark.spacing(28), // retira a margem da esqueda(sideBar)
 						backgroundColor: themeLigthOrDark.palette.secondary.main,
 					}}
 				>
+					{widthDisplay && (
+						<button onClick={handlerSetDrawer}>
+							<MenuIcon />
+						</button>
+					)}
 					{children}
 				</Box>
 			</ThemeProvider>
