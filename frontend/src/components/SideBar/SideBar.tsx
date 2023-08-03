@@ -4,6 +4,7 @@ import {
 	Button,
 	Divider,
 	Drawer,
+	IconButton,
 	InputBase,
 	List,
 	ListItem,
@@ -37,6 +38,10 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const [file, setFile] = useState('');
 	const newImage: File | string = !!file ? file : '../src/assets/userImg.jpg';
 	const { state, handlerSetTheme } = useContext(ThemeContext); // Selecionar Modo Dark
+	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
+	const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
+	const { isDrawerOpen, handlerSetDrawer } = useContext(DrawerContext);
+	const [titleSelected, setTitleSeleceted] = useState<string>('DashBoard');
 
 	const handleFileChange = (fileImg: any) => {
 		const reader = new FileReader();
@@ -52,17 +57,15 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 		}
 	};
 
-	const handleOnClickNavBar = (link: string) => {
+	const handleOnClickNavBar = (link: string, title: string) => {
 		// Fechar a sideBar quando clicar no link da sideBar
 		if (isDrawerOpen) {
 			handlerSetDrawer();
 		}
+		setTitleSeleceted(title);
 		navigate(link);
 	};
 
-	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
-	const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
-	const { isDrawerOpen, handlerSetDrawer } = useContext(DrawerContext);
 	return (
 		<>
 			<ThemeProvider theme={themeLigthOrDark}>
@@ -97,7 +100,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 									top: '-1.3rem',
 								}}
 							>
-								<MaterialUISwitch sx={{ m: 1 }} onChange={handlerSetTheme} />
+								<MaterialUISwitch sx={{ m: 1 }} checked={state === 'dark' ? true : false} onChange={handlerSetTheme} />
 							</Box>
 							<Avatar src={newImage} sx={{ width: 80, height: 80 }} />
 							<form onSubmit={handleSubmit(onSubmit)} className='sidebar-form-picture'>
@@ -128,7 +131,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 						<Box sx={{ flex: 1, backgroundColor: themeLigthOrDark.palette.primary.light }}>
 							<List>
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => handleOnClickNavBar('/')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/', 'DashBoard')}>
 										<ListItemIcon className='sidebar-icon'>
 											<DashboardIcon />
 										</ListItemIcon>
@@ -137,7 +140,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => handleOnClickNavBar('/transacoes')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/transacoes', 'Transações')}>
 										<ListItemIcon className='sidebar-icon'>
 											<CompareArrowsIcon />
 										</ListItemIcon>
@@ -146,7 +149,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => handleOnClickNavBar('/metas')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/metas', 'Metas')}>
 										<ListItemIcon className='sidebar-icon'>
 											<AddTaskIcon />
 										</ListItemIcon>
@@ -155,7 +158,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 								</ListItem>
 
 								<ListItem disablePadding>
-									<ListItemButton onClick={() => handleOnClickNavBar('/categorias')}>
+									<ListItemButton onClick={() => handleOnClickNavBar('/categorias', 'Categorias')}>
 										<ListItemIcon className='sidebar-icon'>
 											<CategoryIcon />
 										</ListItemIcon>
@@ -173,10 +176,16 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 						backgroundColor: themeLigthOrDark.palette.secondary.main,
 					}}
 				>
-					{widthDisplay && (
-						<button onClick={handlerSetDrawer}>
-							<MenuIcon />
-						</button>
+					{widthDisplay ? (
+						<section className={`${state}-sidebar-display-mobile`}>
+							<IconButton onClick={handlerSetDrawer}>
+								<MenuIcon />
+							</IconButton>
+							<p className={`${state}-theme-title-top-bar`}>{titleSelected}</p>
+							<MaterialUISwitch sx={{ m: 1 }} checked={state === 'dark' ? true : false} onChange={handlerSetTheme} />
+						</section>
+					) : (
+						<h1 className={`${state}-theme-title`}>{titleSelected}</h1>
 					)}
 					{children}
 				</Box>

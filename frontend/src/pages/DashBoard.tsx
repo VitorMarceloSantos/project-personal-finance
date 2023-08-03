@@ -17,7 +17,7 @@ export const DashBoard = () => {
 
 	return (
 		<section className={`${state}-theme`}>
-			<h1 className={`${state}-theme-title`}>DashBoard</h1>
+			{/* <h1 className={`${state}-theme-title`}>DashBoard</h1> */}
 			{!isConnected && <Loading />}
 			{isConnected && (
 				<div className='dashboard-container'>

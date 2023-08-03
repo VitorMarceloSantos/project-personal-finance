@@ -267,52 +267,7 @@ table {
   background-color: hsl(calc(var(--progress-objective-realized-five) * 1.2), 80%, 50%);
 }
 
-.dashboard-container {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  height: 85vh;
-  justify-content: space-evenly;
-}
-
-.link-details {
-  color: #4B5367;
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  text-shadow: 1px 1px 1px rgb(0, 0, 0);
-}
-.link-details:hover {
-  color: #F0F5FF;
-}
-
-.dark-theme {
-  color: #F0F5FF;
-  padding: 0 1rem;
-  height: 100vh;
-}
-.dark-theme-title {
-  color: #4B5367;
-  font-size: 2rem;
-  font-weight: bold;
-  padding-top: 1rem;
-  text-shadow: 1px 1px 1px #000;
-}
-
-.light-theme {
-  color: #000;
-  padding: 0 1rem;
-  height: 100vh;
-}
-.light-theme-title {
-  color: #212121;
-  font-size: 2rem;
-  font-weight: bold;
-  padding-top: 1rem;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-.dark-chart-objectives-realized, .light-chart-objectives-realized, .dark-chart-income-and-expense, .dark-chart-income-and-expense-container, .dark-chart-income-and-expense-income, .dark-chart-income-and-expense-income-div, .dark-chart-income-and-expense-expense, .dark-chart-income-and-expense-expense-div, .light-chart-income-and-expense, .light-chart-income-and-expense-container, .light-chart-income-and-expense-income, .light-chart-income-and-expense-income-div, .light-chart-income-and-expense-expense, .light-chart-income-and-expense-expense-div, .dark-chart-distribution, .light-chart-distribution, .last-categories-card, .dark-last-categories, .light-last-categories, .last-objectives-card, .dark-last-objective, .light-last-objective, .last-transations-card, .dark-last-transations, .light-last-transations {
+.dark-chart-objectives-realized, .light-chart-objectives-realized, .dark-chart-income-and-expense, .dark-chart-income-and-expense-container, .dark-chart-income-and-expense-income, .dark-chart-income-and-expense-income-div, .dark-chart-income-and-expense-expense, .dark-chart-income-and-expense-expense-div, .light-chart-income-and-expense, .light-chart-income-and-expense-container, .light-chart-income-and-expense-income, .light-chart-income-and-expense-income-div, .light-chart-income-and-expense-expense, .light-chart-income-and-expense-expense-div, .dark-chart-distribution, .light-chart-distribution, .last-categories-card, .dark-last-categories, .light-last-categories, .last-objectives-card, .dark-last-objective, .light-last-objective, .last-transations-card, .dark-last-transations, .light-last-transations, .dark-theme, .light-theme {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -327,6 +282,73 @@ table {
 }
 .light-last-categories .last-transations-card:hover, .light-last-objective .last-transations-card:hover, .light-last-transations .last-transations-card:hover {
   color: #CC2B9F;
+}
+
+.dashboard-container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+}
+@media (max-width: 1350px) {
+  .dashboard-container {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+}
+
+.link-details {
+  color: #4B5367;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.link-details:hover {
+  color: #F0F5FF;
+}
+
+.dark-theme {
+  color: #F0F5FF;
+  padding: 0 1rem;
+  height: 90vh;
+}
+@media (max-width: 1350px) {
+  .dark-theme {
+    height: auto;
+  }
+}
+.dark-theme-title {
+  align-items: center;
+  color: #4B5367;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  height: 10vh;
+  margin-left: 1rem;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.light-theme {
+  color: #000;
+  padding: 0 1rem;
+  height: 90vh;
+}
+@media (max-width: 1350px) {
+  .light-theme {
+    height: auto;
+  }
+}
+.light-theme-title {
+  align-items: center;
+  color: #212121;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  height: 10vh;
+  margin-left: 1rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .last-transations-card {
@@ -356,6 +378,12 @@ table {
     margin-left: 0.5rem;
   }
 }
+@media (max-width: 900px) {
+  .last-transations-card p {
+    width: 18%;
+    margin-left: 0.1rem;
+  }
+}
 .last-transations-card .last-transations-card-description {
   width: 40%;
 }
@@ -366,7 +394,12 @@ table {
 }
 @media (max-width: 1440px) {
   .last-transations-card .last-transations-card-description {
-    width: 38%;
+    width: 35%;
+  }
+}
+@media (max-width: 900px) {
+  .last-transations-card .last-transations-card-description {
+    width: 30%;
   }
 }
 
@@ -384,6 +417,18 @@ table {
     padding: 1rem;
     margin: 0.5rem;
     width: 30vw;
+  }
+}
+@media (max-width: 1350px) {
+  .dark-last-transations {
+    width: 50vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .dark-last-transations {
+    width: 85vw;
+    padding: 1rem;
   }
 }
 .dark-last-transations-title {
@@ -413,6 +458,18 @@ table {
     width: 30vw;
   }
 }
+@media (max-width: 1350px) {
+  .light-last-transations {
+    width: 50vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-last-transations {
+    width: 85vw;
+    padding: 1rem;
+  }
+}
 .light-last-transations-title {
   font-weight: bold;
   font-size: 1.2rem;
@@ -434,6 +491,16 @@ table {
 @media (max-width: 1680px) {
   .last-objectives-card {
     width: 25vw;
+  }
+}
+@media (max-width: 1350px) {
+  .last-objectives-card {
+    width: 40vw;
+  }
+}
+@media (max-width: 900px) {
+  .last-objectives-card {
+    width: 85vw;
   }
 }
 .last-objectives-card-text {
@@ -461,6 +528,11 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .dark-last-objective {
+    margin: 1rem;
+  }
+}
 .dark-last-objective-title {
   color: #4B5367;
   font-weight: bold;
@@ -483,6 +555,11 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .light-last-objective {
+    margin: 1rem;
+  }
+}
 .light-last-objective-title {
   color: #000;
   font-weight: bold;
@@ -495,6 +572,16 @@ table {
   text-align: center;
   margin: 1rem 0;
   width: 15vw;
+}
+@media (max-width: 1350px) {
+  .last-categories-card {
+    width: 30vw;
+  }
+}
+@media (max-width: 900px) {
+  .last-categories-card {
+    width: 65vw;
+  }
 }
 .last-categories-card-text {
   margin-left: 1rem;
@@ -512,6 +599,11 @@ table {
   .dark-last-categories {
     padding: 1rem;
     margin: 0.5rem;
+  }
+}
+@media (max-width: 1350px) {
+  .dark-last-categories {
+    margin: 1rem;
   }
 }
 .dark-last-categories-title {
@@ -535,6 +627,11 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .light-last-categories {
+    margin: 1rem;
+  }
+}
 .light-last-categories-title {
   color: #000;
   font-weight: bold;
@@ -556,6 +653,18 @@ table {
     padding: 1rem;
     margin: 0.5rem;
     width: 30vw;
+  }
+}
+@media (max-width: 1350px) {
+  .dark-chart-distribution {
+    width: 50vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .dark-chart-distribution {
+    width: 85vw;
+    padding: 1rem;
   }
 }
 .dark-chart-distribution .chart-distribution-title {
@@ -584,6 +693,18 @@ table {
     width: 30vw;
   }
 }
+@media (max-width: 1350px) {
+  .light-chart-distribution {
+    width: 50vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-chart-distribution {
+    width: 85vw;
+    padding: 1rem;
+  }
+}
 .light-chart-distribution .chart-distribution-title {
   color: #000;
   font-weight: bold;
@@ -609,6 +730,17 @@ table {
   .dark-chart-income-and-expense {
     padding: 1rem;
     margin: 0.5rem;
+  }
+}
+@media (max-width: 1350px) {
+  .dark-chart-income-and-expense {
+    width: 40vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .dark-chart-income-and-expense {
+    width: 85vw;
   }
 }
 .dark-chart-income-and-expense-title {
@@ -673,6 +805,17 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .light-chart-income-and-expense {
+    width: 40vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-chart-income-and-expense {
+    width: 85vw;
+  }
+}
 .light-chart-income-and-expense-title {
   color: #000;
   font-weight: bold;
@@ -727,6 +870,17 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .dark-chart-objectives-realized {
+    width: 30vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .dark-chart-objectives-realized {
+    width: 65vw;
+  }
+}
 .dark-chart-objectives-realized .chart-objectives-realized-title {
   color: #4B5367;
   font-weight: bold;
@@ -752,9 +906,50 @@ table {
     margin: 0.5rem;
   }
 }
+@media (max-width: 1350px) {
+  .light-chart-objectives-realized {
+    width: 30vw;
+    margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-chart-objectives-realized {
+    width: 65vw;
+  }
+}
 .light-chart-objectives-realized .chart-objectives-realized-title {
   color: #000;
   font-weight: bold;
   font-size: 1.2rem;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.dark-sidebar-display-mobile {
+  align-items: center;
+  background-color: #4B5367;
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+}
+
+.dark-theme-title-top-bar {
+  color: #F0F5FF;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.light-sidebar-display-mobile {
+  align-items: center;
+  background-color: #EF54C5;
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+}
+
+.light-theme-title-top-bar {
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }/*# sourceMappingURL=app.css.map */
