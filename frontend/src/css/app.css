@@ -429,6 +429,7 @@ table {
   .dark-last-transations {
     width: 85vw;
     padding: 1rem;
+    margin: 1rem 0;
   }
 }
 .dark-last-transations-title {
@@ -468,6 +469,7 @@ table {
   .light-last-transations {
     width: 85vw;
     padding: 1rem;
+    margin: 1rem 0;
   }
 }
 .light-last-transations-title {
@@ -533,6 +535,11 @@ table {
     margin: 1rem;
   }
 }
+@media (max-width: 900px) {
+  .dark-last-objective {
+    margin: 1rem 0;
+  }
+}
 .dark-last-objective-title {
   color: #4B5367;
   font-weight: bold;
@@ -558,6 +565,11 @@ table {
 @media (max-width: 1350px) {
   .light-last-objective {
     margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-last-objective {
+    margin: 1rem 0;
   }
 }
 .light-last-objective-title {
@@ -606,6 +618,11 @@ table {
     margin: 1rem;
   }
 }
+@media (max-width: 900px) {
+  .dark-last-categories {
+    margin: 1rem 0;
+  }
+}
 .dark-last-categories-title {
   color: #4B5367;
   font-weight: bold;
@@ -630,6 +647,11 @@ table {
 @media (max-width: 1350px) {
   .light-last-categories {
     margin: 1rem;
+  }
+}
+@media (max-width: 900px) {
+  .light-last-categories {
+    margin: 1rem 0;
   }
 }
 .light-last-categories-title {
@@ -665,6 +687,7 @@ table {
   .dark-chart-distribution {
     width: 85vw;
     padding: 1rem;
+    margin: 1rem 0;
   }
 }
 .dark-chart-distribution .chart-distribution-title {
@@ -703,6 +726,7 @@ table {
   .light-chart-distribution {
     width: 85vw;
     padding: 1rem;
+    margin: 1rem 0;
   }
 }
 .light-chart-distribution .chart-distribution-title {
@@ -741,6 +765,7 @@ table {
 @media (max-width: 900px) {
   .dark-chart-income-and-expense {
     width: 85vw;
+    margin: 1rem 0;
   }
 }
 .dark-chart-income-and-expense-title {
@@ -814,6 +839,7 @@ table {
 @media (max-width: 900px) {
   .light-chart-income-and-expense {
     width: 85vw;
+    margin: 1rem 0;
   }
 }
 .light-chart-income-and-expense-title {
@@ -879,6 +905,7 @@ table {
 @media (max-width: 900px) {
   .dark-chart-objectives-realized {
     width: 65vw;
+    margin: 1rem 0;
   }
 }
 .dark-chart-objectives-realized .chart-objectives-realized-title {
@@ -915,6 +942,7 @@ table {
 @media (max-width: 900px) {
   .light-chart-objectives-realized {
     width: 65vw;
+    margin: 1rem 0;
   }
 }
 .light-chart-objectives-realized .chart-objectives-realized-title {
@@ -952,4 +980,126 @@ table {
   font-size: 1.3rem;
   font-weight: bold;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
-}/*# sourceMappingURL=app.css.map */
+}
+
+.dark-theme-transations-card, .dark-theme-transations-card-id-type, .dark-theme-transations-card-buttons, .light-theme-transations-card, .light-theme-transations-card-id-type, .light-theme-transations-card-buttons, .dark-theme-transations, .dark-theme-transations-list, .light-theme-transations, .light-theme-transations-list {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.light-theme-transations-list, .light-theme-transations, .dark-theme-transations-list, .dark-theme-transations {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.dark-theme-transations {
+  justify-content: start;
+  flex-direction: column;
+  min-height: 90vh;
+}
+.dark-theme-transations-filter {
+  margin-bottom: 1rem;
+}
+.dark-theme-transations-new-button {
+  margin-bottom: 1rem;
+}
+.dark-theme-transations-list {
+  flex-wrap: wrap;
+}
+
+.light-theme-transations {
+  justify-content: start;
+  flex-direction: column;
+  min-height: 90vh;
+}
+.light-theme-transations-filter {
+  margin-bottom: 1rem;
+}
+.light-theme-transations-new-button {
+  margin-bottom: 1rem;
+}
+.light-theme-transations-list {
+  flex-wrap: wrap;
+}
+
+.light-theme-transations-card-buttons, .light-theme-transations-card-id-type, .light-theme-transations-card, .dark-theme-transations-card-buttons, .dark-theme-transations-card-id-type, .dark-theme-transations-card {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.class-equal-card {
+  width: 100%;
+}
+
+.dark-theme-transations-card {
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: #B0BEC5;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  height: 25vh;
+  width: 20vw;
+  margin: 1rem;
+}
+.dark-theme-transations-card-id-type {
+  justify-content: space-between;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+.dark-theme-transations-card-type {
+  padding-left: 0.4rem;
+}
+.dark-theme-transations-card-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.dark-theme-transations-card-description {
+  padding: 0 0.5rem;
+}
+.dark-theme-transations-card-buttons {
+  justify-content: space-evenly;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  height: 20%;
+  width: 100%;
+}
+
+.light-theme-transations-card {
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: #FCE4EC;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  height: 25vh;
+  width: 20vw;
+  margin: 1rem;
+}
+.light-theme-transations-card-id-type {
+  justify-content: space-between;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+.light-theme-transations-card-type {
+  padding-left: 0.4rem;
+}
+.light-theme-transations-card-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.light-theme-transations-card-description {
+  padding: 0 0.5rem;
+}
+.light-theme-transations-card-buttons {
+  justify-content: space-evenly;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  height: 20%;
+  width: 100%;
+}
+
+/*# sourceMappingURL=app.css.map */

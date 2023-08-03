@@ -26,7 +26,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import CategoryIcon from '@mui/icons-material/Category';
 import { useNavigate } from 'react-router-dom';
-import { ThemeSideBar } from './ThemeSideBar';
+import { ThemeSideBar } from '../Themes/ThemeSideBar';
 import { MaterialUISwitch } from './SwitchButton';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { DrawerContext } from '../../Context/DrawerContext';
@@ -171,9 +171,8 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 				</Drawer>
 				<Box
 					sx={{
-						// height: '100vh',
 						marginLeft: widthDisplay ? 0 : themeLigthOrDark.spacing(28), // retira a margem da esqueda(sideBar)
-						backgroundColor: themeLigthOrDark.palette.secondary.main,
+						backgroundColor: themeLigthOrDark.palette.secondary.main, // definindo o background theme
 					}}
 				>
 					{widthDisplay ? (

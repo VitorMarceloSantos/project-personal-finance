@@ -13,11 +13,6 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					secondary: {
 						main: '#fafafa',
 					},
-					// divider: amber[200],
-					// text: {
-					//   primary: '#000',
-					//   secondary: '#212121,'
-					// },
 			  }
 			: {
 					// palette values for dark mode
@@ -28,10 +23,6 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					secondary: {
 						main: '#141B2D',
 					},
-					// text: {
-					// 	primary: '#F0F5FF',
-					// 	secondary: '#4B526D',
-					// },
 			  }),
 	},
 	components: {

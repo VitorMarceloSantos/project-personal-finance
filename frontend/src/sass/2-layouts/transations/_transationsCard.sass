@@ -1,0 +1,13 @@
+@use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersTransations'
+@import '../mixins/_mixinsTransations'
+
+.class-equal-card
+  width: 100%
+
+.dark-theme-transations-card
+  @include transations-generic-card($color: colors.$background-select)
+
+.light-theme-transations-card
+  @include transations-generic-card($color: colors.$background-table-light)
+
