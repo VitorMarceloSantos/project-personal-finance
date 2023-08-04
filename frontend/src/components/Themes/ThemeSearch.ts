@@ -1,12 +1,19 @@
-import { PaletteMode, createTheme } from '@mui/material';
-
-// const finalTheme = createTheme({
-// 	components: {
-// 		MuiSelect: {},
-//     MuiInputBase
-// 	},
-// });
-
+import { PaletteMode } from '@mui/material';
+declare module '@mui/material/styles' {
+  interface BreakpointOverrides {
+    xs: false; // removes breakpoint
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+		mobile: true, // add breakpoint
+		small_device: true,
+		small_tablet: true,
+		laptop: true,
+		desktop: true,
+		large_device: true
+  }
+}
 
 export const ThemeSearch = (mode: PaletteMode) => ({
 	palette: {
@@ -26,18 +33,27 @@ export const ThemeSearch = (mode: PaletteMode) => ({
 					// palette values for dark mode
 					primary: {
 						main: '#B0BEC5',
-						// ligth: 'rgba(0, 0, 0, 0.6)',
 					},
 					text: {
 						primary: '#F0F5FF',
 					},
 			  }),
 	},
+	breakpoints: {
+    values: {
+			mobile: 480,
+			small_device: 767,
+			small_tablet: 991,
+			laptop: 1199,
+			desktop: 1919,
+			large_device: 1920
+    },
+  },
 	components: {
 		MuiSelect: {
 			styleOverrides: {
 				root: {
-          border: 'none',
+					border: 'none',
 					textAlign: 'center',
 					fontWeight: 'bold',
 					fontFamily: 'Times New Roman',
@@ -48,7 +64,7 @@ export const ThemeSearch = (mode: PaletteMode) => ({
 		MuiPaper: {
 			styleOverrides: {
 				root: {
-          boxShadow: '2px 2px 2px rgba(0,0,0, .2)',
+					boxShadow: '2px 2px 2px rgba(0,0,0, .2)',
 					padding: '.2rem .5rem',
 					background: 'transparent',
 					display: 'flex',
@@ -61,7 +77,6 @@ export const ThemeSearch = (mode: PaletteMode) => ({
 				root: {
 					height: '2.2rem',
 					margin: '0.2rem .5rem',
-					// marginLeft: '.8rem',
 				},
 			},
 		},
@@ -74,38 +89,10 @@ export const ThemeSearch = (mode: PaletteMode) => ({
 				},
 			},
 		},
-		// MuiListItemButton: {
-		// 	styleOverrides: {
-		// 		root: {
-		// 			color: '#FFFFFF',
-		// 			fontWeight: 'bold',
-		// 			textShadow: '1px 1px 1px #000',
-		// 			'&&:hover': {
-		// 				backgroundColor: 'white',
-		// 				color: 'black',
-		// 				transition: '.5s',
-		// 				textShadow: 'none',
-		// 				// Utilizando uma classe dentro do hover para mudar a cor do icone
-		// 				'.sidebar-icon': {
-		// 					color: 'black',
-		// 				},
-		// 			},
-		// 			'&&:focus': {
-		// 				color: 'black',
-		// 				backgroundColor: mode === 'light' ? '#fce4ec' : '#b0bec5',
-		// 				textShadow: 'none',
-		// 				'.sidebar-icon': {
-		// 					color: 'black',
-		// 					textShadow: 'none',
-		// 				},
-		// 			},
-		// 		},
-		// 	},
-		// },
-    MuiList: {
+		MuiList: {
 			styleOverrides: {
 				root: {
-					backgroundColor: mode === 'light' ? '#cc2b9f': '#B0BEC5'
+					backgroundColor: mode === 'light' ? '#cc2b9f' : '#B0BEC5',
 				},
 			},
 		},
@@ -113,8 +100,7 @@ export const ThemeSearch = (mode: PaletteMode) => ({
 			styleOverrides: {
 				root: {
 					color: '#fff',
-          // mode === 'light' ? '#000': '#fff'
-          fontWeight: 'bold',
+					fontWeight: 'bold',
 				},
 			},
 		},

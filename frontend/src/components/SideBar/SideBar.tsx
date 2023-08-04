@@ -39,7 +39,8 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const newImage: File | string = !!file ? file : '../src/assets/userImg.jpg';
 	const { state, handlerSetTheme } = useContext(ThemeContext); // Selecionar Modo Dark
 	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
-	const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
+	// const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
+	const widthDisplay = useMediaQuery(themeLigthOrDark.breakpoints.down('laptop')); // Retorna: true/false
 	const { isDrawerOpen, handlerSetDrawer } = useContext(DrawerContext);
 	const [titleSelected, setTitleSeleceted] = useState<string>('DashBoard');
 

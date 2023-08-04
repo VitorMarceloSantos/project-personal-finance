@@ -15,7 +15,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const ThemeSideBar = (mode: PaletteMode) => ({
+export const ThemeForm = (mode: PaletteMode) => ({
 	palette: {
 		mode,
 		...(mode === 'light'
@@ -23,24 +23,27 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
 					// palette values for light mode
 					primary: {
 						main: '#cc2b9f',
-						ligth: '#ef54c5',
+						// ligth: '#ef54c5',
 					},
 					secondary: {
 						main: '#fafafa',
+					},
+					text: {
+						primary: '#000',
+						// secondary: '#000',
 					},
 			  }
 			: {
 					// palette values for dark mode
 					primary: {
-						main: '#1F2941',
-						ligth: 'rgba(0, 0, 0, 0.6)',
+						main: '#B0BEC5',
 					},
-					secondary: {
-						main: '#141B2D',
+					text: {
+						primary: '#F0F5FF',
+						// secondary: '#000',
 					},
 			  }),
 	},
-	// Responsividade
 	breakpoints: {
     values: {
 			mobile: 480,
@@ -52,59 +55,64 @@ export const ThemeSideBar = (mode: PaletteMode) => ({
     },
   },
 	components: {
-		MuiButton: {
+		MuiSelect: {
 			styleOverrides: {
 				root: {
-					border: '1px solid #FFFFFF',
-					backgroundColor: 'transparent',
-					boxShadow: 'none',
-					color: '#FFFFFF',
+					border: 'none',
+					textAlign: 'center',
 					fontWeight: 'bold',
-					marginTop: '.5rem',
-					'&&:hover': { background: '#FFFFFF', color: 'black', transition: '.5s' },
+					fontFamily: 'Times New Roman',
 				},
 			},
-		},
+		} as any,
+
 		MuiPaper: {
 			styleOverrides: {
 				root: {
+					boxShadow: '2px 2px 2px rgba(0,0,0, .2)',
+					padding: '1rem',
 					background: 'transparent',
-					boxShadow: 'none',
+					display: 'flex',
+					alignItems: 'center',
+					flexDirection: 'column',
+					textAlign: 'center'
 				},
 			},
-		},
-		MuiListItemButton: {
+		} as any,
+		MuiInputBase: {
 			styleOverrides: {
 				root: {
-					color: '#FFFFFF',
+					margin: '.5rem',
 					fontWeight: 'bold',
-					textShadow: '1px 1px 1px #000',
-					'&&:hover': {
-						backgroundColor: 'white',
-						color: 'black',
-						transition: '.5s',
-						textShadow: 'none',
-						// Utilizando uma classe dentro do hover para mudar a cor do icone
-						'.sidebar-icon': {
-							color: 'black',
-						},
-					},
-					'&&:focus': {
-						color: 'black',
-						backgroundColor: mode === 'light' ? '#fce4ec' : '#b0bec5',
-						textShadow: 'none',
-						'.sidebar-icon': {
-							color: 'black',
-							textShadow: 'none',
-						},
-					},
+					fontFamily: 'Times New Roman',
+					borderRadius: '5px',
+					paddingLeft: '.5rem',
 				},
 			},
 		},
-		MuiListItemIcon: {
+		MuiButton: {
 			styleOverrides: {
 				root: {
-					color: '#FFFFFF',
+					fontSize: '.8rem',
+					width: '15vw',
+					margin: '.5rem',
+					fontWeight: 'bold',
+					fontFamily: 'Times New Roman',
+				},
+			},
+		},
+		MuiList: {
+			styleOverrides: {
+				root: {
+					backgroundColor: mode === 'light' ? '#cc2b9f' : '#B0BEC5',
+				},
+			},
+		},
+		MuiMenuItem: {
+			styleOverrides: {
+				root: {
+					color: '#fff',
+					fontWeight: 'bold',
 				},
 			},
 		},

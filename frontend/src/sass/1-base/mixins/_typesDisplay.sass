@@ -1,3 +1,4 @@
+// Opções para configurar o dashboard
 @mixin display-1680
   @media(max-width: 1680px)
     @content
@@ -8,9 +9,40 @@
     @content
 
 @mixin display-1340
-  @media(max-width: 1350px)
+  @media(max-width: 1340px)
     @content
 
-@mixin display-900
-  @media(max-width: 900px)
+// @mixin display-1024
+//   @media(max-width: 1200px)
+//     @content
+
+// @mixin display-900
+//   @media(max-width: 900px)
+//     @content
+
+// Padrão Responsividade
+@mixin mobile
+  @media (max-width: 480px)
     @content
+
+@mixin small_device
+  @media (max-width: 767px)
+    @content
+
+@mixin small_tablet
+  @media (max-width: 991px)
+    @content
+
+@mixin laptop
+    @media (max-width: 1199px)
+      @content
+
+@mixin desktop
+  @media (max-width: 1919px)
+    @content
+
+@mixin large_device
+  @media (min-width: 1920px)
+    @content
+
+// Especificando o tamanho minimo e máximo, a propriedade vai ter efeito somente no intervalo minimo e máximo. Ao deixar somente o tamanho máximo, a propriedade vai ter efeito do tamanho 0px até o tamanho máximo.

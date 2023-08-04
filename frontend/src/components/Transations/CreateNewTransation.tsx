@@ -1,5 +1,5 @@
 import AddIcon from '@mui/icons-material/Add';
-import { Button, ThemeProvider, createTheme } from '@mui/material';
+import { Button, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 import { TransationForm } from './TransationForm';
 import { NewTransationProps } from '../../Types/Transations/CreateNewTransation';
 import { ActionsType } from '../../Types/ActionsType';
@@ -12,6 +12,7 @@ export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }:
 	const { verifyActionTransation, setverifyActionTransation } = stateTransationAction;
 	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
 	const themeLigthOrDarkButton = useMemo(() => createTheme(ThemeButton(state)), [state]);
+	const widthDisplayButton = useMediaQuery(themeLigthOrDarkButton.breakpoints.down('small_device')); // Retorna: true/false
 
 	const handlerSetDisplayForm = () => {
 		setFormDisplay((prev) => !prev);
@@ -30,6 +31,7 @@ export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }:
 							borderColor: themeLigthOrDarkButton.palette.primary.main,
 							color: themeLigthOrDarkButton.palette.text.secondary,
 							backgroundColor: themeLigthOrDarkButton.palette.primary.main,
+							marginBottom: '1rem',
 						},
 						{
 							'&:hover': {
@@ -37,9 +39,11 @@ export const CreateNewTransation = ({ stateFormDisplay, stateTransationAction }:
 								backgroundColor: themeLigthOrDarkButton.palette.primary.main,
 							},
 						},
+						{ [themeLigthOrDarkButton.breakpoints.down('small_device')]: { width: '10vw', paddingLeft: '1.7rem' } },
+						// paddingLeft: utilizado para centralizar o startIcon
 					]}
 				>
-					Nova Transação
+					{!widthDisplayButton && 'Nova Transação'}
 				</Button>
 				{formDisplay && (
 					<TransationForm verifyActionTransation={verifyActionTransation} setFormDisplay={setFormDisplay} />

@@ -27,7 +27,7 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 		if (target.value.length >= 1) {
 			const targetInputLower = target.value.toLowerCase();
 			const filtered = cards.filter((objective) =>
-				(!!objective[filterSelected]).toString().toLocaleLowerCase().includes(targetInputLower),
+				(objective[filterSelected] as keyof ObjectiveType).toString().toLocaleLowerCase().includes(targetInputLower),
 			);
 			if (filtered.length !== 0) {
 				setObjectivesFiltered(filtered);
