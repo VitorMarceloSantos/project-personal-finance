@@ -131,14 +131,19 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 			<ThemeProvider theme={themeLigthOrDarkForm}>
 				<Paper
 					component='form'
-					sx={[{
-						border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
-						width: '40vw'
-					}, {[themeLigthOrDarkForm.breakpoints.down('laptop')]: {width: '50vw'}}, {
-						[themeLigthOrDarkForm.breakpoints.down('small_device')]: {width: '60vw'}
-					}, {
-						[themeLigthOrDarkForm.breakpoints.down('mobile')]: {width: '85vw'}
-					}]}
+					sx={[
+						{
+							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
+							width: '40vw',
+						},
+						{ [themeLigthOrDarkForm.breakpoints.down('laptop')]: { width: '50vw' } },
+						{
+							[themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '60vw' },
+						},
+						{
+							[themeLigthOrDarkForm.breakpoints.down('mobile')]: { width: '85vw' },
+						},
+					]}
 				>
 					<InputBase
 						{...register('value')}
@@ -167,6 +172,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 								color: themeLigthOrDarkForm.palette.text.primary,
 								width: '30%', // leva em consideração o tamanho do Paper
 								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
+							},
+							{
+								[themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '40%' },
 							},
 						]}
 					>
@@ -200,6 +208,9 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 								color: themeLigthOrDarkForm.palette.text.primary,
 								width: '30%', // leva em consideração o tamanho do Paper
 								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
+							},
+							{
+								[themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '40%' },
 							},
 						]}
 					>
@@ -251,7 +262,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 									backgroundColor: themeLigthOrDarkForm.palette.primary.main,
 								},
 							},
-							{[themeLigthOrDarkForm.breakpoints.down('small_device')]: {width: '10vw', paddingLeft: '1.7rem'}}
+							{ [themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '10vw', paddingLeft: '1.7rem' } },
 						]}
 					>
 						{!widthDisplayButton && 'Cancelar'}
@@ -273,7 +284,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 									backgroundColor: themeLigthOrDarkForm.palette.primary.main,
 								},
 							},
-							{[themeLigthOrDarkForm.breakpoints.down('small_device')]: {width: '10vw', paddingLeft: '1.7rem'}}
+							{ [themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '10vw', paddingLeft: '1.7rem' } },
 							// paddingLeft: utilizado para centralizar o startIcon
 						]}
 					>

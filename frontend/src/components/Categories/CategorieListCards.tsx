@@ -21,6 +21,7 @@ export const CategorieListCards = ({
 						categorie={categorie}
 						setFormDisplay={setFormDisplay}
 						setVerifyActionCategories={setVerifyActionCategories}
+						index={index}
 					/>
 				</li>
 			)),

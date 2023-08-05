@@ -2,9 +2,12 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { CategoriesFilteredProps } from '../../Types/Categories/CategoriesProps';
 import { CategoriesContext } from '../../Context/CategoriesContex';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeProvider, createTheme } from '@mui/material';
+import { ThemeSearch } from '../Themes/ThemeSearch';
 
 export const CategorieFilter = ({ stateCategories }: CategoriesFilteredProps) => {
 	const {
@@ -12,6 +15,8 @@ export const CategorieFilter = ({ stateCategories }: CategoriesFilteredProps) =>
 	} = useContext(CategoriesContext);
 	const [filterGeneric, setFilterGeneric] = useState<string>('');
 	const { categoriesFiltered, setCategoriesFiltered } = stateCategories;
+	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
+	const themeLigthOrDarkSearch = useMemo(() => createTheme(ThemeSearch(state)), [state]);
 
 	const handlerFilterGeneric = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { target } = event;
@@ -30,28 +35,38 @@ export const CategorieFilter = ({ stateCategories }: CategoriesFilteredProps) =>
 		setFilterGeneric(target.value);
 	};
 	return (
-		<div>
-			<Paper
-				component='form'
-				sx={{
-					p: '2px 6px',
-					display: 'flex',
-					alignItems: 'center',
-					width: 400,
-					backgroundColor: 'transparent',
-					border: '1px solid yellow',
-				}}
-			>
-				<InputBase
-					sx={{ ml: 1, flex: 1, color: 'black', fontWeight: 'bold', fontFamily: 'Times New Roman' }}
-					placeholder='Pesquisar'
-					value={filterGeneric}
-					onChange={(e) => handlerFilterGeneric(e)}
-				/>
-				<IconButton type='button' sx={{ p: '0px', color: 'yellow' }} aria-label='search'>
-					<SearchIcon />
-				</IconButton>
-			</Paper>
-		</div>
+		<section className={`${state}-theme-categories-filter`}>
+			<ThemeProvider theme={themeLigthOrDarkSearch}>
+				<Paper
+					component='form'
+					sx={[
+						{
+							width: '30vw',
+							border: `1px solid ${themeLigthOrDarkSearch.palette.primary.main}`,
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('small_device')]: { width: '55vw' },
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('mobile')]: { width: '75vw' },
+						},
+					]}
+				>
+					<InputBase
+						sx={{ flex: 1, color: themeLigthOrDarkSearch.palette.primary.main }}
+						placeholder='Pesquisar'
+						value={filterGeneric}
+						onChange={(e) => handlerFilterGeneric(e)}
+					/>
+					<IconButton
+						type='button'
+						sx={{ p: '0px', color: themeLigthOrDarkSearch.palette.text.primary }}
+						aria-label='search'
+					>
+						<SearchIcon />
+					</IconButton>
+				</Paper>
+			</ThemeProvider>
+		</section>
 	);
 };

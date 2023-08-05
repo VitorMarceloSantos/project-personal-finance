@@ -1,37 +1,31 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { CategoriesProvider } from '../Context/CategoriesProvider';
 import { CreateNewCategorie } from '../components/Categories/CreateNewCategorie';
 import { ActionsType } from '../Types/ActionsType';
 import { CategorieFilter } from '../components/Categories/CategorieFilter';
 import { CategorieType } from '../Types/Categories/CategorieType';
 import { CategorieListCards } from '../components/Categories/CategorieListCards';
+import { ThemeContext } from '../Context/ThemeContext';
 export const Categories = () => {
 	const [categoriesFiltered, setCategoriesFiltered] = useState<CategorieType[]>([]);
 	const [formDisplay, setFormDisplay] = useState<boolean>(false);
 	const [verifyActionCategories, setVerifyActionCategories] = useState<ActionsType>(ActionsType.ADD);
-	const navigate = useNavigate();
+	const { state } = useContext(ThemeContext);
 	return (
 		<CategoriesProvider>
-			<section>
-				<h1>Categorias</h1>
+			<section className={`${state}-theme-categories`}>
 				<CategorieFilter stateCategories={{ categoriesFiltered, setCategoriesFiltered }} />
 				<CreateNewCategorie
 					stateFormDisplay={{ formDisplay, setFormDisplay }}
 					stateCategoriesAction={{ setVerifyActionCategories, verifyActionCategories }}
 				/>
-				<div className='categories-card-container'>
-					<ul>
-						<CategorieListCards
-							categoriesFiltered={categoriesFiltered}
-							setFormDisplay={setFormDisplay}
-							setVerifyActionCategories={setVerifyActionCategories}
-						/>
-					</ul>
-				</div>
-				<button type='button' onClick={() => navigate('/')}>
-					Dashboard
-				</button>
+				<ul className={`${state}-theme-categories-list`}>
+					<CategorieListCards
+						categoriesFiltered={categoriesFiltered}
+						setFormDisplay={setFormDisplay}
+						setVerifyActionCategories={setVerifyActionCategories}
+					/>
+				</ul>
 			</section>
 		</CategoriesProvider>
 	);

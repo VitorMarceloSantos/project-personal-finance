@@ -1,8 +1,8 @@
-@use '../placeHolders/_placeHoldersObjectives'
+@use '../placeHolders/_placeHoldersCategories'
 @use '../../1-base/_colors'
 @import '../../1-base/mixins/_typesDisplay'
 
-@mixin objectives-generic
+@mixin categories-generic
   @extend %display-generic
   justify-content: start
   flex-direction: column
@@ -17,12 +17,12 @@
   &-new-button
     @extend %display-generic
     flex-direction: column
-    // margin-bottom: 1rem
+    // margin-bottom: .5rem
   &-list
     @extend %display-generic
     flex-wrap: wrap  
 
-@mixin objectives-generic-card($color, $background)
+@mixin categories-generic-card($color, $background)
   @extend %display-generic
   flex-direction: column
   justify-content: space-between
@@ -30,32 +30,18 @@
   background: $color
   box-shadow: 2px 2px 2px rgba(0,0,0,0.5)
   text-align: center
-  height: 33vh
-  width: 35vw
+  height: 30vh
+  width: 20vw
   min-width: 250px
+  min-height: 250px
   margin: 1rem
-  &-id-name
+  &-id
     @extend %display-generic
-    justify-content: space-between
     font-weight: bold
     padding-top: 1rem
-    width: 85%
-  &-value
+  &-name
     font-size: 1.2rem
     font-weight: bold
-  &-percentage-chart
-    @extend %display-generic
-    flex-direction: column
-    width: 95%
-    margin-top: 1rem
-  &-chart
-    width: 95%
-  &-percentage
-    width: 20%
-    font-weight: bold
-    font-size: 1.1rem
-    @include small_tablet
-      font-size: .9rem
   &-buttons
     @extend %display-generic
     background-color: $background

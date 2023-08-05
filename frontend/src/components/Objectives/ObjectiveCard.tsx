@@ -29,7 +29,7 @@ export const ObjectiveCard = ({ objective, setverifyActionObjective, setFormDisp
 
 	return (
 		<article className={`${state}-theme-objectives-card`}>
-			<div className={`${state}-theme-objectives-card-id-name class-equal-card`}>
+			<div className={`${state}-theme-objectives-card-id-name`}>
 				<p className={`${state}-theme-objectives-card-id`}>#{objective.id}</p>
 				<p className={`${state}-theme-objectives-card-name`}>{objective.name}</p>
 			</div>

@@ -1,0 +1,15 @@
+@use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersCategories'
+@import '../mixins/_mixinsCategories'
+
+.class-equal-card
+  width: 100%
+
+.customize-icon
+  transform: scale(3)
+
+.dark-theme-categories-card
+  @include categories-generic-card($color: colors.$background-select, $background: colors.$text-color-secondary-dark)
+
+.light-theme-categories-card
+  @include categories-generic-card($color: colors.$background-table-light, $background: colors.$second-color)

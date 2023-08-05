@@ -5,14 +5,12 @@ import { ObjectiveType } from '../Types/Objectives/ObjectivesType';
 import { ActionsType } from '../Types/ActionsType';
 import { ObjectiveFilter } from '../components/Objectives/ObjectiveFilter';
 import { CreateNewObjective } from '../components/Objectives/CreateNewObjective';
-import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../Context/ThemeContext';
 
 export const Objectives = () => {
 	const [objectivesFiltered, setObjectivesFiltered] = useState<ObjectiveType[]>([]);
 	const [formDisplay, setFormDisplay] = useState<boolean>(false);
 	const [verifyActionObjective, setverifyActionObjective] = useState<ActionsType>(ActionsType.ADD);
-	const navigate = useNavigate();
 	const { state } = useContext(ThemeContext);
 	return (
 		<ObjectiveProvider>
@@ -23,17 +21,13 @@ export const Objectives = () => {
 					stateObjectiveAction={{ setverifyActionObjective, verifyActionObjective }}
 				/>
 				{/* <div className='trasations-card-container'> */}
-					<ul className={`${state}-theme-objectives-list`}>
-						<ObjectiveListCards
-							objectivesFiltered={objectivesFiltered}
-							setFormDisplay={setFormDisplay}
-							setverifyActionObjective={setverifyActionObjective}
-						/>
-					</ul>
-				{/* </div> */}
-				{/* <button type='button' onClick={() => navigate('/')}>
-					Dashboard
-				</button> */}
+				<ul className={`${state}-theme-objectives-list`}>
+					<ObjectiveListCards
+						objectivesFiltered={objectivesFiltered}
+						setFormDisplay={setFormDisplay}
+						setverifyActionObjective={setverifyActionObjective}
+					/>
+				</ul>
 			</section>
 		</ObjectiveProvider>
 	);

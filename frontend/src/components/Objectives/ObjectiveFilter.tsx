@@ -54,10 +54,10 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 							border: `1px solid ${themeLigthOrDarkSearch.palette.primary.main}`,
 						},
 						{
-							[themeLigthOrDarkSearch.breakpoints.down('small_device')]: { width: '40vw' },
+							[themeLigthOrDarkSearch.breakpoints.down('small_device')]: { width: '55vw' },
 						},
 						{
-							[themeLigthOrDarkSearch.breakpoints.down('mobile')]: { width: '70vw' },
+							[themeLigthOrDarkSearch.breakpoints.down('mobile')]: { width: '75vw' },
 						},
 					]}
 				>
