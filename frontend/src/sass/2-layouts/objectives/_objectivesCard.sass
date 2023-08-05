@@ -1,0 +1,14 @@
+@use '../../1-base/_colors'
+@use '../placeHolders/_placeHoldersObjectives'
+@import '../mixins/_mixinsObjectives'
+
+.class-equal-card
+  width: 100%
+.card-space
+  padding: .3rem 0
+
+.dark-theme-objectives-card
+  @include objectives-generic-card($color: colors.$background-select, $background: colors.$text-color-secondary-dark)
+
+.light-theme-objectives-card
+  @include objectives-generic-card($color: colors.$background-table-light, $background: colors.$second-color)

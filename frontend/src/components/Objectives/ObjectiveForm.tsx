@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { useCallback, useContext } from 'react';
-import { Button, InputBase, Paper } from '@mui/material';
+import { useCallback, useContext, useMemo } from 'react';
+import { Button, InputBase, Paper, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ActionsType } from '../../Types/ActionsType';
@@ -10,8 +10,13 @@ import { ObjectiveContext } from '../../Context/ObjectiveContext';
 import { initialObjectives } from '../../utils/InitialStateObjectives';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
 import { createFormSchemaObjective } from '../../validations/FormObjectiveSchema';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeForm } from '../Themes/ThemeForm';
 
 export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: ObjectiveFormProps) => {
+	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
+	const themeLigthOrDarkForm = useMemo(() => createTheme(ThemeForm(state)), [state]);
+	const widthDisplayButton = useMediaQuery(themeLigthOrDarkForm.breakpoints.down('small_device')); // Retorna: true/false
 	const {
 		state: { formValues },
 		dispatch,
@@ -58,114 +63,110 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className='form'>
-			<Paper
-				component='form'
-				sx={{
-					p: '1rem',
-					display: 'flex',
-					alignItems: 'center',
-					flexDirection: 'column',
-					background: 'transparent',
-					border: '1px solid yellow',
-					color: 'yellow',
-				}}
-			>
-				<InputBase
-					{...register('name')}
-					inputRef={refInputValue}
-					sx={{
-						m: 1,
-						flex: 1,
-						color: 'black',
-						fontWeight: 'bold',
-						fontFamily: 'Times New Roman',
-						border: '1px solid yellow',
-						borderRadius: '5px',
-						textAlign: 'justify',
-						width: '50vw',
-						maxWidth: '550px',
-					}}
-					placeholder='Nome'
-					type='text'
-				/>
-				{errors.name && <p>{errors.name?.message}</p>}
-
-				<InputBase
-					{...register('description')}
-					sx={{
-						m: 1,
-						flex: 1,
-						color: 'black',
-						fontWeight: 'bold',
-						fontFamily: 'Times New Roman',
-						border: '1px solid yellow',
-						borderRadius: '5px',
-						textAlign: 'justify',
-						width: '50vw',
-						maxWidth: '550px',
-					}}
-					placeholder='Descrição'
-					type='text'
-				/>
-				{errors.description && <p>{errors.description?.message}</p>}
-
-				<InputBase
-					{...register('value')}
-					sx={{
-						m: 1,
-						flex: 1,
-						color: 'black',
-						fontWeight: 'bold',
-						fontFamily: 'Times New Roman',
-						border: '1px solid yellow',
-						borderRadius: '5px',
-						textAlign: 'justify',
-						width: '50vw',
-						maxWidth: '550px',
-					}}
-					placeholder='Valor'
-					type='number'
-				/>
-				{errors.value && <p>{errors.value?.message}</p>}
-			</Paper>
-
-			<div className='button-check-form'>
-				<Button
-					type='button'
-					variant='outlined'
-					startIcon={<CancelIcon />}
-					onClick={() => setFormDisplay(false)}
+			<ThemeProvider theme={themeLigthOrDarkForm}>
+				<Paper
+					component='form'
 					sx={[
-						{ marginTop: '.5rem', borderColor: 'yellow', color: 'yellow', fontWeight: 'bold' },
 						{
-							'&:hover': {
-								color: 'black',
-								backgroundColor: 'yellow',
-								borderColor: 'black',
-							},
+							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
+							width: '40vw',
+						},
+						{ [themeLigthOrDarkForm.breakpoints.down('laptop')]: { width: '50vw' } },
+						{
+							[themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '60vw' },
+						},
+						{
+							[themeLigthOrDarkForm.breakpoints.down('mobile')]: { width: '85vw' },
 						},
 					]}
 				>
-					Cancelar
-				</Button>
-				<Button
-					type='submit'
-					variant='outlined'
-					startIcon={<CheckCircleIcon />}
-					sx={[
-						{ marginTop: '.5rem', borderColor: 'yellow', color: 'yellow', fontWeight: 'bold' },
-						{
-							'&:hover': {
-								color: 'black',
-								backgroundColor: 'yellow',
-								borderColor: 'black',
+					<InputBase
+						{...register('name')}
+						inputRef={refInputValue}
+						sx={{
+							flex: 1,
+							color: themeLigthOrDarkForm.palette.text.primary,
+							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
+							width: '95%', // leva em consideração o tamanho do Paper
+						}}
+						placeholder='Nome'
+						type='text'
+					/>
+					{errors.name && <p>{errors.name?.message}</p>}
+
+					<InputBase
+						{...register('description')}
+						sx={{
+							flex: 1,
+							color: themeLigthOrDarkForm.palette.text.primary,
+							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
+							width: '95%', // leva em consideração o tamanho do Paper
+						}}
+						placeholder='Descrição'
+						type='text'
+					/>
+					{errors.description && <p>{errors.description?.message}</p>}
+
+					<InputBase
+						{...register('value')}
+						sx={{
+							flex: 1,
+							color: themeLigthOrDarkForm.palette.text.primary,
+							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
+							width: '95%', // leva em consideração o tamanho do Paper
+						}}
+						placeholder='Valor'
+						type='number'
+					/>
+					{errors.value && <p>{errors.value?.message}</p>}
+				</Paper>
+
+				<div className='button-check-form'>
+					<Button
+						type='button'
+						variant='outlined'
+						startIcon={<CancelIcon />}
+						onClick={() => setFormDisplay(false)}
+						sx={[
+							{
+								borderColor: themeLigthOrDarkForm.palette.primary.main,
+								color: '#000',
+								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
 							},
-						},
-					]}
-				>
-					Confirmar
-				</Button>
-			</div>
+							{
+								'&:hover': {
+									color: '#fff',
+									backgroundColor: themeLigthOrDarkForm.palette.primary.main,
+								},
+							},
+							{ [themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '10vw', paddingLeft: '1.7rem' } },
+						]}
+					>
+						{!widthDisplayButton && 'Cancelar'}
+					</Button>
+					<Button
+						type='submit'
+						variant='outlined'
+						startIcon={<CheckCircleIcon />}
+						sx={[
+							{
+								borderColor: themeLigthOrDarkForm.palette.primary.main,
+								color: '#000',
+								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
+							},
+							{
+								'&:hover': {
+									color: '#fff',
+									backgroundColor: themeLigthOrDarkForm.palette.primary.main,
+								},
+							},
+							{ [themeLigthOrDarkForm.breakpoints.down('small_device')]: { width: '10vw', paddingLeft: '1.7rem' } },
+						]}
+					>
+						{!widthDisplayButton && 'Confirmar'}
+					</Button>
+				</div>
+			</ThemeProvider>
 		</form>
 	);
 };

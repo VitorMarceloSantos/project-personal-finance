@@ -1,0 +1,66 @@
+@use '../placeHolders/_placeHoldersObjectives'
+@use '../../1-base/_colors'
+@import '../../1-base/mixins/_typesDisplay'
+
+@mixin objectives-generic
+  @extend %display-generic
+  justify-content: start
+  flex-direction: column
+  min-height: 90vh
+  // Utiliza o min-height para completar o restante da tela(10vh é do título), caso a section seja maior que 90vh continuará com o backgroundColor do theme
+  @include laptop
+    min-height: 93vh // 7vh do cabeçalho quando o tamanho da tela for 1200px
+  &-filter
+    margin-bottom: 1rem
+    @include laptop
+      padding-top: 2rem
+  &-new-button
+    @extend %display-generic
+    flex-direction: column
+    margin-bottom: 1rem
+  &-list
+    @extend %display-generic
+    flex-wrap: wrap  
+
+@mixin objectives-generic-card($color, $background)
+  @extend %display-generic
+  flex-direction: column
+  justify-content: space-between
+  border-radius: 18px
+  background: $color
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5)
+  text-align: center
+  height: 33vh
+  width: 35vw
+  min-width: 250px
+  margin: 1rem
+  &-id-name
+    @extend %display-generic
+    justify-content: space-between
+    font-weight: bold
+    padding-top: .5rem
+    width: 85%
+  &-value
+    font-size: 1.2rem
+    font-weight: bold
+  &-percentage-chart
+    @extend %display-generic
+    flex-direction: column
+    width: 95%
+    margin-top: 1rem
+  &-chart
+    width: 95%
+  &-percentage
+    width: 20%
+    font-weight: bold
+    font-size: 1.1rem
+    @include small_tablet
+      font-size: .9rem
+  &-buttons
+    @extend %display-generic
+    background-color: $background
+    justify-content: space-evenly
+    border-bottom-left-radius: 18px
+    border-bottom-right-radius: 18px
+    height: 20%
+    width: 100%

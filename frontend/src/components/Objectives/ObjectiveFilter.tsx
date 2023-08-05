@@ -2,11 +2,13 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { Divider, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { useContext, useState } from 'react';
+import { Divider, MenuItem, Select, SelectChangeEvent, ThemeProvider, createTheme } from '@mui/material';
+import { useContext, useMemo, useState } from 'react';
 import { ObjectivesFilteredProps } from '../../Types/Objectives/ObjectivesProps';
 import { ObjectiveContext } from '../../Context/ObjectiveContext';
 import { ObjectiveType } from '../../Types/Objectives/ObjectivesType';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { ThemeSearch } from '../Themes/ThemeSearch';
 
 export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) => {
 	const {
@@ -15,6 +17,8 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 	const [filterSelected, setFilterSelected] = useState<keyof ObjectiveType>('name');
 	const [filterGeneric, setFilterGeneric] = useState<string>('');
 	const { objectivesFiltered, setObjectivesFiltered } = stateObjectives;
+	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
+	const themeLigthOrDarkSearch = useMemo(() => createTheme(ThemeSearch(state)), [state]);
 
 	const handlerFilterSelected = (event: SelectChangeEvent<'value' | 'name' | 'description' | 'id' | 'realized'>) => {
 		const { target } = event;
@@ -40,52 +44,58 @@ export const ObjectiveFilter = ({ stateObjectives }: ObjectivesFilteredProps) =>
 		setFilterGeneric(target.value);
 	};
 	return (
-		<div>
-			<Paper
-				component='form'
-				sx={{
-					p: '2px 6px',
-					display: 'flex',
-					alignItems: 'center',
-					width: 400,
-					backgroundColor: 'transparent',
-					border: '1px solid yellow',
-				}}
-			>
-				<Select
-					className='input-options'
-					value={filterSelected}
-					onChange={(e) => handlerFilterSelected(e)}
-					name='type-filter'
-					variant='standard'
-					disableUnderline={true}
+		<section className={`${state}-theme-objectives-filter`}>
+			<ThemeProvider theme={themeLigthOrDarkSearch}>
+				<Paper
+					component='form'
 					sx={[
 						{
-							color: 'black',
-							border: 'none',
-							width: '110px',
-							backgroundColor: 'yellow',
-							textAlign: 'center',
-							fontWeight: 'bold',
-							fontFamily: 'Times New Roman',
+							width: '30vw',
+							border: `1px solid ${themeLigthOrDarkSearch.palette.primary.main}`,
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('small_device')]: { width: '40vw' },
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('mobile')]: { width: '70vw' },
 						},
 					]}
 				>
-					<MenuItem value='value'>Valor</MenuItem>
-					<MenuItem value='name'>Nome</MenuItem>
-					<MenuItem value='description'>Descrição</MenuItem>
-				</Select>
-				<Divider sx={{ height: 40, m: 0.5, background: 'yellow', marginLeft: '.8rem' }} orientation='vertical' />
-				<InputBase
-					sx={{ ml: 1, flex: 1, color: 'black', fontWeight: 'bold', fontFamily: 'Times New Roman' }}
-					placeholder='Pesquisar'
-					value={filterGeneric}
-					onChange={(e) => handlerFilterGeneric(e)}
-				/>
-				<IconButton type='button' sx={{ p: '0px', color: 'yellow' }} aria-label='search'>
-					<SearchIcon />
-				</IconButton>
-			</Paper>
-		</div>
+					<Select
+						className='input-options'
+						value={filterSelected}
+						onChange={(e) => handlerFilterSelected(e)}
+						name='type-filter'
+						variant='standard'
+						disableUnderline={true}
+						sx={[
+							{
+								color: themeLigthOrDarkSearch.palette.text.primary,
+								width: '35%',
+								backgroundColor: themeLigthOrDarkSearch.palette.primary.main,
+							},
+						]}
+					>
+						<MenuItem value='value'>Valor</MenuItem>
+						<MenuItem value='name'>Nome</MenuItem>
+						<MenuItem value='description'>Descrição</MenuItem>
+					</Select>
+					<Divider sx={{ background: themeLigthOrDarkSearch.palette.primary.main }} orientation='vertical' />
+					<InputBase
+						sx={{ flex: 1, color: themeLigthOrDarkSearch.palette.primary.main }}
+						placeholder='Pesquisar'
+						value={filterGeneric}
+						onChange={(e) => handlerFilterGeneric(e)}
+					/>
+					<IconButton
+						type='button'
+						sx={{ p: '0px', color: themeLigthOrDarkSearch.palette.text.primary }}
+						aria-label='search'
+					>
+						<SearchIcon />
+					</IconButton>
+				</Paper>
+			</ThemeProvider>
+		</section>
 	);
 };
