@@ -22,7 +22,7 @@ export const CategorieCard = ({ categorie, setVerifyActionCategories, setFormDis
 	// A categoria Metas não pode ser alterada ou apagada
 	return (
 		<article className={`${state}-theme-categories-card`}>
-			<p className={`${state}-theme-categories-card-id class-equal-card`}>#{categorie.id + 1}</p>
+			<p className={`${state}-theme-categories-card-id class-equal-card`}>#00{categorie.id + 1}</p>
 			<p className='customize-icon' style={{ color: ColorsIcons[index] }}>
 				<ChildrenIcons>{ConvertNameInComponent(categorie)}</ChildrenIcons>
 			</p>

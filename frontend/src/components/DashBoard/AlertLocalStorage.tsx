@@ -15,6 +15,9 @@ import { CategorieType } from '../../Types/Categories/CategorieType';
 import { CategoriesData } from '../../data/CategoriesData';
 import { LoginContext } from '../../Context/LoginContext';
 import { ActionsType } from '../../Types/ActionsType';
+import { ThemeContext } from '../../Context/ThemeContext';
+import { Breakpoint, ThemeProvider, createTheme } from '@mui/material';
+import { ThemeDialog } from '../Themes/ThemeDialog';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -28,6 +31,8 @@ const Transition = React.forwardRef(function Transition(
 export default function AlertLocalStorage() {
 	const { dispatch } = React.useContext(LoginContext);
 	const [open, setOpen] = React.useState(true); // true, será aberto a janela ao iniciar
+	const { state } = React.useContext(ThemeContext); // Selecionar Modo Dark
+	const themeLigthOrDarkDialog = React.useMemo(() => createTheme(ThemeDialog(state)), [state]);
 
 	const handleClose = () => {
 		function verifyLocalStorage<T>(name: string, data: T[]): void {
@@ -54,25 +59,61 @@ export default function AlertLocalStorage() {
 	};
 	// Não cliclando em nenhuma das opções e fechando a janela, será o mesmo que Aceitar.
 	return (
-		<div>
-			<Dialog
-				open={open}
-				TransitionComponent={Transition}
-				keepMounted
-				onClose={handleClose}
-				aria-describedby='alert-dialog-slide-description'
-			>
-				<DialogTitle>{'Utilizar informações salvas?'}</DialogTitle>
-				<DialogContent>
-					<DialogContentText id='alert-dialog-slide-description'>
-						Utilizar informações anteriores referente as transações, metas e progresso salvas no histórico.
-					</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => handleClose()}>Aceito</Button>
-					<Button onClick={() => removeLocalStorage()}>Rejeito</Button>
-				</DialogActions>
-			</Dialog>
-		</div>
+		<section>
+			<ThemeProvider theme={themeLigthOrDarkDialog}>
+				<Dialog
+					open={open}
+					TransitionComponent={Transition}
+					keepMounted
+					onClose={handleClose}
+					aria-describedby='alert-dialog-slide-tdescription'
+				>
+					<DialogTitle sx={{ color: themeLigthOrDarkDialog.palette.primary.main }}>
+						{'Utilizar informações salvas?'}
+					</DialogTitle>
+					<DialogContent>
+						<DialogContentText id='alert-dialog-slide-description'>
+							Utilizar informações anteriores referente as transações, metas e progresso salvas no histórico.
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions>
+						<Button
+							sx={[
+								{
+									backgroundColor: themeLigthOrDarkDialog.palette.primary.main,
+									color: themeLigthOrDarkDialog.palette.text.primary,
+								},
+								{
+									'&:hover': {
+										backgroundColor: themeLigthOrDarkDialog.palette.text.primary,
+										color: themeLigthOrDarkDialog.palette.primary.main,
+									},
+								},
+							]}
+							onClick={() => handleClose()}
+						>
+							Aceito
+						</Button>
+						<Button
+							sx={[
+								{
+									backgroundColor: themeLigthOrDarkDialog.palette.primary.main,
+									color: themeLigthOrDarkDialog.palette.text.primary,
+								},
+								{
+									'&:hover': {
+										backgroundColor: themeLigthOrDarkDialog.palette.text.primary,
+										color: themeLigthOrDarkDialog.palette.primary.main,
+									},
+								},
+							]}
+							onClick={() => removeLocalStorage()}
+						>
+							Rejeito
+						</Button>
+					</DialogActions>
+				</Dialog>
+			</ThemeProvider>
+		</section>
 	);
 }

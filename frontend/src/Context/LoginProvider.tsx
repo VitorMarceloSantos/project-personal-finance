@@ -11,7 +11,6 @@ const reducer = (state: LoginType, action: ReducerActionType): LoginType => {
 		case 'update':
 			const updateState = { ...payload };
 			return updateState;
-
 		default:
 			return state;
 	}
