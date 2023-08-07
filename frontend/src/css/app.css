@@ -1468,12 +1468,23 @@ table {
   width: 90vw;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
 }
 .loading-skeleton-div {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
-}/*# sourceMappingURL=app.css.map */
+  flex-direction: column;
+}
+.loading-skeleton-li {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+@media (max-width: 1199px) {
+  .loading-skeleton-li {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */
