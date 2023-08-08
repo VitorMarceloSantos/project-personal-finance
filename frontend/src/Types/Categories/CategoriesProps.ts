@@ -6,7 +6,6 @@ export type CategoriesProps = {
 	categorie: CategorieType;
 	setFormDisplay: Dispatch<SetStateAction<boolean>>;
 	setVerifyActionCategories: Dispatch<SetStateAction<ActionsType>>;
-	index: number;
 };
 
 export type CategoriesFilteredProps = {

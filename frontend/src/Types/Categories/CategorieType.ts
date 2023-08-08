@@ -5,4 +5,5 @@ export type CategorieType = {
 		component: React.ReactNode;
 	};
 	name: string;
+	color: string;
 };

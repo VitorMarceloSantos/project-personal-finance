@@ -8,9 +8,8 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { IconButton } from '@mui/material';
-import { ColorsIcons } from '../../utils/ColorsIcons';
 
-export const CategorieCard = ({ categorie, setVerifyActionCategories, setFormDisplay, index }: CategoriesProps) => {
+export const CategorieCard = ({ categorie, setVerifyActionCategories, setFormDisplay }: CategoriesProps) => {
 	const { dispatch, handlerSetFormValues } = useContext(CategoriesContext);
 	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
 	const handlerFormValues = () => {
@@ -23,7 +22,7 @@ export const CategorieCard = ({ categorie, setVerifyActionCategories, setFormDis
 	return (
 		<article className={`${state}-theme-categories-card`}>
 			<p className={`${state}-theme-categories-card-id class-equal-card`}>#00{categorie.id + 1}</p>
-			<p className='customize-icon' style={{ color: ColorsIcons[index] }}>
+			<p className='customize-icon' style={{ color: categorie.color }}>
 				<ChildrenIcons>{ConvertNameInComponent(categorie)}</ChildrenIcons>
 			</p>
 			<p className={`${state}-theme-categories-card-name class-equal-card`}>{categorie.name}</p>

@@ -31,15 +31,16 @@ import { MaterialUISwitch } from './SwitchButton';
 import { ThemeContext } from '../../Context/ThemeContext';
 import { DrawerContext } from '../../Context/DrawerContext';
 import MenuIcon from '@mui/icons-material/Menu';
+import AlertAddImage from './AlertAddImage';
 // https://www.youtube.com/watch?v=o3B9KTlod4w&ab_channel=coder4life
 export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	const navigate = useNavigate();
 	const { register, handleSubmit } = useForm<UploadImage>({});
 	const [file, setFile] = useState('');
+	const [isNotValidImage, setIsNotValidImage] = useState<boolean>(false);
 	const newImage: File | string = !!file ? file : '../src/assets/userImg.jpg';
 	const { state, handlerSetTheme } = useContext(ThemeContext); // Selecionar Modo Dark
 	const themeLigthOrDark = useMemo(() => createTheme(ThemeSideBar(state)), [state]);
-	// const widthDisplay = useMediaQuery('(max-width:1024px)'); // Retorna: true/false
 	const widthDisplay = useMediaQuery(themeLigthOrDark.breakpoints.down('laptop')); // Retorna: true/false
 	const { isDrawerOpen, handlerSetDrawer } = useContext(DrawerContext);
 	const [titleSelected, setTitleSeleceted] = useState<string>('DashBoard');
@@ -53,8 +54,16 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 	};
 
 	const onSubmit = (data: any) => {
+		// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
 		if (data.files.length > 0) {
-			handleFileChange(data.files[0]);
+			console.log(`Imagem: ${data.files[0].name}`);
+			console.log(`Imagem: ${data.files[0].type}`);
+			if (data.files[0].type === 'image/jpeg' || data.files[0].type === 'image/png') {
+				handleFileChange(data.files[0]);
+			} else {
+				console.log('Formato Inválido');
+				setIsNotValidImage(true);
+			}
 		}
 	};
 
@@ -69,6 +78,7 @@ export const SideBar: React.FC<ChildrenType> = ({ children }) => {
 
 	return (
 		<>
+			{isNotValidImage && <AlertAddImage />}
 			<ThemeProvider theme={themeLigthOrDark}>
 				{/* theme.spacing(28) -> 28 é um padrão de medida do materialUI(aproximadamente 4px cada 1spacing) */}
 				<Drawer open={isDrawerOpen} variant={widthDisplay ? 'temporary' : 'permanent'} onClose={handlerSetDrawer}>

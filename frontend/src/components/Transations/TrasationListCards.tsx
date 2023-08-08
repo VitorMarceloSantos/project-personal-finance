@@ -2,12 +2,14 @@ import { useContext, useMemo } from 'react';
 import { TransationContext } from '../../Context/TransationContext';
 import { TransationsFilteredStateProps } from '../../Types/Transations/TransationProps';
 import { TransationCard } from './TransationCard';
+import { ThemeContext } from '../../Context/ThemeContext';
 
 export const TrasationListCards = ({
 	transationsFiltered,
 	setFormDisplay,
 	setverifyActionTransation,
 }: TransationsFilteredStateProps) => {
+	const { state } = useContext(ThemeContext);
 	const {
 		state: { cards },
 	} = useContext(TransationContext);
@@ -31,7 +33,9 @@ export const TrasationListCards = ({
 			{verifyTransationsFiltered.length !== 0 ? (
 				memoCards
 			) : (
-				<h1 style={{ fontWeight: 'bold', margin: '1rem' }}>Não há transações cadastradas</h1>
+				<h1 style={{ fontWeight: 'bold', margin: '1rem', color: state === 'dark' ? '#B0BEC5' : '#000' }}>
+					Não há transações cadastradas.
+				</h1>
 			)}
 		</>
 	);

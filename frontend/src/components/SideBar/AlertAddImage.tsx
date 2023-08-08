@@ -7,11 +7,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import { useNavigate } from 'react-router-dom';
-import { AlertFormObjectivesType } from '../../Types/Transations/AlertFormObjectivesType';
+import { ThemeContext } from '../../Context/ThemeContext';
 import { ThemeDialog } from '../Themes/ThemeDialog';
 import { ThemeProvider, createTheme } from '@mui/material';
-import { ThemeContext } from '../../Context/ThemeContext';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -22,15 +20,12 @@ const Transition = React.forwardRef(function Transition(
 	return <Slide direction='up' ref={ref} {...props} />;
 });
 
-export default function AlertFormObjectivesDefault({ setFormDisplay }: AlertFormObjectivesType) {
+export default function AlertAddImage() {
 	const { state } = React.useContext(ThemeContext);
 	const themeLigthOrDarkDialog = React.useMemo(() => createTheme(ThemeDialog(state)), [state]);
 	const [open, setOpen] = React.useState(true); // true, será aberto a janela ao iniciar
-	const navigate = useNavigate();
-
 	const handleClose = () => {
 		setOpen(false);
-		setFormDisplay(false);
 	};
 
 	return (
@@ -43,10 +38,10 @@ export default function AlertFormObjectivesDefault({ setFormDisplay }: AlertForm
 					onClose={() => handleClose()}
 					aria-describedby='alert-dialog-slide-description'
 				>
-					<DialogTitle sx={{ color: themeLigthOrDarkDialog.palette.primary.main }}>{'Cadastrar Meta'}</DialogTitle>
+					<DialogTitle sx={{ color: themeLigthOrDarkDialog.palette.primary.main }}>{'Formato Inválido'}</DialogTitle>
 					<DialogContent>
 						<DialogContentText id='alert-dialog-slide-description'>
-							Para selecionar a opção Metas, os objetivos desejados devem ser cadastrados.
+							O formato do arquivo não é permitido. Formatos válidos: JPEG/PNG
 						</DialogContentText>
 					</DialogContent>
 					<DialogActions>
@@ -63,26 +58,9 @@ export default function AlertFormObjectivesDefault({ setFormDisplay }: AlertForm
 									},
 								},
 							]}
-							onClick={() => navigate('/metas')}
-						>
-							Cadastrar
-						</Button>
-						<Button
-							sx={[
-								{
-									backgroundColor: themeLigthOrDarkDialog.palette.primary.main,
-									color: themeLigthOrDarkDialog.palette.text.primary,
-								},
-								{
-									'&:hover': {
-										backgroundColor: themeLigthOrDarkDialog.palette.text.primary,
-										color: themeLigthOrDarkDialog.palette.primary.main,
-									},
-								},
-							]}
 							onClick={() => handleClose()}
 						>
-							Voltar
+							Fechar
 						</Button>
 					</DialogActions>
 				</Dialog>

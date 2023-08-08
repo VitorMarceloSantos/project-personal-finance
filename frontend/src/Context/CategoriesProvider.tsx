@@ -7,6 +7,11 @@ import { CategoriesContext } from './CategoriesContex';
 import { ReducerActionType } from '../Types/Categories/ReducerCategoriesType';
 import { UpdateValuesData } from '../utils/UpdateValuesData';
 import { OthersIcon } from '../components/Categories/Icons/IconsCategories';
+import { ColorsIcons } from '../utils/ColorsIcons';
+
+const getRandomInt = () => {
+	return Math.floor(Math.random() * (9 - 1) + 1);
+};
 
 const reducer = (state: CategorieType[], action: ReducerActionType): CategorieType[] => {
 	const { type, payload } = action;
@@ -14,6 +19,7 @@ const reducer = (state: CategorieType[], action: ReducerActionType): CategorieTy
 		case 'add':
 			const newIcon = { name: 'OthersIcon', component: OthersIcon };
 			payload.icon = newIcon; // Adicionando ícone default
+			payload.color = ColorsIcons[getRandomInt()];
 			const newState = [...state, payload];
 			UpdateValuesData<CategorieType>(CategoriesData, newState, 'localCategories');
 			return newState;
