@@ -51,24 +51,6 @@ export const ThemeDialog = (mode: PaletteMode) => ({
 		},
 	},
 	components: {
-		MuiDialog: {
-			styleOverrides: {
-				root: {
-					// boxShadow: '2px 2px 2px rgba(0,0,0, .2)',
-					// padding: '1rem',
-					// background: 'transparent',
-
-					// textAlign: 'center',
-				},
-			},
-		},
-    MuiDialogTitle: {
-      styleOverrides: {
-        root: {
-          // color: 'red'
-        }
-      }
-    },
 		MuiButton: {
 			styleOverrides: {
 				root: {

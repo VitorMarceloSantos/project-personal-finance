@@ -10,7 +10,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 export const ObjectiveCard = ({ objective, setverifyActionObjective, setFormDisplay, index }: ObjectiveProps) => {
 	const { dispatch, handlerSetFormValues } = useContext(ObjectiveContext);
 	const convertingToPercentage = !!objective.value && (objective.realized / objective.value) * 100;
-	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
+	const { state } = useContext(ThemeContext);
 	const handlerFormValues = () => {
 		handlerSetFormValues(objective); // adicionando valores a serem atualizados
 		setverifyActionObjective(ActionsType.UPDATE);
@@ -40,10 +40,12 @@ export const ObjectiveCard = ({ objective, setverifyActionObjective, setFormDisp
 			<p className={`${state}-theme-objectives-card-realized class-equal-card card-space`}>
 				Realizado: {objective.realized.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
 			</p>
-			<p className={`${state}-theme-objectives-card-description class-equal-card card-space`}>{objective.description}</p>
+			<p className={`${state}-theme-objectives-card-description class-equal-card card-space`}>
+				{objective.description}
+			</p>
 			{/* https://www.treinaweb.com.br/blog/barra-de-progresso-que-muda-de-tamanho-e-cor-com-apenas-uma-variavel-do-css */}
 			<div className={`${state}-theme-objectives-card-percentage-chart class-equal-card`}>
-			<p className={`${state}-theme-objectives-card-percentage`}>
+				<p className={`${state}-theme-objectives-card-percentage`}>
 					{!!convertingToPercentage ? convertingToPercentage.toFixed(1) : 0} %
 				</p>
 				<div

@@ -21,15 +21,13 @@ export const Transations = () => {
 					stateFormDisplay={{ formDisplay, setFormDisplay }}
 					stateTransationAction={{ verifyActionTransation, setverifyActionTransation }}
 				/>
-				{/* <div> */}
-					<ul className={`${state}-theme-transations-list`}>
-						<TrasationListCards
-							transationsFiltered={transationsFiltered}
-							setFormDisplay={setFormDisplay}
-							setverifyActionTransation={setverifyActionTransation}
-						/>
-					</ul>
-				{/* </div> */}
+				<ul className={`${state}-theme-transations-list`}>
+					<TrasationListCards
+						transationsFiltered={transationsFiltered}
+						setFormDisplay={setFormDisplay}
+						setverifyActionTransation={setverifyActionTransation}
+					/>
+				</ul>
 			</section>
 		</TransationProvider>
 	);

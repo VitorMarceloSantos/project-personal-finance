@@ -5,7 +5,6 @@ import { LastTransationsCard } from './LastTransationsCard';
 import { ThemeContext } from '../../Context/ThemeContext';
 
 export const LastTransations = () => {
-	// Vai ser exibido as ultimas transações
 	const TransationsDataReverse = [...TransationsData].reverse();
 	const { state } = useContext(ThemeContext);
 	return (
@@ -21,12 +20,14 @@ export const LastTransations = () => {
 								</li>
 							))
 						) : (
-							<h2>Não há transações cadastradas.</h2>
+							<h2 style={{ fontWeight: 'bold', textAlign: 'center' }}>Não há transações cadastradas.</h2>
 						),
 					[TransationsData],
 				)}
 			</ul>
-			<Link to={'/transacoes'} className='link-details'>Detalhes</Link>
+			<Link to={'/transacoes'} className='link-details'>
+				Detalhes
+			</Link>
 		</section>
 	);
 };

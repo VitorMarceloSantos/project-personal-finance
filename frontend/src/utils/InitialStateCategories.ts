@@ -6,7 +6,6 @@ import {
 	FunIcon,
 	HealthIcon,
 	HomeExpenseIcon,
-	// OthersIcon,
 	TransportIcon,
 } from '../components/Categories/Icons/IconsCategories';
 
@@ -18,7 +17,6 @@ export const initialCategories: CategorieType[] = [
 	{ id: 4, icon: { name: 'FoodIcon', component: FoodIcon }, name: 'Alimentacao' },
 	{ id: 5, icon: { name: 'HomeExpenseIcon', component: HomeExpenseIcon }, name: 'Casa' },
 	{ id: 6, icon: { name: 'TransportIcon', component: TransportIcon }, name: 'Transporte' },
-	// { id: 6, icon: OthersIcon, name: 'Outras' },
 ];
 
 export const initialCategoriesZero: CategorieType = {

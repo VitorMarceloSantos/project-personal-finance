@@ -6,11 +6,14 @@ import Stack from '@mui/material/Stack';
 import { createTheme } from '@mui/material';
 import { ThemeSkeleton } from '../Themes/ThemeSkeleton';
 import { ThemeContext } from '../../Context/ThemeContext';
+import { LoginContext } from '../../Context/LoginContext';
+import { ActionsType } from '../../Types/ActionsType';
 
 export const Loading = () => {
+	const { dispatch } = useContext(LoginContext);
 	const [verifyLoading, setVerifyLoading] = useState<boolean>(false);
 	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
-	const themeDisplaySkeleton = useMemo(() => createTheme(ThemeSkeleton(state)), [state]);
+	const themeDisplaySkeleton = useMemo(() => createTheme(ThemeSkeleton()), [state]);
 	const width_60 = { width: '60vw', height: '25vh', borderRadius: '15px', margin: '1rem' };
 	const width_80 = { width: '85vw', height: '25vh', borderRadius: '15px', margin: '1rem' };
 	const width_90 = { width: '90vw', height: '25vh', borderRadius: '15px', margin: '1rem' };
@@ -73,6 +76,8 @@ export const Loading = () => {
 	useEffect(() => {
 		if (VerifyTrueOrFalseLocalStorage()) {
 			setVerifyLoading(true);
+		} else {
+			dispatch({ type: ActionsType.UPDATE, payload: { isConnected: true } });
 		}
 	}, []);
 

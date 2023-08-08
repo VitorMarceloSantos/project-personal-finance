@@ -4,7 +4,7 @@ import { ObjectivesCardType } from '../../Types/DashBoard/ObjectivesCardType';
 export const LastObjectivesCard = ({ objective, index }: ObjectivesCardType) => {
 	const listVariablesRoot = ['one', 'two', 'three', 'four', 'five']; //:root css
 	const convertingToPercentage = !!objective.value && (objective.realized / objective.value) * 100;
-	// Atualizando o valor do gráfico
+
 	useEffect(() => {
 		!!objective.realized &&
 			document.documentElement.style.setProperty(

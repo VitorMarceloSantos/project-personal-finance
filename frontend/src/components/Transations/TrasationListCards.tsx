@@ -26,5 +26,13 @@ export const TrasationListCards = ({
 			)),
 		[verifyTransationsFiltered],
 	);
-	return <>{verifyTransationsFiltered.length !== 0 ? memoCards : <h1>Não há transações cadastradas</h1>}</>;
+	return (
+		<>
+			{verifyTransationsFiltered.length !== 0 ? (
+				memoCards
+			) : (
+				<h1 style={{ fontWeight: 'bold', margin: '1rem' }}>Não há transações cadastradas</h1>
+			)}
+		</>
+	);
 };

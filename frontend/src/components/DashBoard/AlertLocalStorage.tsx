@@ -16,7 +16,7 @@ import { CategoriesData } from '../../data/CategoriesData';
 import { LoginContext } from '../../Context/LoginContext';
 import { ActionsType } from '../../Types/ActionsType';
 import { ThemeContext } from '../../Context/ThemeContext';
-import { Breakpoint, ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material';
 import { ThemeDialog } from '../Themes/ThemeDialog';
 
 const Transition = React.forwardRef(function Transition(

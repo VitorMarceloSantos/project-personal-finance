@@ -29,15 +29,15 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 
 	const handlerFilterGeneric = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { target } = event;
-		
-		// // No mínimo 1 letra para realizar o filtro
+
+		// No mínimo 1 letra para realizar o filtro
 		if (target.value.length >= 1) {
 			const targetInputLower = target.value.toLowerCase();
 			const filtered = cards.filter((transation) =>
-			// utilizando as keyof TransationType, para fazer a vericação de !== null
+				// utilizando as keyof TransationType, para fazer a vericação de !== null
 				(transation[filterSelected] as keyof TransationType).toString().toLocaleLowerCase().includes(targetInputLower),
 			);
-			console.log(filtered)
+			console.log(filtered);
 			if (filtered.length !== 0) {
 				setTransationsFiltered(filtered);
 			} else if (transationsFiltered.length !== 0) setTransationsFiltered([]);
@@ -53,14 +53,18 @@ export const TransationFilter = ({ stateTransations }: TransationsFilteredProps)
 			<ThemeProvider theme={themeLigthOrDarkSearch}>
 				<Paper
 					component='form'
-					sx={[{
-						width: '30vw',
-						border: `1px solid ${themeLigthOrDarkSearch.palette.primary.main}`,
-					}, {
-						[themeLigthOrDarkSearch.breakpoints.down('small_device')]: {width: '55vw'}
-					}, {
-						[themeLigthOrDarkSearch.breakpoints.down('mobile')]: {width: '75vw'}
-					}]}
+					sx={[
+						{
+							width: '30vw',
+							border: `1px solid ${themeLigthOrDarkSearch.palette.primary.main}`,
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('small_device')]: { width: '55vw' },
+						},
+						{
+							[themeLigthOrDarkSearch.breakpoints.down('mobile')]: { width: '75vw' },
+						},
+					]}
 				>
 					<Select
 						className='input-options'

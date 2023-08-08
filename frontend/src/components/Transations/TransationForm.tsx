@@ -154,7 +154,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 							flex: 1,
 							color: themeLigthOrDarkForm.palette.text.primary,
 							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
-							width: '95%', // leva em consideração o tamanho do Paper
+							width: '95%',
 						}}
 						placeholder='Valor'
 						type='number'
@@ -170,7 +170,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						sx={[
 							{
 								color: themeLigthOrDarkForm.palette.text.primary,
-								width: '30%', // leva em consideração o tamanho do Paper
+								width: '30%',
 								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
 							},
 							{
@@ -206,7 +206,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						sx={[
 							{
 								color: themeLigthOrDarkForm.palette.text.primary,
-								width: '30%', // leva em consideração o tamanho do Paper
+								width: '30%',
 								backgroundColor: themeLigthOrDarkForm.palette.primary.main,
 							},
 							{
@@ -228,7 +228,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						)}
 					</Select>
 					{errors.destination && <p>{errors.destination?.message}</p>}
-					{/* {<p>{`Resultado: ${verifyTrueOrFalseValue}`}</p>} */}
 					{verifyTrueOrFalseValue && <AlertFormVerifyValueObjective setFormDisplay={setFormDisplay} />}
 					<InputBase
 						{...register('description')}
@@ -236,7 +235,7 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 							flex: 1,
 							color: themeLigthOrDarkForm.palette.text.primary,
 							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
-							width: '95%', // leva em consideração o tamanho do Paper
+							width: '95%',
 						}}
 						placeholder='Descrição'
 						type='text'
@@ -271,7 +270,6 @@ export const TransationForm = ({ verifyActionTransation, setFormDisplay }: Trans
 						type='submit'
 						variant='outlined'
 						startIcon={<CheckCircleIcon />}
-						// Width: 15vw (themeForm)
 						sx={[
 							{
 								borderColor: themeLigthOrDarkForm.palette.primary.main,

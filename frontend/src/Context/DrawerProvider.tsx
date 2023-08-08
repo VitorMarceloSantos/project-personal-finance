@@ -6,7 +6,7 @@ export const DrawerProvider = ({ children }: ChildrenType) => {
 	const [state, setStateDrawer] = useState<boolean>(false);
 
 	const handlerSetDrawer = () => {
-		setStateDrawer((prev) => (!prev));
+		setStateDrawer((prev) => !prev);
 	};
 	return <DrawerContext.Provider value={{ isDrawerOpen: state, handlerSetDrawer }}>{children}</DrawerContext.Provider>;
 };

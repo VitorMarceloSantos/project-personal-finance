@@ -20,7 +20,7 @@
     width: 85vw
     padding: 1rem
     margin: 1rem 0
-  
+
 @mixin transations-generic-title($color, $textShadow)
   font-weight: bold
   font-size: 1.2rem
@@ -35,13 +35,18 @@
   flex-direction: column
   padding: 1.5rem
   margin: 1rem
+  width: 28vw
+  @include display-1680
+    width: 25vw
   @include display-1440
     padding: 1rem
     margin: .5rem
   @include display-1340
     margin: 1rem
+    width: 40vw
   @include small_tablet
     margin: 1rem 0
+    width: 85vw
 
 @mixin objectives-generic-title($color, $textShadow)
   color: $color
@@ -90,7 +95,7 @@
     width: 85vw
     padding: 1rem
     margin: 1rem 0
-    
+
 @mixin chart-distribuition-generic-title($color, $textShadow)
   color: $color
   font-weight: bold
@@ -147,5 +152,3 @@
   font-weight: bold
   font-size: 1.2rem
   text-shadow: 1px 1px 1px $textShadow
-
-

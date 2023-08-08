@@ -20,7 +20,6 @@ export const Objectives = () => {
 					stateFormDisplay={{ formDisplay, setFormDisplay }}
 					stateObjectiveAction={{ setverifyActionObjective, verifyActionObjective }}
 				/>
-				{/* <div className='trasations-card-container'> */}
 				<ul className={`${state}-theme-objectives-list`}>
 					<ObjectiveListCards
 						objectivesFiltered={objectivesFiltered}

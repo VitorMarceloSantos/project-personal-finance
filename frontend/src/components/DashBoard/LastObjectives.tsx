@@ -4,7 +4,6 @@ import { LastObjectivesCard } from './LastObjectivesCard';
 import { useContext, useMemo } from 'react';
 import { ThemeContext } from '../../Context/ThemeContext';
 
-
 export const LastObjectives = () => {
 	const { state } = useContext(ThemeContext);
 	return (
@@ -20,12 +19,14 @@ export const LastObjectives = () => {
 								</li>
 							))
 						) : (
-							<h2>Não há metas cadastradas.</h2>
+							<h2 style={{ fontWeight: 'bold', textAlign: 'center' }}>Não há metas cadastradas.</h2>
 						),
 					[ObjectivesData],
 				)}
 			</ul>
-			<Link to={'/metas'} className='link-details'>Detalhes</Link>
+			<Link to={'/metas'} className='link-details'>
+				Detalhes
+			</Link>
 		</section>
 	);
 };

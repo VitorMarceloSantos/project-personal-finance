@@ -14,7 +14,7 @@ import { ThemeContext } from '../../Context/ThemeContext';
 import { ThemeForm } from '../Themes/ThemeForm';
 
 export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: ObjectiveFormProps) => {
-	const { state } = useContext(ThemeContext); // Selecionar Modo Dark
+	const { state } = useContext(ThemeContext);
 	const themeLigthOrDarkForm = useMemo(() => createTheme(ThemeForm(state)), [state]);
 	const widthDisplayButton = useMediaQuery(themeLigthOrDarkForm.breakpoints.down('small_device')); // Retorna: true/false
 	const {
@@ -100,7 +100,7 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 							flex: 1,
 							color: themeLigthOrDarkForm.palette.text.primary,
 							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
-							width: '95%', // leva em consideração o tamanho do Paper
+							width: '95%',
 						}}
 						placeholder='Descrição'
 						type='text'
@@ -113,7 +113,7 @@ export const ObjectiveForm = ({ verifyActionObjective, setFormDisplay }: Objecti
 							flex: 1,
 							color: themeLigthOrDarkForm.palette.text.primary,
 							border: `1px solid ${themeLigthOrDarkForm.palette.primary.main}`,
-							width: '95%', // leva em consideração o tamanho do Paper
+							width: '95%',
 						}}
 						placeholder='Valor'
 						type='number'

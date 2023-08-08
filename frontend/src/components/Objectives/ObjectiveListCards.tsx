@@ -12,7 +12,6 @@ export const ObjectiveListCards = ({
 		state: { cards },
 	} = useContext(ObjectiveContext);
 	const verifyObjectivesFiltered = objectivesFiltered.length > 0 ? objectivesFiltered : cards;
-	// hooks não pode está dentro de uma condicional
 	const memoCards = useMemo(
 		() =>
 			verifyObjectivesFiltered.map((objective, index) => (
@@ -27,5 +26,13 @@ export const ObjectiveListCards = ({
 			)),
 		[verifyObjectivesFiltered],
 	);
-	return <>{verifyObjectivesFiltered.length !== 0 ? memoCards : <h1>Não há metas cadastradas</h1>}</>;
+	return (
+		<>
+			{verifyObjectivesFiltered.length !== 0 ? (
+				memoCards
+			) : (
+				<h1 style={{ fontWeight: 'bold', margin: '1rem' }}>Não há metas cadastradas</h1>
+			)}
+		</>
+	);
 };

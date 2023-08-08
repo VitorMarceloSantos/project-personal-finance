@@ -35,7 +35,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		{/* O context foi adicionado nesse lugar para ser utilizado por todos */}
-		<ThemeProvider> 
+		<ThemeProvider>
 			<RouterProvider router={router} />
 		</ThemeProvider>
 	</React.StrictMode>,

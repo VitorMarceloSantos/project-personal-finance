@@ -1,18 +1,18 @@
 import { PaletteMode } from '@mui/material';
 declare module '@mui/material/styles' {
-  interface BreakpointOverrides {
-    xs: false; // removes breakpoint
-    sm: false;
-    md: false;
-    lg: false;
-    xl: false;
-		mobile: true, // add breakpoint
-		small_device: true,
-		small_tablet: true,
-		laptop: true,
-		desktop: true,
-		large_device: true
-  }
+	interface BreakpointOverrides {
+		xs: false; // removes breakpoint
+		sm: false;
+		md: false;
+		lg: false;
+		xl: false;
+		mobile: true; // add breakpoint
+		small_device: true;
+		small_tablet: true;
+		laptop: true;
+		desktop: true;
+		large_device: true;
+	}
 }
 
 export const ThemeForm = (mode: PaletteMode) => ({
@@ -23,14 +23,12 @@ export const ThemeForm = (mode: PaletteMode) => ({
 					// palette values for light mode
 					primary: {
 						main: '#cc2b9f',
-						// ligth: '#ef54c5',
 					},
 					secondary: {
 						main: '#fafafa',
 					},
 					text: {
 						primary: '#000',
-						// secondary: '#000',
 					},
 			  }
 			: {
@@ -40,20 +38,19 @@ export const ThemeForm = (mode: PaletteMode) => ({
 					},
 					text: {
 						primary: '#F0F5FF',
-						// secondary: '#000',
 					},
 			  }),
 	},
 	breakpoints: {
-    values: {
+		values: {
 			mobile: 480,
 			small_device: 767,
 			small_tablet: 991,
 			laptop: 1199,
 			desktop: 1919,
-			large_device: 1920
-    },
-  },
+			large_device: 1920,
+		},
+	},
 	components: {
 		MuiSelect: {
 			styleOverrides: {
@@ -75,7 +72,7 @@ export const ThemeForm = (mode: PaletteMode) => ({
 					display: 'flex',
 					alignItems: 'center',
 					flexDirection: 'column',
-					textAlign: 'center'
+					textAlign: 'center',
 				},
 			},
 		} as any,

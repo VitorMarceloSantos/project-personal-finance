@@ -8,7 +8,7 @@ export const ChartDistribution = () => {
 	const options = {
 		title: '',
 		is3D: true,
-		backgroundColor: 'transparent',		
+		backgroundColor: 'transparent',
 	};
 	type ListTransationsType = {
 		name: string;
@@ -38,9 +38,11 @@ export const ChartDistribution = () => {
 	return (
 		<section className={`${state}-chart-distribution`}>
 			<p className='chart-distribution-title'>Transações</p>
-			<Chart chartType='PieChart' data={dataCharts} options={options} width={'100%'} />
+			{TransationsData.length !== 0 ? (
+				<Chart chartType='PieChart' data={dataCharts} options={options} width={'100%'} />
+			) : (
+				<h2 style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '1rem' }}>Não há transações cadastradas.</h2>
+			)}
 		</section>
 	);
 };
-
-

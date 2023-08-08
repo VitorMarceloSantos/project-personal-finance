@@ -29,7 +29,7 @@ export default function AlertFormVerifyValueCategorie({ setFormDisplay }: AlertF
 	};
 
 	return (
-		<div>
+		<>
 			<Dialog
 				open={open}
 				TransitionComponent={Transition}
@@ -47,6 +47,6 @@ export default function AlertFormVerifyValueCategorie({ setFormDisplay }: AlertF
 					<Button onClick={() => handleClose()}>Fechar</Button>
 				</DialogActions>
 			</Dialog>
-		</div>
+		</>
 	);
 }
