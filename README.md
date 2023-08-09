@@ -2,17 +2,17 @@
 
 <div>
   Para a realização do projeto, foram utilizadas as seguintes tecnologias:
-  * HTML / CSS / JavaScript,
-  * ReactJS,
-  * React Router V6,
-  * UseForm,
-  * Validações de formulários com JOY,
-  * Hooks(useState, useContext, useMemo, useCallback, useEffect),
-  * Material UI e Materical Icon
-  * SASS
-  * ApexCharts
-  * React Google Charts
-  * LocalStorage
+  * HTML / CSS / JavaScript,<br/>
+  * ReactJS,<br/>
+  * React Router V6,<br/>
+  * UseForm,<br/>
+  * Validações de formulários com JOY,<br/>
+  * Hooks(useState, useContext, useMemo, useCallback, useEffect),<br/>
+  * Material UI e Materical Icon,<br/>
+  * SASS,<br/>
+  * ApexCharts,<br/>
+  * React Google Charts,<br/>
+  * LocalStorage,<br/>
 </div>
 
 ##
