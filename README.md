@@ -1,7 +1,7 @@
 <h1 align="center">Projeto - IN8 - DashBoard Financeiro</h1>
 
 <div>
-  Para a realização do projeto, foram utilizadas as seguintes tecnologias:
+  Para a realização do projeto, foram utilizadas as seguintes tecnologias:<br/>
   * HTML / CSS / JavaScript,<br/>
   * ReactJS,<br/>
   * React Router V6,<br/>
