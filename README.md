@@ -4,7 +4,7 @@
   Para a realização do projeto, foram utilizadas as seguintes tecnologias:<br/>
   * HTML / CSS / JavaScript,<br/>
   * ReactJS,<br/>
-  * TypeScript,
+  * TypeScript,<br/>
   * React Router V6,<br/>
   * UseForm,<br/>
   * Validações de formulários com JOY,<br/>
