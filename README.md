@@ -1,5 +1,3 @@
-# project-personal-finance
-Projeto - IN8
 <h1 align="center">Projeto - IN8 - DashBoard Financeiro</h1>
 
 <div>
